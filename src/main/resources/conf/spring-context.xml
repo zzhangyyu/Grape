@@ -12,7 +12,7 @@
     <context:component-scan base-package="com.yoler.grape.service.*.impl">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
     </context:component-scan>
-    <context:component-scan base-package="com.yoler.grape.service">
+    <context:component-scan base-package="com.yoler.grape.service.*">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
     </context:component-scan>
 

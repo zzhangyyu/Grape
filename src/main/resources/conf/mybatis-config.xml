@@ -13,12 +13,12 @@
 		<setting name="defaultStatementTimeout" value="25000" />
 	</settings>
 	
-	<typeAliases>
-		<typeAlias alias="ConditionFields" type="com.cslc.playlot.common.dao.mybatis.dataModel.search.ConditionFields" />
-	</typeAliases>
-	<plugins>
-		<plugin interceptor="com.cslc.playlot.common.dao.mybatis.interceptor.ConditionInterceptor"></plugin>
-		<plugin interceptor="com.cslc.playlot.common.dao.mybatis.interceptor.PagingInterceptor"></plugin>
-	</plugins>
+	<!--<typeAliases>-->
+		<!--<typeAlias alias="ConditionFields" type="com.cslc.playlot.common.dao.mybatis.dataModel.search.ConditionFields" />-->
+	<!--</typeAliases>-->
+	<!--<plugins>-->
+		<!--<plugin interceptor="com.cslc.playlot.common.dao.mybatis.interceptor.ConditionInterceptor"></plugin>-->
+		<!--<plugin interceptor="com.cslc.playlot.common.dao.mybatis.interceptor.PagingInterceptor"></plugin>-->
+	<!--</plugins>-->
 
 </configuration>
