@@ -8,8 +8,7 @@
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx.xsd
-		"
->
+		">
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
@@ -43,7 +42,7 @@
 
     <!-- mybatis文件配置，扫描所有mapper文件 -->
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean"
-        p:dataSource-ref="dataSource"
+          p:dataSource-ref="dataSource"
           p:configLocation="classpath:conf/mybatis-config.xml"
           p:mapperLocations="classpath:mybatis/mapper/*.xml"/>
 

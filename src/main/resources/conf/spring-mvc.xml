@@ -7,17 +7,7 @@
     <description>Spring MVC Configuration</description>
 
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-    <context:component-scan base-package="com.cn.hnust.controller"/>
-
-    <!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
-    <bean
-            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-        <property name="messageConverters">
-            <list>
-                <ref bean="mappingJacksonHttpMessageConverter"/> <!-- JSON转换器 -->
-            </list>
-        </property>
-    </bean>
+    <context:component-scan base-package="com.yoler.grape.controller"/>
 
     <!-- 配置SpringMVC的视图渲染器， 让其前缀为：/WEB-INF/views/，后缀为：.jsp，即将视图渲染到/WEB-INF/views/<method返回值>.jsp中-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
