@@ -3,9 +3,9 @@ package com.yoler.grape.entity;
 import java.util.Date;
 
 /**
- * 病人
+ * 病人基本信息
  */
-public class Patient {
+public class PatientInfo {
     private String name;
     private String sex;
     private int age;

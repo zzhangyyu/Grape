@@ -1,6 +1,6 @@
 package com.yoler.grape.controller;
 
-import com.yoler.grape.entity.Patient;
+import com.yoler.grape.entity.PatientInfo;
 import com.yoler.grape.service.patient.MedicalHistoryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class MedicalController {
     @RequestMapping(value = "getMedicalHistory", method = RequestMethod.POST)
     public @ResponseBody
     String getMedicalHistory() {
-        List<Patient> patients = medicalHistoryService.getPatientList();
+        List<PatientInfo> patients = medicalHistoryService.getPatientList();
         return patients.toString();
     }
 }

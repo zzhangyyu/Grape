@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yoler.grape.dao.mapper.PatientMapper">
-    <resultMap id="BaseResultMap" type="com.yoler.grape.entity.Patient">
+<mapper namespace="com.yoler.grape.dao.mapper.PatientConditionMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.grape.entity.PatientCondition">
         <id column="ID" jdbcType="INTEGER" property="id"/>
         <result column="NAME" jdbcType="VARCHAR" property="name"/>
         <result column="SEX" jdbcType="VARCHAR" property="sex"/>
@@ -16,11 +16,11 @@
     <select id="select" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from PATIENT
+        from PATIENT_INFO
     </select>
     <select id="getPatientList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from PATIENT
+        from PATIENT_INFO
     </select>
 </mapper>
