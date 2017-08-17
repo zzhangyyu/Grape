@@ -8,14 +8,9 @@
     <description>Spring Configuration</description>
 
     <!-- 通过component-scan 让Spring扫描com.yoler.grape.controller下的所有的类，让Spring的代码注解生效 -->
-    <context:component-scan base-package="com.yoler.grape.controller"></context:component-scan>
     <context:component-scan base-package="com.yoler.grape.service.*.impl">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
     </context:component-scan>
-    <context:component-scan base-package="com.yoler.grape.service.*">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
-    </context:component-scan>
-
 
     <!-- 引入jdbc配置文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
