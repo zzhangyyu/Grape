@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/")
-public class Medical {
+public class MedicalController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     MedicalHistoryService medicalHistoryService;

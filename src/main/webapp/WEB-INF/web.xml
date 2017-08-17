@@ -7,14 +7,14 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--**************************配置DispatcherServlet，并通过<servlet-mapping>指定需要拦截的url**************************-->
+    <!--**************************中央控制器，配置DispatcherServlet，并通过<servlet-mapping>指定需要拦截的url**************************-->
     <!-- 配置Spring MVC DispatcherServlet -->
     <servlet>
         <servlet-name>grape</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- 初始化参数 -->
         <init-param>
-            <!-- 加载SpringMVC的xml到spring的上下文容器中 -->
+            <!-- 加载SpringMVC-->
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:conf/spring-mvc.xml</param-value>
         </init-param>
@@ -25,7 +25,6 @@
         <servlet-name>grape</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
 
     <!--**************************配置Spring的上下文监听器，并指定Spring的xml配置文件的路径**************************-->
     <!-- 监听spring上下文容器 -->
@@ -38,6 +37,7 @@
         <param-value>classpath:conf/spring-context.xml</param-value>
     </context-param>
 
+    <!--spring 框架解决字符串编码问题-->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -54,5 +54,4 @@
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
 </web-app>

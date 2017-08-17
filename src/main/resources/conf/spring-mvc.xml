@@ -3,13 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+    <!--spring-mvc一般主要配置Controller的组件扫描器和视图解析器-->
     <description>Spring MVC Configuration</description>
 
-    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+    <!-- 通过component-scan让Spring扫描com.yoler.grape.controller下的所有的类，让Spring的代码注解生效 -->
     <context:component-scan base-package="com.yoler.grape.controller"/>
 
-    <!-- 配置SpringMVC的视图渲染器， 让其前缀为：/WEB-INF/views/，后缀为：.jsp，即将视图渲染到/WEB-INF/views/<method返回值>.jsp中-->
+    <!-- 配置SpringMVC的视图渲染器，让其前缀为：/WEB-INF/views/，后缀为：.jsp，即将视图渲染到/WEB-INF/views/<method返回值>.jsp中-->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
         <!--<property name="prefix" value="/WEB-INF/views/"/>-->
         <!--<property name="suffix" value=".jsp"/>-->
