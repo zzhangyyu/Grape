@@ -12,6 +12,6 @@ create table Patient
    zodiac               varchar(5) comment '属相',
    introducer           varchar(20) comment '介绍人',
    primary key (id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table Patient comment '病人信息表';
