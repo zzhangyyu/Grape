@@ -3,24 +3,21 @@
 <mapper namespace="com.yoler.grape.dao.mapper.PatientConditionMapper">
     <resultMap id="BaseResultMap" type="com.yoler.grape.entity.PatientCondition">
         <id column="ID" jdbcType="INTEGER" property="id"/>
-        <result column="NAME" jdbcType="VARCHAR" property="name"/>
-        <result column="SEX" jdbcType="VARCHAR" property="sex"/>
-        <result column="AGE" jdbcType="INTEGER" property="age"/>
-        <result column="BIRTHDAY" jdbcType="DATE" property="birthday"/>
-        <result column="ZODIAC" jdbcType="VARCHAR" property="zodiac"/>
-        <result column="INTRODUCER" jdbcType="VARCHAR" property="introducer"/>
+        <result column="patient_info_id" jdbcType="INTEGER" property="patientInfoId"/>
+        <result column="visiting_date" jdbcType="DATE" property="visitingDate"/>
+        <result column="left_pulse_cun" jdbcType="VARCHAR" property="leftPulseCun"/>
+        <result column="left_pulse_guan" jdbcType="VARCHAR" property="leftPulseGuan"/>
+        <result column="left_pulse_chi" jdbcType="VARCHAR" property="leftPulseChi"/>
+        <result column="right_pulse_cun" jdbcType="VARCHAR" property="rightPulseCun"/>
+        <result column="right_pulse_guan" jdbcType="VARCHAR" property="rightPulseGuan"/>
+        <result column="right_pulse_chi" jdbcType="VARCHAR" property="rightPulseChi"/>
+        <result column="tongue" jdbcType="VARCHAR" property="tongue"/>
+        <result column="add_condition" jdbcType="VARCHAR" property="addCondition"/>
+        <result column="analysis" jdbcType="VARCHAR" property="analysis"/>
     </resultMap>
     <sql id="Base_Column_List">
-        NAME, SEX, AGE, BIRTHDAY, ZODIAC,INTRODUCER
+        patient_info_id, left_pulse_cun, left_pulse_guan,left_pulse_chi,right_pulse_cun,right_pulse_guan,right_pulse_chi,
+        tongue,add_condition,analysis,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration
     </sql>
-    <select id="select" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from PATIENT_INFO
-    </select>
-    <select id="getPatientList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from PATIENT_INFO
-    </select>
+
 </mapper>

@@ -3,15 +3,24 @@ package com.yoler.grape.entity;
 import java.util.Date;
 
 /**
- * 病人基本信息
+ * 数据库映射-病人基本信息
  */
 public class PatientInfo {
+    private int id;
     private String name;
     private String sex;
     private int age;
     private Date birthday;
     private String zodiac;
     private String introducer;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

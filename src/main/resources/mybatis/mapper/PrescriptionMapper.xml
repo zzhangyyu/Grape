@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.grape.dao.mapper.PrescriptionMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.grape.entity.Prescription">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="patient_condition_id" jdbcType="INTEGER" property="patientConditionId"/>
+        <result column="doctor_id" jdbcType="INTEGER" property="doctorId"/>
+        <result column="prescription_name" jdbcType="VARCHAR" property="prescriptionName"/>
+        <result column="prescription_detail" jdbcType="VARCHAR" property="prescriptionDetail"/>
+        <result column="prescription_method" jdbcType="VARCHAR" property="prescriptionMethod"/>
+        <result column="prescription_count" jdbcType="INTEGER" property="prescriptionCount"/>
+        <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        patient_condition_id,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration
+    </sql>
+
+</mapper>
