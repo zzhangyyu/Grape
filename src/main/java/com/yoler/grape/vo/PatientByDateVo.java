@@ -1,24 +1,33 @@
 package com.yoler.grape.vo;
 
 public class PatientByDateVo {
-    private String visitingTime;
-    private String patientId;
+    private String visitingDate;
+    private String patientInfoId;
+    private String patientConditionId;
     private String patientName;
 
-    public String getVisitingTime() {
-        return visitingTime;
+    public String getVisitingDate() {
+        return visitingDate;
     }
 
-    public void setVisitingTime(String visitingTime) {
-        this.visitingTime = visitingTime;
+    public void setVisitingDate(String visitingDate) {
+        this.visitingDate = visitingDate;
     }
 
-    public String getPatientId() {
-        return patientId;
+    public String getPatientInfoId() {
+        return patientInfoId;
     }
 
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    public void setPatientInfoId(String patientInfoId) {
+        this.patientInfoId = patientInfoId;
+    }
+
+    public String getPatientConditionId() {
+        return patientConditionId;
+    }
+
+    public void setPatientConditionId(String patientConditionId) {
+        this.patientConditionId = patientConditionId;
     }
 
     public String getPatientName() {

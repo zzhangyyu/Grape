@@ -5,15 +5,24 @@ package com.yoler.grape.response;
  */
 public class PI4PatientByDateResp {
 
-    private String patientId;
+    private String patientInfoId;
+    private String patientConditionId;
     private String patientName;
 
-    public String getPatientId() {
-        return patientId;
+    public String getPatientInfoId() {
+        return patientInfoId;
     }
 
-    public void setPatientId(String patientId) {
-        this.patientId = patientId;
+    public void setPatientInfoId(String patientInfoId) {
+        this.patientInfoId = patientInfoId;
+    }
+
+    public String getPatientConditionId() {
+        return patientConditionId;
+    }
+
+    public void setPatientConditionId(String patientConditionId) {
+        this.patientConditionId = patientConditionId;
     }
 
     public String getPatientName() {

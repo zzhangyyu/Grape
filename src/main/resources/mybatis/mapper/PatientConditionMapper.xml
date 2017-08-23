@@ -20,4 +20,42 @@
         tongue,add_condition,analysis,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration
     </sql>
 
+    <resultMap id="PatientConditionResult" type="com.yoler.grape.vo.PatientConditionVo">
+        <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
+        <result column="left_pulse_cun" jdbcType="VARCHAR" property="leftPulseCun"/>
+        <result column="left_pulse_guan" jdbcType="VARCHAR" property="leftPulseGuan"/>
+        <result column="left_pulse_chi" jdbcType="VARCHAR" property="leftPulseChi"/>
+        <result column="right_pulse_cun" jdbcType="VARCHAR" property="rightPulseCun"/>
+        <result column="right_pulse_guan" jdbcType="VARCHAR" property="rightPulseGuan"/>
+        <result column="right_pulse_chi" jdbcType="VARCHAR" property="rightPulseChi"/>
+        <result column="tongue" jdbcType="VARCHAR" property="tongue"/>
+        <result column="add_condition" jdbcType="VARCHAR" property="addCondition"/>
+        <result column="analysis" jdbcType="VARCHAR" property="analysis"/>
+        <result column="prescription_name" jdbcType="VARCHAR" property="prescriptionName"/>
+        <result column="prescription_detail" jdbcType="VARCHAR" property="prescriptionDetail"/>
+        <result column="prescription_method" jdbcType="VARCHAR" property="prescriptionMethod"/>
+        <result column="prescription_count" jdbcType="VARCHAR" property="prescriptionCount"/>
+        <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
+    </resultMap>
+
+    <select id="getPatientCondition" parameterType="java.util.Map" resultMap="PatientConditionResult">
+        SELECT
+          t.visiting_date,
+          t.left_pulse_cun,
+          t.left_pulse_guan,
+          t.left_pulse_chi,
+          t.right_pulse_cun,
+          t.right_pulse_guan,
+          t.right_pulse_chi,
+          t.tongue,
+          t.add_condition,
+          t.analysis,
+          s.prescription_name,
+          s.prescription_detail,
+          s.prescription_method,
+          s.prescription_count,
+          s.prescription_duration
+        FROM Patient_Condition t, Prescription s
+        WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id
+    </select>
 </mapper>

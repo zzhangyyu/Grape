@@ -15,8 +15,9 @@
     </sql>
 
     <resultMap id="PatientByDateResult" type="com.yoler.grape.vo.PatientByDateVo">
-        <result column="visiting_date" jdbcType="VARCHAR" property="visitingTime"/>
-        <result column="id" jdbcType="VARCHAR" property="patientId"/>
+        <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
+        <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
+        <result column="patient_condition_id" jdbcType="VARCHAR" property="patientConditionId"/>
         <result column="name" jdbcType="VARCHAR" property="patientName"/>
     </resultMap>
 
@@ -25,14 +26,24 @@
         <result column="name" jdbcType="VARCHAR" property="patientName"/>
     </resultMap>
 
-    <select id="getPatientByDate" parameterType="java.lang.Integer" resultMap="PatientByDateResult">
-        select s.visiting_date,t.id,t.name
-        from Patient_Info t,Patient_Condition s
-        where t.id=s.patient_info_id
-        order by s.visiting_date desc;
+    <select id="getPatientByDate" parameterType="java.util.Map" resultMap="PatientByDateResult">
+        SELECT
+        s.visiting_date,
+        s.patient_info_id,
+        s.id patient_condition_id,
+        t.name
+        FROM Patient_Info t, Patient_Condition s
+        WHERE t.id = s.patient_info_id
+        <if test="queryStartDate != null">
+            and s.visiting_date &gt;= #{queryStartDate}
+        </if>
+        <if test="queryEndDate != null">
+            and s.visiting_date &lt;= #{queryEndDate}
+        </if>
+        ORDER BY s.visiting_date DESC;
     </select>
 
-    <select id="getPatientByDate" parameterType="java.lang.String" resultMap="PatientByDateResult">
+    <select id="getPatientByName" parameterType="java.lang.String" resultMap="PatientByDateResult">
         select t.id,t.name
         from Patient_Info t
         where t.id = #{patientName};

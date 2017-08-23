@@ -32,7 +32,7 @@ create table Patient_Condition
    right_pulse_chi                varchar(30) comment '右尺脉象',
    tongue                         varchar(30) comment '舌象',
    add_condition                  varchar(50) comment '其它病情描述',
-   analysis                       varchar(50) comment '病情分析',
+   analysis                       varchar(200) comment '病情分析',
    primary key (id),
    CONSTRAINT `FK_PATIENT_ID` FOREIGN KEY (`patient_info_id`) REFERENCES `Patient_Info` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,5 +1,6 @@
 package com.yoler.grape.controller;
 
+import com.yoler.grape.request.PatientByDateReq;
 import com.yoler.grape.service.patient.PatientInfoService;
 import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
@@ -25,23 +26,30 @@ public class PatientController {
 
     @RequestMapping(value = "getPatientByDate", method = RequestMethod.POST)
     public @ResponseBody
-    String getPatientByDate() {
-        Map<String, Object> result = patientInfoService.getPatientByDate();
-        logger.debug(GsonUtil.objectToJson(result));
-        return GsonUtil.objectToJson(result);
+    String getPatientByDate(@RequestBody String reqJson) {
+        logger.debug("getPatientByDate req is :" + reqJson);
+        PatientByDateReq req = GsonUtil.jsonToObject(reqJson, PatientByDateReq.class);
+        Map<String, Object> resultMap = patientInfoService.getPatientByDate(req);
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("getPatientByDate resp is :" + result);
+        return result;
     }
 
     @RequestMapping(value = "getPatientByName", method = RequestMethod.POST)
     public @ResponseBody
-    String getPatientByName(@RequestBody String json) {
-        Map<String, Object> result = patientInfoService.getPatientByName(json);
+    String getPatientByName(@RequestBody String reqJson) {
+        Map<String, Object> result = patientInfoService.getPatientByName(reqJson);
         logger.debug(GsonUtil.objectToJson(result));
         return GsonUtil.objectToJson(result);
     }
 
     @RequestMapping(value = "getPatientCondition", method = RequestMethod.POST)
     public @ResponseBody
-    String getPatientCondition() {
-        return null;
+    String getPatientCondition(@RequestBody String reqJson) {
+        logger.debug("getPatientCondition req is :" + reqJson);
+        Map<String, Object> resultMap = patientInfoService.getPatientCondition();
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("getPatientCondition resp is :" + result);
+        return result;
     }
 }
