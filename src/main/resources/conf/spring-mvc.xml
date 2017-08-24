@@ -2,12 +2,25 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!--spring-mvc一般主要配置Controller的组件扫描器和视图解析器-->
     <description>Spring MVC Configuration</description>
 
     <!-- 通过component-scan让Spring扫描com.yoler.grape.controller下的所有的类，让Spring的代码注解生效 -->
     <context:component-scan base-package="com.yoler.grape.controller"/>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <!-- 配置SpringMVC的视图渲染器，让其前缀为：/WEB-INF/views/，后缀为：.jsp，即将视图渲染到/WEB-INF/views/<method返回值>.jsp中-->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
