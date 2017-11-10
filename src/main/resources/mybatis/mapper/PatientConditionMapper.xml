@@ -58,4 +58,17 @@
         FROM Patient_Condition t, Prescription s
         WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id
     </select>
+
+    <resultMap id="DateDirResult" type="com.yoler.grape.vo.DateDirVo">
+        <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
+        <result column="patient_cnt" jdbcType="VARCHAR" property="patientCnt"/>
+    </resultMap>
+
+    <select id="getDateDir" parameterType="java.util.Map" resultMap="DateDirResult">
+        SELECT
+          t.visiting_date,
+          count(t.visiting_date) patient_cnt
+        FROM Patient_Condition t
+        GROUP BY t.visiting_date
+    </select>
 </mapper>

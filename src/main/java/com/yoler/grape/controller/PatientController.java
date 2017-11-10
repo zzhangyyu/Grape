@@ -1,7 +1,8 @@
 package com.yoler.grape.controller;
 
+import com.yoler.grape.request.DateDirReq;
 import com.yoler.grape.request.PatientByDateReq;
-import com.yoler.grape.service.patient.PatientInfoService;
+import com.yoler.grape.service.patient.PatientService;
 import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,14 +23,25 @@ import java.util.Map;
 public class PatientController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
-    PatientInfoService patientInfoService;
+    PatientService patientService;
+
+    @RequestMapping(value = "getDateDir", method = RequestMethod.POST)
+    public @ResponseBody
+    String getDateDir(@RequestBody String reqJson) {
+        logger.debug("getDateDir req is :" + reqJson);
+        DateDirReq req = GsonUtil.jsonToObject(reqJson, DateDirReq.class);
+        Map<String, Object> resultMap = patientService.getDateDir(req);
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("getDateDir resp is :" + result);
+        return result;
+    }
 
     @RequestMapping(value = "getPatientByDate", method = RequestMethod.POST)
     public @ResponseBody
     String getPatientByDate(@RequestBody String reqJson) {
         logger.debug("getPatientByDate req is :" + reqJson);
         PatientByDateReq req = GsonUtil.jsonToObject(reqJson, PatientByDateReq.class);
-        Map<String, Object> resultMap = patientInfoService.getPatientByDate(req);
+        Map<String, Object> resultMap = patientService.getPatientByDate(req);
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("getPatientByDate resp is :" + result);
         return result;
@@ -38,7 +50,7 @@ public class PatientController {
     @RequestMapping(value = "getPatientByName", method = RequestMethod.POST)
     public @ResponseBody
     String getPatientByName(@RequestBody String reqJson) {
-        Map<String, Object> result = patientInfoService.getPatientByName(reqJson);
+        Map<String, Object> result = patientService.getPatientByName(reqJson);
         logger.debug(GsonUtil.objectToJson(result));
         return GsonUtil.objectToJson(result);
     }
@@ -47,7 +59,7 @@ public class PatientController {
     public @ResponseBody
     String getPatientCondition(@RequestBody String reqJson) {
         logger.debug("getPatientCondition req is :" + reqJson);
-        Map<String, Object> resultMap = patientInfoService.getPatientCondition();
+        Map<String, Object> resultMap = patientService.getPatientCondition();
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("getPatientCondition resp is :" + result);
         return result;

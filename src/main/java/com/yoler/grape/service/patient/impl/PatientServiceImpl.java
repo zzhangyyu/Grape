@@ -2,9 +2,11 @@ package com.yoler.grape.service.patient.impl;
 
 import com.yoler.grape.dao.mapper.PatientConditionMapper;
 import com.yoler.grape.dao.mapper.PatientInfoMapper;
+import com.yoler.grape.request.DateDirReq;
 import com.yoler.grape.request.PatientByDateReq;
 import com.yoler.grape.response.PI4PatientByDateResp;
-import com.yoler.grape.service.patient.PatientInfoService;
+import com.yoler.grape.service.patient.PatientService;
+import com.yoler.grape.vo.DateDirVo;
 import com.yoler.grape.vo.PatientByDateVo;
 import com.yoler.grape.vo.PatientByNameVo;
 import com.yoler.grape.vo.PatientConditionVo;
@@ -16,12 +18,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service("patientInfoServiceImpl")
-public class PatientInfoServiceImpl implements PatientInfoService {
+@Service("patientServiceImpl")
+public class PatientServiceImpl implements PatientService {
     @Autowired
     private PatientInfoMapper patientInfoMapper;
     @Autowired
     private PatientConditionMapper patientConditionMapper;
+
+    @Override
+    public Map<String, Object> getDateDir(DateDirReq req) {
+        Map<String, Object> result = new HashMap<>();
+        List<DateDirVo> dateDirVos = patientConditionMapper.getDateDir();
+        result.put("content", dateDirVos);
+        result.put("status", "200");
+        return result;
+    }
 
     @Override
     public Map<String, Object> getPatientByDate(PatientByDateReq req) {
