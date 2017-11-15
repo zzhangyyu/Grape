@@ -3,7 +3,7 @@ package com.yoler.grape.response;
 /**
  * getPatientByDate接口的病人信息(Patient_Info)
  */
-public class PI4PatientByDateResp {
+public class ConsiliaDateIntroPI {
 
     private String patientInfoId;
     private String patientConditionId;

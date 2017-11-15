@@ -1,6 +1,6 @@
 package com.yoler.grape.vo;
 
-public class PatientByDateVo {
+public class ConsiliaDateIntroVo {
     private String visitingDate;
     private String patientInfoId;
     private String patientConditionId;

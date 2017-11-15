@@ -2,7 +2,7 @@ package com.yoler.grape.request;
 
 import java.util.Date;
 
-public class PatientByDateReq extends BaseReq {
+public class ConsiliaDateIntroReq extends BaseReq {
     private int pageIdx;
     private int recordPerPage;
     private Date queryStartDate;

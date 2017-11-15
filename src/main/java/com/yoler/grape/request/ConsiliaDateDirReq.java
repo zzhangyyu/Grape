@@ -1,6 +1,6 @@
 package com.yoler.grape.request;
 
-public class DateDirReq extends BaseReq {
+public class ConsiliaDateDirReq extends BaseReq {
     private int pageIdx;
     private int recordPerPage;
 

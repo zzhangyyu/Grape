@@ -2,21 +2,19 @@ package com.yoler.grape.service.patient.impl;
 
 import com.yoler.grape.dao.mapper.PatientConditionMapper;
 import com.yoler.grape.dao.mapper.PatientInfoMapper;
-import com.yoler.grape.request.DateDirReq;
-import com.yoler.grape.request.PatientByDateReq;
-import com.yoler.grape.response.PI4PatientByDateResp;
+import com.yoler.grape.request.ConsiliaDateDirReq;
+import com.yoler.grape.request.ConsiliaDateIntroReq;
+import com.yoler.grape.response.ConsiliaDateIntroPI;
+import com.yoler.grape.response.ConsiliaDateIntroResp;
 import com.yoler.grape.service.patient.PatientService;
-import com.yoler.grape.vo.DateDirVo;
-import com.yoler.grape.vo.PatientByDateVo;
-import com.yoler.grape.vo.PatientByNameVo;
+import com.yoler.grape.vo.ConsiliaDateDirVo;
+import com.yoler.grape.vo.ConsiliaDateIntroVo;
+import com.yoler.grape.vo.ConsiliaPatientIntroVo;
 import com.yoler.grape.vo.PatientConditionVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("patientServiceImpl")
 public class PatientServiceImpl implements PatientService {
@@ -26,44 +24,53 @@ public class PatientServiceImpl implements PatientService {
     private PatientConditionMapper patientConditionMapper;
 
     @Override
-    public Map<String, Object> getDateDir(DateDirReq req) {
+    public Map<String, Object> getConsiliaDateDir(ConsiliaDateDirReq req) {
         Map<String, Object> result = new HashMap<>();
-        List<DateDirVo> dateDirVos = patientConditionMapper.getDateDir();
-        result.put("content", dateDirVos);
+        List<ConsiliaDateDirVo> consiliaDateDirVos = patientConditionMapper.getConsiliaDateDir();
+        result.put("content", consiliaDateDirVos);
         result.put("status", "200");
         return result;
     }
 
     @Override
-    public Map<String, Object> getPatientByDate(PatientByDateReq req) {
+    public Map<String, Object> getConsiliaDateIntro(ConsiliaDateIntroReq req) {
         Map<String, Object> result = new HashMap<>();
-        Map<String, List<PI4PatientByDateResp>> groupMap = new HashMap<>();
+        List<ConsiliaDateIntroResp> content = new ArrayList<>();
+        Map<String, List<ConsiliaDateIntroPI>> groupMap = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
         queryMap.put("queryStartDate", req.getQueryStartDate());
         queryMap.put("queryEndDate", req.getQueryEndDate());
-        List<PatientByDateVo> patientByDateVos = patientInfoMapper.getPatientByDate(queryMap);
-        for (PatientByDateVo patientByDateVo : patientByDateVos) {
-            String key = patientByDateVo.getVisitingDate();
-            List<PI4PatientByDateResp> pi4PatientByDateRespList = groupMap.get(key);
-            if (pi4PatientByDateRespList == null) {
-                pi4PatientByDateRespList = new ArrayList<>();
-                groupMap.put(key, pi4PatientByDateRespList);
+        List<ConsiliaDateIntroVo> consiliaDateIntroVos = patientInfoMapper.getConsiliaDateIntro(queryMap);
+        for (ConsiliaDateIntroVo consiliaDateIntroVo : consiliaDateIntroVos) {
+            String key = consiliaDateIntroVo.getVisitingDate();
+            List<ConsiliaDateIntroPI> ConsiliaDateIntroPIs = groupMap.get(key);
+            if (ConsiliaDateIntroPIs == null) {
+                ConsiliaDateIntroPIs = new ArrayList<>();
+                groupMap.put(key, ConsiliaDateIntroPIs);
             }
-            PI4PatientByDateResp pi4PatientByDateResp = new PI4PatientByDateResp();
-            pi4PatientByDateResp.setPatientInfoId(patientByDateVo.getPatientInfoId());
-            pi4PatientByDateResp.setPatientConditionId(patientByDateVo.getPatientConditionId());
-            pi4PatientByDateResp.setPatientName(patientByDateVo.getPatientName());
-            pi4PatientByDateRespList.add(pi4PatientByDateResp);
+            ConsiliaDateIntroPI consiliaDateIntroPI = new ConsiliaDateIntroPI();
+            consiliaDateIntroPI.setPatientInfoId(consiliaDateIntroVo.getPatientInfoId());
+            consiliaDateIntroPI.setPatientConditionId(consiliaDateIntroVo.getPatientConditionId());
+            consiliaDateIntroPI.setPatientName(consiliaDateIntroVo.getPatientName());
+            ConsiliaDateIntroPIs.add(consiliaDateIntroPI);
         }
-        result.put("content", groupMap);
+
+        Set<String> keys = groupMap.keySet();
+        for (String key : keys) {
+            ConsiliaDateIntroResp consiliaDateIntroResp = new ConsiliaDateIntroResp();
+            consiliaDateIntroResp.setVisitingTime(key);
+            consiliaDateIntroResp.setPatientInfos(groupMap.get(key));
+            content.add(consiliaDateIntroResp);
+        }
+        result.put("content", content);
         result.put("status", "200");
         return result;
     }
 
     @Override
-    public Map<String, Object> getPatientByName(String patientName) {
+    public Map<String, Object> getConsiliaPatientIntro(String patientName) {
         Map<String, Object> result = new HashMap<>();
-        List<PatientByNameVo> patientByDateVos = patientInfoMapper.getPatientByName(patientName);
+        List<ConsiliaPatientIntroVo> consiliaPatientIntroVos = patientInfoMapper.getConsiliaPatientIntro(patientName);
         return result;
     }
 

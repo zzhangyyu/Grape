@@ -1,6 +1,6 @@
 package com.yoler.grape.vo;
 
-public class PatientByNameVo {
+public class ConsiliaPatientIntroVo {
     private String patientId;
     private String patientName;
 

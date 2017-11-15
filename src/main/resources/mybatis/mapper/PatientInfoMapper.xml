@@ -14,19 +14,19 @@
         NAME, SEX, AGE, BIRTHDAY, ZODIAC,INTRODUCER
     </sql>
 
-    <resultMap id="PatientByDateResult" type="com.yoler.grape.vo.PatientByDateVo">
+    <resultMap id="ConsiliaDateIntroResult" type="com.yoler.grape.vo.ConsiliaDateIntroVo">
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
         <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
         <result column="patient_condition_id" jdbcType="VARCHAR" property="patientConditionId"/>
         <result column="name" jdbcType="VARCHAR" property="patientName"/>
     </resultMap>
 
-    <resultMap id="PatientByNameResult" type="com.yoler.grape.vo.PatientByNameVo">
+    <resultMap id="ConsiliaPatientIntroResult" type="com.yoler.grape.vo.ConsiliaPatientIntroVo">
         <result column="id" jdbcType="VARCHAR" property="patientId"/>
         <result column="name" jdbcType="VARCHAR" property="patientName"/>
     </resultMap>
 
-    <select id="getPatientByDate" parameterType="java.util.Map" resultMap="PatientByDateResult">
+    <select id="getConsiliaDateIntro" parameterType="java.util.Map" resultMap="ConsiliaDateIntroResult">
         SELECT
         s.visiting_date,
         s.patient_info_id,
@@ -43,7 +43,7 @@
         ORDER BY s.visiting_date DESC;
     </select>
 
-    <select id="getPatientByName" parameterType="java.lang.String" resultMap="PatientByDateResult">
+    <select id="getConsiliaPatientIntro" parameterType="java.lang.String" resultMap="ConsiliaPatientIntroResult">
         select t.id,t.name
         from Patient_Info t
         where t.id = #{patientName};

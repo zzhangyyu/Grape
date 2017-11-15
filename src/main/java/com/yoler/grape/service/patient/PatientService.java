@@ -1,16 +1,16 @@
 package com.yoler.grape.service.patient;
 
-import com.yoler.grape.request.DateDirReq;
-import com.yoler.grape.request.PatientByDateReq;
+import com.yoler.grape.request.ConsiliaDateDirReq;
+import com.yoler.grape.request.ConsiliaDateIntroReq;
 
 import java.util.Map;
 
 public interface PatientService {
-    Map<String, Object> getDateDir(DateDirReq req);
+    Map<String, Object> getConsiliaDateDir(ConsiliaDateDirReq req);
 
-    Map<String, Object> getPatientByDate(PatientByDateReq req);
+    Map<String, Object> getConsiliaDateIntro(ConsiliaDateIntroReq req);
 
-    Map<String, Object> getPatientByName(String patientName);
+    Map<String, Object> getConsiliaPatientIntro(String patientName);
 
     Map<String, Object> getPatientCondition();
 }

@@ -1,7 +1,7 @@
 package com.yoler.grape.controller;
 
-import com.yoler.grape.request.DateDirReq;
-import com.yoler.grape.request.PatientByDateReq;
+import com.yoler.grape.request.ConsiliaDateDirReq;
+import com.yoler.grape.request.ConsiliaDateIntroReq;
 import com.yoler.grape.service.patient.PatientService;
 import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
@@ -25,34 +25,35 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @RequestMapping(value = "getDateDir", method = RequestMethod.POST)
+    @RequestMapping(value = "getConsiliaDateDir", method = RequestMethod.POST)
     public @ResponseBody
     String getDateDir(@RequestBody String reqJson) {
-        logger.debug("getDateDir req is :" + reqJson);
-        DateDirReq req = GsonUtil.jsonToObject(reqJson, DateDirReq.class);
-        Map<String, Object> resultMap = patientService.getDateDir(req);
+        logger.debug("getConsiliaDateDir req is :" + reqJson);
+        ConsiliaDateDirReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDateDirReq.class);
+        Map<String, Object> resultMap = patientService.getConsiliaDateDir(req);
         String result = GsonUtil.objectToJson(resultMap);
-        logger.debug("getDateDir resp is :" + result);
+        logger.debug("getConsiliaDateDir resp is :" + result);
         return result;
     }
 
-    @RequestMapping(value = "getPatientByDate", method = RequestMethod.POST)
+    @RequestMapping(value = "getConsiliaDateIntro", method = RequestMethod.POST)
     public @ResponseBody
     String getPatientByDate(@RequestBody String reqJson) {
-        logger.debug("getPatientByDate req is :" + reqJson);
-        PatientByDateReq req = GsonUtil.jsonToObject(reqJson, PatientByDateReq.class);
-        Map<String, Object> resultMap = patientService.getPatientByDate(req);
+        logger.debug("getConsiliaDateIntro req is :" + reqJson);
+        ConsiliaDateIntroReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDateIntroReq.class);
+        Map<String, Object> resultMap = patientService.getConsiliaDateIntro(req);
         String result = GsonUtil.objectToJson(resultMap);
-        logger.debug("getPatientByDate resp is :" + result);
+        logger.debug("getConsiliaDateIntro resp is :" + result);
         return result;
     }
 
-    @RequestMapping(value = "getPatientByName", method = RequestMethod.POST)
+    @RequestMapping(value = "getConsiliaPatientIntro", method = RequestMethod.POST)
     public @ResponseBody
     String getPatientByName(@RequestBody String reqJson) {
-        Map<String, Object> result = patientService.getPatientByName(reqJson);
-        logger.debug(GsonUtil.objectToJson(result));
-        return GsonUtil.objectToJson(result);
+        Map<String, Object> resultMap = patientService.getConsiliaPatientIntro(reqJson);
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("getConsiliaPatientIntro resp is :" + result);
+        return result;
     }
 
     @RequestMapping(value = "getPatientCondition", method = RequestMethod.POST)

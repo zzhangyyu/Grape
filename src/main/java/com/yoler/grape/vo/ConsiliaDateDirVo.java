@@ -1,6 +1,6 @@
 package com.yoler.grape.vo;
 
-public class DateDirVo {
+public class ConsiliaDateDirVo {
     private String visitingDate;
     private String patientCnt;
 
