@@ -7,9 +7,9 @@
     </appender>
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>E:/yoler.log</file>
+        <file>/usr/local/programs/tomcat_logs/grape.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>E:/yoler-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <fileNamePattern>/usr/local/programs/tomcat_logs/yoler-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>5MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>

@@ -38,8 +38,8 @@ public class PatientServiceImpl implements PatientService {
         List<ConsiliaDateIntroResp> content = new ArrayList<>();
         Map<String, List<ConsiliaDateIntroPI>> groupMap = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
-        queryMap.put("queryStartDate", req.getQueryStartDate());
-        queryMap.put("queryEndDate", req.getQueryEndDate());
+        queryMap.put("queryStartDate", req.getContent().getQueryStartDate());
+        queryMap.put("queryEndDate", req.getContent().getQueryEndDate());
         List<ConsiliaDateIntroVo> consiliaDateIntroVos = patientInfoMapper.getConsiliaDateIntro(queryMap);
         for (ConsiliaDateIntroVo consiliaDateIntroVo : consiliaDateIntroVos) {
             String key = consiliaDateIntroVo.getVisitingDate();

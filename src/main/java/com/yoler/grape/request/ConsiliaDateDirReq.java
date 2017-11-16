@@ -1,22 +1,13 @@
 package com.yoler.grape.request;
 
 public class ConsiliaDateDirReq extends BaseReq {
-    private int pageIdx;
-    private int recordPerPage;
+    private ConsiliaDateDirReqContent content;
 
-    public int getPageIdx() {
-        return pageIdx;
+    public ConsiliaDateDirReqContent getContent() {
+        return content;
     }
 
-    public void setPageIdx(int pageIdx) {
-        this.pageIdx = pageIdx;
-    }
-
-    public int getRecordPerPage() {
-        return recordPerPage;
-    }
-
-    public void setRecordPerPage(int recordPerPage) {
-        this.recordPerPage = recordPerPage;
+    public void setContent(ConsiliaDateDirReqContent content) {
+        this.content = content;
     }
 }
