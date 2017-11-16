@@ -70,5 +70,6 @@
           count(t.visiting_date) patient_cnt
         FROM Patient_Condition t
         GROUP BY t.visiting_date
+        ORDER BY t.visiting_date DESC
     </select>
 </mapper>

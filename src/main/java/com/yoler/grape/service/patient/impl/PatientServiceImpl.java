@@ -58,7 +58,7 @@ public class PatientServiceImpl implements PatientService {
         Set<String> keys = groupMap.keySet();
         for (String key : keys) {
             ConsiliaDateIntroResp consiliaDateIntroResp = new ConsiliaDateIntroResp();
-            consiliaDateIntroResp.setVisitingTime(key);
+            consiliaDateIntroResp.setVisitingDate(key);
             consiliaDateIntroResp.setPatientInfos(groupMap.get(key));
             content.add(consiliaDateIntroResp);
         }

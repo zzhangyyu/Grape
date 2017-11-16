@@ -3,15 +3,15 @@ package com.yoler.grape.response;
 import java.util.List;
 
 public class ConsiliaDateIntroResp {
-    private String visitingTime;
+    private String visitingDate;
     private List<ConsiliaDateIntroPI> patientInfos;
 
-    public String getVisitingTime() {
-        return visitingTime;
+    public String getVisitingDate() {
+        return visitingDate;
     }
 
-    public void setVisitingTime(String visitingTime) {
-        this.visitingTime = visitingTime;
+    public void setVisitingDate(String visitingDate) {
+        this.visitingDate = visitingDate;
     }
 
     public List<ConsiliaDateIntroPI> getPatientInfos() {
