@@ -20,7 +20,11 @@
         tongue,add_condition,analysis,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration
     </sql>
 
-    <resultMap id="PatientConditionResult" type="com.yoler.grape.vo.PatientConditionVo">
+    <resultMap id="ConsiliaDetailResult" type="com.yoler.grape.vo.ConsiliaDetailVo">
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="zodiac" jdbcType="VARCHAR" property="zodiac"/>
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
         <result column="left_pulse_cun" jdbcType="VARCHAR" property="leftPulseCun"/>
         <result column="left_pulse_guan" jdbcType="VARCHAR" property="leftPulseGuan"/>
@@ -38,8 +42,12 @@
         <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
     </resultMap>
 
-    <select id="getPatientCondition" parameterType="java.util.Map" resultMap="PatientConditionResult">
+    <select id="getConsiliaDetail" parameterType="java.util.Map" resultMap="ConsiliaDetailResult">
         SELECT
+          l.name,
+          l.sex,
+          l.birthday,
+          l.zodiac,
           t.visiting_date,
           t.left_pulse_cun,
           t.left_pulse_guan,
@@ -55,8 +63,8 @@
           s.prescription_method,
           s.prescription_count,
           s.prescription_duration
-        FROM Patient_Condition t, Prescription s
-        WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id
+        FROM Patient_Condition t, Prescription s, Patient_Info l
+        WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id AND l.id = t.patient_info_id
     </select>
 
     <resultMap id="ConsiliaDateDirResult" type="com.yoler.grape.vo.ConsiliaDateDirVo">

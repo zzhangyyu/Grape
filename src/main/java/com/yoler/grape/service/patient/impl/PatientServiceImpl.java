@@ -4,13 +4,14 @@ import com.yoler.grape.dao.mapper.PatientConditionMapper;
 import com.yoler.grape.dao.mapper.PatientInfoMapper;
 import com.yoler.grape.request.ConsiliaDateDirReq;
 import com.yoler.grape.request.ConsiliaDateIntroReq;
+import com.yoler.grape.request.ConsiliaDetailReq;
 import com.yoler.grape.response.ConsiliaDateIntroPI;
 import com.yoler.grape.response.ConsiliaDateIntroResp;
 import com.yoler.grape.service.patient.PatientService;
 import com.yoler.grape.vo.ConsiliaDateDirVo;
 import com.yoler.grape.vo.ConsiliaDateIntroVo;
 import com.yoler.grape.vo.ConsiliaPatientIntroVo;
-import com.yoler.grape.vo.PatientConditionVo;
+import com.yoler.grape.vo.ConsiliaDetailVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -75,12 +76,12 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Map<String, Object> getPatientCondition() {
+    public Map<String, Object> getConsiliaDetail(ConsiliaDetailReq req) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
-        queryMap.put("patientConditionId", "1");
-        PatientConditionVo patientConditionVo = patientConditionMapper.getPatientCondition(queryMap);
-        result.put("content", patientConditionVo);
+        queryMap.put("patientConditionId", req.getContent().getPatientConditionId());
+        ConsiliaDetailVo consiliaDetailVo = patientConditionMapper.getConsiliaDetail(queryMap);
+        result.put("content", consiliaDetailVo);
         result.put("status", "200");
         return result;
     }

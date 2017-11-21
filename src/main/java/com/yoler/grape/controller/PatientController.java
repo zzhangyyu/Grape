@@ -2,6 +2,7 @@ package com.yoler.grape.controller;
 
 import com.yoler.grape.request.ConsiliaDateDirReq;
 import com.yoler.grape.request.ConsiliaDateIntroReq;
+import com.yoler.grape.request.ConsiliaDetailReq;
 import com.yoler.grape.service.patient.PatientService;
 import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
@@ -56,13 +57,14 @@ public class PatientController {
         return result;
     }
 
-    @RequestMapping(value = "getPatientCondition", method = RequestMethod.POST)
+    @RequestMapping(value = "getConsiliaDetail", method = RequestMethod.POST)
     public @ResponseBody
     String getPatientCondition(@RequestBody String reqJson) {
-        logger.debug("getPatientCondition req is :" + reqJson);
-        Map<String, Object> resultMap = patientService.getPatientCondition();
+        logger.debug("getConsiliaDetail req is :" + reqJson);
+        ConsiliaDetailReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDetailReq.class);
+        Map<String, Object> resultMap = patientService.getConsiliaDetail(req);
         String result = GsonUtil.objectToJson(resultMap);
-        logger.debug("getPatientCondition resp is :" + result);
+        logger.debug("getConsiliaDetail resp is :" + result);
         return result;
     }
 }

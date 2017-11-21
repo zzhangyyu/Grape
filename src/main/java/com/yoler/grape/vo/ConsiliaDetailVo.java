@@ -1,6 +1,10 @@
 package com.yoler.grape.vo;
 
-public class PatientConditionVo {
+public class ConsiliaDetailVo {
+    private String name;
+    private String sex;
+    private String birthday;
+    private String zodiac;
     private String visitingDate;
     private String leftPulseCun;
     private String leftPulseGuan;
@@ -17,6 +21,37 @@ public class PatientConditionVo {
     private String prescriptionCount;
     private String prescriptionDuration;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getZodiac() {
+        return zodiac;
+    }
+
+    public void setZodiac(String zodiac) {
+        this.zodiac = zodiac;
+    }
 
     public String getVisitingDate() {
         return visitingDate;
