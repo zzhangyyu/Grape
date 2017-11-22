@@ -27,7 +27,10 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Map<String, Object> getConsiliaDateDir(ConsiliaDateDirReq req) {
         Map<String, Object> result = new HashMap<>();
-        List<ConsiliaDateDirVo> consiliaDateDirVos = patientConditionMapper.getConsiliaDateDir();
+        Map<String,Object> queryMap=new HashMap<>();
+        queryMap.put("queryStartDate", req.getContent().getQueryStartDate());
+        queryMap.put("queryEndDate", req.getContent().getQueryEndDate());
+        List<ConsiliaDateDirVo> consiliaDateDirVos = patientConditionMapper.getConsiliaDateDir(queryMap);
         result.put("content", consiliaDateDirVos);
         result.put("status", "200");
         return result;
@@ -53,6 +56,7 @@ public class PatientServiceImpl implements PatientService {
             consiliaDateIntroPI.setPatientInfoId(consiliaDateIntroVo.getPatientInfoId());
             consiliaDateIntroPI.setPatientConditionId(consiliaDateIntroVo.getPatientConditionId());
             consiliaDateIntroPI.setPatientName(consiliaDateIntroVo.getPatientName());
+            consiliaDateIntroPI.setPatientSex(consiliaDateIntroVo.getPatientSex());
             ConsiliaDateIntroPIs.add(consiliaDateIntroPI);
         }
 

@@ -19,6 +19,7 @@
         <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
         <result column="patient_condition_id" jdbcType="VARCHAR" property="patientConditionId"/>
         <result column="name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="sex" jdbcType="VARCHAR" property="patientSex"/>
     </resultMap>
 
     <resultMap id="ConsiliaPatientIntroResult" type="com.yoler.grape.vo.ConsiliaPatientIntroVo">
@@ -31,7 +32,8 @@
         s.visiting_date,
         s.patient_info_id,
         s.id patient_condition_id,
-        t.name
+        t.name,
+        t.sex
         FROM Patient_Info t, Patient_Condition s
         WHERE t.id = s.patient_info_id
         <if test="queryStartDate != null">

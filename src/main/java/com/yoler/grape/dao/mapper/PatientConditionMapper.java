@@ -10,7 +10,7 @@ import java.util.Map;
  * mybatis-病历Mapper
  */
 public interface PatientConditionMapper {
-    List<ConsiliaDateDirVo> getConsiliaDateDir();
+    List<ConsiliaDateDirVo> getConsiliaDateDir(Map<String, Object> queryMap);
 
     ConsiliaDetailVo getConsiliaDetail(Map queryMap);
 }

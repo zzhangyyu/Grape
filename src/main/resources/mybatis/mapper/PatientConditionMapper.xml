@@ -77,6 +77,13 @@
           t.visiting_date,
           count(t.visiting_date) patient_cnt
         FROM Patient_Condition t
+        WHERE 1=1
+        <if test="queryStartDate != null">
+            and t.visiting_date &gt;= #{queryStartDate}
+        </if>
+        <if test="queryEndDate != null">
+            and t.visiting_date &lt;= #{queryEndDate}
+        </if>
         GROUP BY t.visiting_date
         ORDER BY t.visiting_date DESC
     </select>
