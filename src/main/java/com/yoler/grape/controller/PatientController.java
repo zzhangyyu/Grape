@@ -1,8 +1,6 @@
 package com.yoler.grape.controller;
 
-import com.yoler.grape.request.ConsiliaDateDirReq;
-import com.yoler.grape.request.ConsiliaDateIntroReq;
-import com.yoler.grape.request.ConsiliaDetailReq;
+import com.yoler.grape.request.*;
 import com.yoler.grape.service.patient.PatientService;
 import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
@@ -28,7 +26,7 @@ public class PatientController {
 
     @RequestMapping(value = "getConsiliaDateDir", method = RequestMethod.POST)
     public @ResponseBody
-    String getDateDir(@RequestBody String reqJson) {
+    String getConsiliaDateDir(@RequestBody String reqJson) {
         logger.debug("getConsiliaDateDir req is :" + reqJson);
         ConsiliaDateDirReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDateDirReq.class);
         Map<String, Object> resultMap = patientService.getConsiliaDateDir(req);
@@ -48,10 +46,23 @@ public class PatientController {
         return result;
     }
 
+    @RequestMapping(value = "getConsiliaPatientDir", method = RequestMethod.POST)
+    public @ResponseBody
+    String getConsiliaPatientDir(@RequestBody String reqJson) {
+        logger.debug("getConsiliaPatientDir req is :" + reqJson);
+        ConsiliaPatientDirReq req = GsonUtil.jsonToObject(reqJson, ConsiliaPatientDirReq.class);
+        Map<String, Object> resultMap = patientService.getConsiliaPatientDir(req);
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("getConsiliaPatientDir resp is :" + result);
+        return result;
+    }
+
     @RequestMapping(value = "getConsiliaPatientIntro", method = RequestMethod.POST)
     public @ResponseBody
     String getPatientByName(@RequestBody String reqJson) {
-        Map<String, Object> resultMap = patientService.getConsiliaPatientIntro(reqJson);
+        logger.debug("getConsiliaPatientIntro req is :" + reqJson);
+        ConsiliaPatientIntroReq req = GsonUtil.jsonToObject(reqJson, ConsiliaPatientIntroReq.class);
+        Map<String, Object> resultMap = patientService.getConsiliaPatientIntro(req);
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("getConsiliaPatientIntro resp is :" + result);
         return result;

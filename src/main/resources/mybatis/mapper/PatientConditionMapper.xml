@@ -23,6 +23,7 @@
     <resultMap id="ConsiliaDetailResult" type="com.yoler.grape.vo.ConsiliaDetailVo">
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="age" jdbcType="VARCHAR" property="age"/>
         <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
         <result column="zodiac" jdbcType="VARCHAR" property="zodiac"/>
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
@@ -42,34 +43,16 @@
         <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
     </resultMap>
 
-    <select id="getConsiliaDetail" parameterType="java.util.Map" resultMap="ConsiliaDetailResult">
-        SELECT
-          l.name,
-          l.sex,
-          l.birthday,
-          l.zodiac,
-          t.visiting_date,
-          t.left_pulse_cun,
-          t.left_pulse_guan,
-          t.left_pulse_chi,
-          t.right_pulse_cun,
-          t.right_pulse_guan,
-          t.right_pulse_chi,
-          t.tongue,
-          t.add_condition,
-          t.analysis,
-          s.prescription_name,
-          s.prescription_detail,
-          s.prescription_method,
-          s.prescription_count,
-          s.prescription_duration
-        FROM Patient_Condition t, Prescription s, Patient_Info l
-        WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id AND l.id = t.patient_info_id
-    </select>
-
     <resultMap id="ConsiliaDateDirResult" type="com.yoler.grape.vo.ConsiliaDateDirVo">
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
         <result column="patient_cnt" jdbcType="VARCHAR" property="patientCnt"/>
+    </resultMap>
+
+    <resultMap id="ConsiliaPatientDirResult" type="com.yoler.grape.vo.ConsiliaPatientDirVo">
+        <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>
+        <result column="consilia_cnt" jdbcType="VARCHAR" property="consiliaCnt"/>
     </resultMap>
 
     <select id="getConsiliaDateDir" parameterType="java.util.Map" resultMap="ConsiliaDateDirResult">
@@ -86,5 +69,42 @@
         </if>
         GROUP BY t.visiting_date
         ORDER BY t.visiting_date DESC
+    </select>
+
+    <select id="getConsiliaPatientDir" parameterType="java.util.Map" resultMap="ConsiliaPatientDirResult">
+        SELECT
+          t.patient_info_id,
+          s.name patient_name,
+          s.sex patient_sex,
+          count(t.id) consilia_cnt
+        FROM Patient_Info s, Patient_Condition t
+        WHERE s.id = t.patient_info_id
+        GROUP BY t.patient_info_id, s.name, s.sex
+    </select>
+
+    <select id="getConsiliaDetail" parameterType="java.util.Map" resultMap="ConsiliaDetailResult">
+        SELECT
+        l.name,
+        l.sex,
+        l.age,
+        l.birthday,
+        l.zodiac,
+        t.visiting_date,
+        t.left_pulse_cun,
+        t.left_pulse_guan,
+        t.left_pulse_chi,
+        t.right_pulse_cun,
+        t.right_pulse_guan,
+        t.right_pulse_chi,
+        t.tongue,
+        t.add_condition,
+        t.analysis,
+        s.prescription_name,
+        s.prescription_detail,
+        s.prescription_method,
+        s.prescription_count,
+        s.prescription_duration
+        FROM Patient_Condition t, Prescription s, Patient_Info l
+        WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id AND l.id = t.patient_info_id
     </select>
 </mapper>

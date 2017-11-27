@@ -1,24 +1,24 @@
 package com.yoler.grape.request;
 
 public class ConsiliaDateDirReqContent {
-    private int pageIdx;
-    private int recordPerPage;
+    private String pageIdx;
+    private String recordPerPage;
     private String queryStartDate;
     private String queryEndDate;
 
-    public int getPageIdx() {
+    public String getPageIdx() {
         return pageIdx;
     }
 
-    public void setPageIdx(int pageIdx) {
+    public void setPageIdx(String pageIdx) {
         this.pageIdx = pageIdx;
     }
 
-    public int getRecordPerPage() {
+    public String getRecordPerPage() {
         return recordPerPage;
     }
 
-    public void setRecordPerPage(int recordPerPage) {
+    public void setRecordPerPage(String recordPerPage) {
         this.recordPerPage = recordPerPage;
     }
 

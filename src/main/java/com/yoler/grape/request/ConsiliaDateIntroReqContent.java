@@ -1,42 +1,40 @@
 package com.yoler.grape.request;
 
-import java.util.Date;
-
 public class ConsiliaDateIntroReqContent {
-    private int pageIdx;
-    private int recordPerPage;
-    private Date queryStartDate;
-    private Date queryEndDate;
+    private String pageIdx;
+    private String recordPerPage;
+    private String queryStartDate;
+    private String queryEndDate;
 
-    public int getPageIdx() {
+    public String getPageIdx() {
         return pageIdx;
     }
 
-    public void setPageIdx(int pageIdx) {
+    public void setPageIdx(String pageIdx) {
         this.pageIdx = pageIdx;
     }
 
-    public int getRecordPerPage() {
+    public String getRecordPerPage() {
         return recordPerPage;
     }
 
-    public void setRecordPerPage(int recordPerPage) {
+    public void setRecordPerPage(String recordPerPage) {
         this.recordPerPage = recordPerPage;
     }
 
-    public Date getQueryStartDate() {
+    public String getQueryStartDate() {
         return queryStartDate;
     }
 
-    public void setQueryStartDate(Date queryStartDate) {
+    public void setQueryStartDate(String queryStartDate) {
         this.queryStartDate = queryStartDate;
     }
 
-    public Date getQueryEndDate() {
+    public String getQueryEndDate() {
         return queryEndDate;
     }
 
-    public void setQueryEndDate(Date queryEndDate) {
+    public void setQueryEndDate(String queryEndDate) {
         this.queryEndDate = queryEndDate;
     }
 }

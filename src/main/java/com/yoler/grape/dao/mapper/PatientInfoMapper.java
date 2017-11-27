@@ -12,5 +12,5 @@ import java.util.Map;
 public interface PatientInfoMapper {
     List<ConsiliaDateIntroVo> getConsiliaDateIntro(Map queryMap);
 
-    List<ConsiliaPatientIntroVo> getConsiliaPatientIntro(String patientName);
+    List<ConsiliaPatientIntroVo> getConsiliaPatientIntro(Map queryMap);
 }

@@ -23,8 +23,9 @@
     </resultMap>
 
     <resultMap id="ConsiliaPatientIntroResult" type="com.yoler.grape.vo.ConsiliaPatientIntroVo">
-        <result column="id" jdbcType="VARCHAR" property="patientId"/>
-        <result column="name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
+        <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
+        <result column="patient_condition_id" jdbcType="VARCHAR" property="patientConditionId"/>
     </resultMap>
 
     <select id="getConsiliaDateIntro" parameterType="java.util.Map" resultMap="ConsiliaDateIntroResult">
@@ -46,8 +47,12 @@
     </select>
 
     <select id="getConsiliaPatientIntro" parameterType="java.lang.String" resultMap="ConsiliaPatientIntroResult">
-        select t.id,t.name
-        from Patient_Info t
-        where t.id = #{patientName};
+        SELECT
+          s.visiting_date,
+          s.patient_info_id,
+          s.id patient_condition_id
+        FROM  Patient_Condition s
+        WHERE s.patient_info_id = #{patientInfoId}
+        ORDER BY s.visiting_date DESC;
     </select>
 </mapper>

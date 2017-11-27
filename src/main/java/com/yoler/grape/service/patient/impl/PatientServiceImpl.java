@@ -2,16 +2,11 @@ package com.yoler.grape.service.patient.impl;
 
 import com.yoler.grape.dao.mapper.PatientConditionMapper;
 import com.yoler.grape.dao.mapper.PatientInfoMapper;
-import com.yoler.grape.request.ConsiliaDateDirReq;
-import com.yoler.grape.request.ConsiliaDateIntroReq;
-import com.yoler.grape.request.ConsiliaDetailReq;
+import com.yoler.grape.request.*;
 import com.yoler.grape.response.ConsiliaDateIntroPI;
 import com.yoler.grape.response.ConsiliaDateIntroResp;
 import com.yoler.grape.service.patient.PatientService;
-import com.yoler.grape.vo.ConsiliaDateDirVo;
-import com.yoler.grape.vo.ConsiliaDateIntroVo;
-import com.yoler.grape.vo.ConsiliaPatientIntroVo;
-import com.yoler.grape.vo.ConsiliaDetailVo;
+import com.yoler.grape.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +22,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Map<String, Object> getConsiliaDateDir(ConsiliaDateDirReq req) {
         Map<String, Object> result = new HashMap<>();
-        Map<String,Object> queryMap=new HashMap<>();
+        Map<String, Object> queryMap = new HashMap<>();
         queryMap.put("queryStartDate", req.getContent().getQueryStartDate());
         queryMap.put("queryEndDate", req.getContent().getQueryEndDate());
         List<ConsiliaDateDirVo> consiliaDateDirVos = patientConditionMapper.getConsiliaDateDir(queryMap);
@@ -73,9 +68,23 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public Map<String, Object> getConsiliaPatientIntro(String patientName) {
+    public Map<String, Object> getConsiliaPatientDir(ConsiliaPatientDirReq req) {
         Map<String, Object> result = new HashMap<>();
-        List<ConsiliaPatientIntroVo> consiliaPatientIntroVos = patientInfoMapper.getConsiliaPatientIntro(patientName);
+        Map<String, Object> queryMap = new HashMap<>();
+        List<ConsiliaPatientDirVo> consiliaPatientDirVos = patientConditionMapper.getConsiliaPatientDir(queryMap);
+        result.put("content", consiliaPatientDirVos);
+        result.put("status", "200");
+        return result;
+    }
+
+    @Override
+    public Map<String, Object> getConsiliaPatientIntro(ConsiliaPatientIntroReq req) {
+        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("patientInfoId", req.getContent().getPatientInfoId());
+        List<ConsiliaPatientIntroVo> consiliaPatientIntroVos = patientInfoMapper.getConsiliaPatientIntro(queryMap);
+        result.put("content", consiliaPatientIntroVos);
+        result.put("status", "200");
         return result;
     }
 
