@@ -18,7 +18,7 @@ import java.util.Map;
  * Created by zhangyu on 2017/6/28.
  */
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/patient/")
 public class PatientController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired

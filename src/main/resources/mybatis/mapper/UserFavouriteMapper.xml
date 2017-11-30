@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.grape.dao.mapper.UserFavouriteMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.grape.entity.UserFavourite">
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="patient_info_id" jdbcType="INTEGER" property="patientInfoId"/>
+        <result column="patient_condition_id" jdbcType="INTEGER" property="patientConditionId"/>
+        <result column="delete_flag" jdbcType="INTEGER" property="deleteFalg"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        user_id, patient_info_id, patient_condition_id, delete_flag, create_time
+    </sql>
+
+    <resultMap id="UserFavouritePatientResult" type="com.yoler.grape.vo.UserFavouritePatientVo">
+        <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>
+        <result column="consilia_cnt" jdbcType="VARCHAR" property="consiliaCnt"/>
+    </resultMap>
+
+    <select id="getUserFavouritePatient" parameterType="java.util.Map" resultMap="UserFavouritePatientResult">
+        SELECT
+          l.patient_info_id,
+          s.name      patient_name,
+          s.sex       patient_sex,
+          count(t.id) consilia_cnt
+        FROM User_Favourite l, Patient_Info s, Patient_Condition t
+        WHERE l.user_id = #{userId}
+              AND l.delete_flag = 1
+              AND l.patient_info_id = t.patient_info_id
+              AND l.patient_info_id = s.id
+        GROUP BY t.patient_info_id, s.name, s.sex
+    </select>
+
+</mapper>

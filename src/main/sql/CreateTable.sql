@@ -13,7 +13,6 @@ create table Patient_Info
    introducer           varchar(20) comment '介绍人',
    primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 alter table Patient_Info comment '病人基本信息表';
 
 /*==============================================================*/
@@ -36,13 +35,12 @@ create table Patient_Condition
    primary key (id),
    CONSTRAINT `FK_PATIENT_ID` FOREIGN KEY (`patient_info_id`) REFERENCES `Patient_Info` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 alter table Patient_Condition comment '病历表';
 
 /*==============================================================*/
 /* Table: Prescription                                          */
 /*==============================================================*/
-create table Prescription
+  create table Prescription
 (
    id                                int not null,
    patient_condition_id              int not null comment '病历ID',
@@ -55,6 +53,32 @@ create table Prescription
    primary key (id),
    UNIQUE KEY `UK_PATIENT_CONDITION_ID` (`patient_condition_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 alter table Prescription comment '药方表';
+
+/*==============================================================*/
+/* Table: User                                                  */
+/*==============================================================*/
+create table User
+(
+   id                   int,
+   phone                varchar(20) comment '手机号',
+   user_name            varchar(20) comment '用户名',
+   password             varchar(20) comment '密码',
+   avatar               blob comment '头像',
+   create_time          datetime comment '创建时间'
+);
+alter table User comment '用户表';
+
+/*==============================================================*/
+/* Table: User_Favourite                                        */
+/*==============================================================*/
+create table User_Favourite
+(
+   user_id              int comment '用户ID',
+   patient_info_id      int comment '收藏的病人ID',
+   patient_condition_id int comment '收藏的病历ID',
+   delete_flag          int(2) comment '删除标志0:删除;1:未删除',
+   create_time          datetime comment '收藏时间'
+);
+alter table User_Favourite comment '用户收藏表';
 
