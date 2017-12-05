@@ -65,8 +65,9 @@ create table User
    user_name            varchar(20) comment '用户名',
    password             varchar(20) comment '密码',
    avatar               blob comment '头像',
-   create_time          datetime comment '创建时间'
-);
+   create_time          datetime comment '创建时间',
+   primary key (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 alter table User comment '用户表';
 
 /*==============================================================*/
@@ -79,6 +80,6 @@ create table User_Favourite
    patient_condition_id int comment '收藏的病历ID',
    delete_flag          int(2) comment '删除标志0:删除;1:未删除',
    create_time          datetime comment '收藏时间'
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 alter table User_Favourite comment '用户收藏表';
 

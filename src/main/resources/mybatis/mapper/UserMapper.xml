@@ -14,5 +14,14 @@
         PHONE, USER_NAME, PASSWORD, AVATAR, CREATE_TIME
     </sql>
 
+    <select id="getUserNameCnt" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT count(*) FROM User s WHERE s.user_name = #{userName}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.yoler.grape.entity.User">
+        insert into User(phone,user_name,password,avatar,create_time)
+        values(#{phone},#{userName},#{password},#{avatar},#{createTime})
+    </insert>
+
 
 </mapper>

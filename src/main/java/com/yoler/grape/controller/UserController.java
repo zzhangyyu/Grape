@@ -1,5 +1,7 @@
 package com.yoler.grape.controller;
 
+import com.yoler.grape.request.SignInReq;
+import com.yoler.grape.request.SignUpReq;
 import com.yoler.grape.request.UserFavouritePatientReq;
 import com.yoler.grape.service.user.UserService;
 import com.yoler.grape.util.GsonUtil;
@@ -32,6 +34,28 @@ public class UserController {
         Map<String, Object> resultMap = userService.getUserFavouritePatient(req);
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("getUserFavouritePatient resp is :" + result);
+        return result;
+    }
+
+    @RequestMapping(value = "signIn", method = RequestMethod.POST)
+    public @ResponseBody
+    String signIn(@RequestBody String reqJson) {
+        logger.debug("signIn req is :" + reqJson);
+        SignInReq req = GsonUtil.jsonToObject(reqJson, SignInReq.class);
+        Map<String, Object> resultMap = userService.signIn(req);
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("signIn resp is :" + result);
+        return result;
+    }
+
+    @RequestMapping(value = "signUp", method = RequestMethod.POST)
+    public @ResponseBody
+    String signUp(@RequestBody String reqJson) {
+        logger.debug("signUp req is :" + reqJson);
+        SignUpReq req = GsonUtil.jsonToObject(reqJson, SignUpReq.class);
+        Map<String, Object> resultMap = userService.signUp(req);
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("signUp resp is :" + result);
         return result;
     }
 

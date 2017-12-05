@@ -1,6 +1,6 @@
 package com.yoler.grape.request;
 
-public class UserFavouritePatientReqContent extends BaseReq {
+public class UserFavouritePatientReqContent {
 
     private String userId;
 
