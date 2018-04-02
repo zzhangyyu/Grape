@@ -26,17 +26,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "getUserFavouritePatient", method = RequestMethod.POST)
-    public @ResponseBody
-    String getUserFavouritePatient(@RequestBody String reqJson) {
-        logger.debug("getUserFavouritePatient req is :" + reqJson);
-        UserFavouritePatientReq req = GsonUtil.jsonToObject(reqJson, UserFavouritePatientReq.class);
-        Map<String, Object> resultMap = userService.getUserFavouritePatient(req);
-        String result = GsonUtil.objectToJson(resultMap);
-        logger.debug("getUserFavouritePatient resp is :" + result);
-        return result;
-    }
-
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
     public @ResponseBody
     String signIn(@RequestBody String reqJson) {
@@ -56,6 +45,17 @@ public class UserController {
         Map<String, Object> resultMap = userService.signUp(req);
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("signUp resp is :" + result);
+        return result;
+    }
+
+    @RequestMapping(value = "getUserFavouritePatient", method = RequestMethod.POST)
+    public @ResponseBody
+    String getUserFavouritePatient(@RequestBody String reqJson) {
+        logger.debug("getUserFavouritePatient req is :" + reqJson);
+        UserFavouritePatientReq req = GsonUtil.jsonToObject(reqJson, UserFavouritePatientReq.class);
+        Map<String, Object> resultMap = userService.getUserFavouritePatient(req);
+        String result = GsonUtil.objectToJson(resultMap);
+        logger.debug("getUserFavouritePatient resp is :" + result);
         return result;
     }
 

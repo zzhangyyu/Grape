@@ -59,6 +59,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map<String, Object> signIn(SignInReq req) {
         Map<String, Object> result = new HashMap<>();
+        Map<String, Object> content = new HashMap<>();
+        String inputUserName = req.getContent().getUserName();
+        String inputPassword = req.getContent().getPassword();
+        if (!RegexUtils.checkEngNum_(inputUserName)) {
+            content.put("msg", "用户名不合规");
+            result.put("content", content);
+            result.put("status", "501");
+        } else if (!RegexUtils.checkEngNum_(inputPassword)) {
+            content.put("msg", "密码不合规");
+            result.put("content", content);
+            result.put("status", "502");
+        } else if (isUserValid(inputUserName, inputPassword)) {
+            content.put("msg", "登录成功");
+            result.put("content", content);
+            result.put("status", "200");
+        }
         return result;
     }
 
@@ -82,11 +98,33 @@ public class UserServiceImpl implements UserService {
     private boolean isUserNameExist(String userName) {
         Map<String, Object> queryMap = new HashMap<>();
         queryMap.put("userName", userName);
-        int userNameCnt = userMapper.getUserNameCnt(queryMap);
-        if (userNameCnt == 0) {
+        User user = userMapper.getUserByName(queryMap);
+        if (user == null) {
             return false;
         } else {
             return true;
         }
     }
+
+    /**
+     * 判断用户是否合法
+     *
+     * @param inputUserName
+     * @param inputPassword
+     * @return
+     */
+    private boolean isUserValid(String inputUserName, String inputPassword) {
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("userName", inputUserName);
+        User user = userMapper.getUserByName(queryMap);
+        if (user == null) {
+            return false;
+        }
+        if (inputUserName.equals(user.getUserName()) && inputPassword.equals(user.getPassword())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class RegexUtils {
 
     /**
-     * 验证由数字、26个英文字母或者下划线组成的字符串
+     * 验证由数字、26个英文字母、下划线组成的字符串
      *
      * @param toValidate
      * @return

@@ -9,6 +9,6 @@ import java.util.Map;
  */
 public interface UserMapper extends BaseMapper<User, Integer> {
 
-    int getUserNameCnt(Map queryMap);
+    User getUserByName(Map queryMap);
 
 }
