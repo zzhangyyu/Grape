@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Potato and Grape</title>
   </head>
   <body>
-  $END$
+  This is Potato and Grape Welcome Page!
   </body>
 </html>
