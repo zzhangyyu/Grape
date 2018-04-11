@@ -6,9 +6,9 @@ import com.yoler.grape.request.mobile.UserFavouritePatientReq;
 
 import java.util.Map;
 
-public interface UserService {
+public interface MobileUserService {
     /**
-     * 注册
+     * mobile用户注册
      *
      * @param req
      * @return
@@ -16,7 +16,7 @@ public interface UserService {
     Map<String, Object> signUp(SignUpReq req);
 
     /**
-     * 登录
+     * mobile用户登录
      *
      * @param req
      * @return
@@ -24,7 +24,7 @@ public interface UserService {
     Map<String, Object> signIn(SignInReq req);
 
     /**
-     * 获取用户收藏病历
+     * 获取mobile用户收藏病历
      *
      * @param req
      * @return

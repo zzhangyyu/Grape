@@ -6,7 +6,7 @@ import com.yoler.grape.entity.User;
 import com.yoler.grape.request.mobile.SignInReq;
 import com.yoler.grape.request.mobile.SignUpReq;
 import com.yoler.grape.request.mobile.UserFavouritePatientReq;
-import com.yoler.grape.service.mobile.user.UserService;
+import com.yoler.grape.service.mobile.user.MobileUserService;
 import com.yoler.grape.util.RegexUtils;
 import com.yoler.grape.vo.mobile.UserFavouritePatientVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service("userServiceImpl")
-public class UserServiceImpl implements UserService {
+@Service("mobileUserServiceImpl")
+public class MobileUserServiceImpl implements MobileUserService {
 
     @Autowired
     UserFavouriteMapper userFavouriteMapper;

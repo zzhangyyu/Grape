@@ -3,7 +3,7 @@ package com.yoler.grape.controller.mobile;
 import com.yoler.grape.request.mobile.SignInReq;
 import com.yoler.grape.request.mobile.SignUpReq;
 import com.yoler.grape.request.mobile.UserFavouritePatientReq;
-import com.yoler.grape.service.mobile.user.UserService;
+import com.yoler.grape.service.mobile.user.MobileUserService;
 import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,17 +21,17 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/user/")
-public class UserController {
+public class MobileUserController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
-    UserService userService;
+    MobileUserService mobileUserService;
 
     @RequestMapping(value = "signIn", method = RequestMethod.POST)
     public @ResponseBody
     String signIn(@RequestBody String reqJson) {
         logger.debug("signIn req is :" + reqJson);
         SignInReq req = GsonUtil.jsonToObject(reqJson, SignInReq.class);
-        Map<String, Object> resultMap = userService.signIn(req);
+        Map<String, Object> resultMap = mobileUserService.signIn(req);
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("signIn resp is :" + result);
         return result;
@@ -42,7 +42,7 @@ public class UserController {
     String signUp(@RequestBody String reqJson) {
         logger.debug("signUp req is :" + reqJson);
         SignUpReq req = GsonUtil.jsonToObject(reqJson, SignUpReq.class);
-        Map<String, Object> resultMap = userService.signUp(req);
+        Map<String, Object> resultMap = mobileUserService.signUp(req);
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("signUp resp is :" + result);
         return result;
@@ -53,7 +53,7 @@ public class UserController {
     String getUserFavouritePatient(@RequestBody String reqJson) {
         logger.debug("getUserFavouritePatient req is :" + reqJson);
         UserFavouritePatientReq req = GsonUtil.jsonToObject(reqJson, UserFavouritePatientReq.class);
-        Map<String, Object> resultMap = userService.getUserFavouritePatient(req);
+        Map<String, Object> resultMap = mobileUserService.getUserFavouritePatient(req);
         String result = GsonUtil.objectToJson(resultMap);
         logger.debug("getUserFavouritePatient resp is :" + result);
         return result;
