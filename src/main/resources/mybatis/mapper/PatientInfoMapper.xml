@@ -14,7 +14,7 @@
         NAME, SEX, AGE, BIRTHDAY, ZODIAC,INTRODUCER
     </sql>
 
-    <resultMap id="ConsiliaDateIntroResult" type="com.yoler.grape.vo.ConsiliaDateIntroVo">
+    <resultMap id="ConsiliaDateIntroResult" type="com.yoler.grape.vo.mobile.ConsiliaDateIntroVo">
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
         <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
         <result column="patient_condition_id" jdbcType="VARCHAR" property="patientConditionId"/>
@@ -22,7 +22,7 @@
         <result column="sex" jdbcType="VARCHAR" property="patientSex"/>
     </resultMap>
 
-    <resultMap id="ConsiliaPatientIntroResult" type="com.yoler.grape.vo.ConsiliaPatientIntroVo">
+    <resultMap id="ConsiliaPatientIntroResult" type="com.yoler.grape.vo.mobile.ConsiliaPatientIntroVo">
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
         <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
         <result column="patient_condition_id" jdbcType="VARCHAR" property="patientConditionId"/>

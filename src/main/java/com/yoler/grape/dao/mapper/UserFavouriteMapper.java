@@ -1,6 +1,6 @@
 package com.yoler.grape.dao.mapper;
 
-import com.yoler.grape.vo.UserFavouritePatientVo;
+import com.yoler.grape.vo.mobile.UserFavouritePatientVo;
 
 import java.util.List;
 import java.util.Map;

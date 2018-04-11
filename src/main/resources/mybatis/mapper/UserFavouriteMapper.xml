@@ -12,7 +12,7 @@
         user_id, patient_info_id, patient_condition_id, delete_flag, create_time
     </sql>
 
-    <resultMap id="UserFavouritePatientResult" type="com.yoler.grape.vo.UserFavouritePatientVo">
+    <resultMap id="UserFavouritePatientResult" type="com.yoler.grape.vo.mobile.UserFavouritePatientVo">
         <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
         <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
         <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>

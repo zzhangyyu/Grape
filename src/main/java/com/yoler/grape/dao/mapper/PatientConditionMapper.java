@@ -1,8 +1,8 @@
 package com.yoler.grape.dao.mapper;
 
-import com.yoler.grape.vo.ConsiliaDateDirVo;
-import com.yoler.grape.vo.ConsiliaDetailVo;
-import com.yoler.grape.vo.ConsiliaPatientDirVo;
+import com.yoler.grape.vo.mobile.ConsiliaDateDirVo;
+import com.yoler.grape.vo.mobile.ConsiliaDetailVo;
+import com.yoler.grape.vo.mobile.ConsiliaPatientDirVo;
 
 import java.util.List;
 import java.util.Map;
