@@ -16,6 +16,7 @@ public class BrowserUserServiceImpl implements BrowserUserService {
             result.put("status", "200");
         } else {
             result.put("status", "500");
+            result.put("errorMsg", "用户名或密码错误");
         }
         return result;
     }

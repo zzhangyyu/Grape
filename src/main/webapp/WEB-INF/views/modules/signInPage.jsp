@@ -17,12 +17,12 @@
     <!--CSS-->
     <link rel="stylesheet" href="<%=path%>/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=path%>/static/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=path%>/static/css/form-elements.css">
-    <link rel="stylesheet" href="<%=path%>/static/css/homePage.css">
+    <link rel="stylesheet" href="<%=path%>/static/custom/css/form-elements.css">
+    <link rel="stylesheet" href="<%=path%>/static/custom/css/signInPage.css">
 
     <!--JS-->
-    <script src="<%=path%>/static/js/jquery-3.3.1.min.js"></script>
-    <script src="<%=path%>/static/js/jquery.backstretch.min.js"></script>
+    <script src="<%=path%>/static/jquery/jquery-3.3.1.min.js"></script>
+    <script src="<%=path%>/static/jquery/jquery.backstretch.min.js"></script>
     <script src="<%=path%>/static/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" onsubmit="return checkSignIn()" action="homePage" method="post"
+                        <form role="form" onsubmit="return checkSignIn()" action="overViewPage" method="post"
                               class="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label>
@@ -59,19 +59,29 @@
                                 <input type="password" name="password" placeholder="请输入密码..." class="form-control"
                                        id="form-password">
                             </div>
-                            <button type="submit" class="btn">登录!</button>
+                            <button type="submit" class="btn" id="signInBtn">登录!</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <input type="hidden" id="errorMsg" value="${errorMsg}"/>
 </div>
 
 <script>
     $(function () {
         $.backstretch("<%=path%>/static/img/homePageBg.jpg"); //背景
+        alertErrorMsg();
     });
+
+    function alertErrorMsg() {
+        var errorMsg = $('#errorMsg').val();
+        if (errorMsg != null && errorMsg != '') {
+            alert(errorMsg);
+            $('#errorMsg').val("");
+        }
+    }
 
     function checkSignIn() {
         var username = document.getElementById("form-username");

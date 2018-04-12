@@ -1,45 +1,82 @@
-<!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<%=path%>/static/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-<%--     <link rel="stylesheet" href="<%=path%>/static/bootstrap/css/font-awesome.min.css"> --%>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="<%=path%>/static/bootstrap/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<%=path%>/static/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<%=path%>/static/dist/css/skins/_all-skins.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/iCheck/flat/blue.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/morris/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/datepicker/datepicker3.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/daterangepicker/daterangepicker-bs3.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/iCheck/all.css">
-    <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/colorpicker/bootstrap-colorpicker.min.css">
-    <!-- Bootstrap time Picker -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/timepicker/bootstrap-timepicker.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="<%=path%>/static/plugins/select2/select2.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<%=path%>/static/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<%=path%>/static/dist/css/skins/_all-skins.min.css">
+<%@page language="java" contentType="text/html;charset=utf-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<nav class="navbar navbar-default top-navbar" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand"><strong>Grape</strong></a>
+    </div>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+                <li>
+                    <a href="#">
+                        <div>
+                            <strong>John Doe</strong>
+                            <span class="pull-right text-muted">
+                                        <em>Today</em>
+                                    </span>
+                        </div>
+                        <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-tasks">
+                <li>
+                    <a href="#">
+                        <div>
+                            <p>
+                                <strong>Task 1</strong>
+                                <span class="pull-right text-muted">60% Complete</span>
+                            </p>
+                            <div class="progress progress-striped active">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                    <span class="sr-only">60% Complete (success)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-alerts">
+                <li>
+                    <a href="#">
+                        <div>
+                            <i class="fa fa-comment fa-fw"></i> New Comment
+                            <span class="pull-right text-muted small">4 min</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- /.dropdown -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a></li>
+                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+</html>

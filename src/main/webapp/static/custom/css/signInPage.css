@@ -232,18 +232,14 @@ img {
 }
 
 @media (max-width: 767px) {
-
     .inner-bg {
         padding: 60px 0 110px 0;
     }
-
 }
 
 @media (max-width: 415px) {
-
     h1, h2 {
         font-size: 32px;
     }
-
 }
 
