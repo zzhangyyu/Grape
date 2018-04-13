@@ -15,16 +15,23 @@
     <title>Grape管理平台</title>
     <link rel="shortcut icon" href="<%=path%>/static/ico/favicon.png">
 
+    <%--=========================================CSS=========================================--%>
+    <%--第三方插件--%>
     <link rel="stylesheet" href="<%=path%>/static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=path%>/static/custom/css/common-styles.css">
     <link rel="stylesheet" href="<%=path%>/static/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%=path%>/static/dataTables/css/jquery.dataTables.min.css">
+    <%--自定义--%>
+    <link rel="stylesheet" href="<%=path%>/static/custom/css/common-styles.css">
 
+    <%--=========================================JS=========================================--%>
+    <%--第三方插件--%>
     <script src="<%=path%>/static/jquery/jquery-3.3.1.min.js"></script>
     <script src="<%=path%>/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="<%=path%>/static/dataTables/js/jquery.dataTables.min.js"></script>
     <script src="<%=path%>/static/dataTables/js/dataTables.bootstrap.min.js"></script>
-    <script src="<%=path%>/static/metisMenu/js/metisMenu.js"></script>
+    <script src="<%=path%>/static/metisMenu/js/metisMenu.min.js"></script>
+    <%--自定义--%>
+    <script src="<%=path%>/static/custom/js/change-style.js"></script>
 
 </head>
 <body>
@@ -177,6 +184,7 @@
 
 <script>
     $(function () {
+        changeActiveMenu("patient");
         $('#dataTables-example').dataTable(
             {
                 language: {

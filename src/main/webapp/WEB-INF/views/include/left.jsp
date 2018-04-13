@@ -4,8 +4,8 @@
 <nav class="navbar-default navbar-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
-            <li><a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i>总览</a></li>
-            <li><a href="/grape/console/patientListPage"><i class="fa fa-table"></i> 病人管理</a></li>
+            <li><a id="overview" href="/grape/console/overViewPage"><i class="fa fa-dashboard"></i>总览</a></li>
+            <li><a id="patient"href="/grape/console/patientListPage"><i class="fa fa-table"></i> 病人管理</a></li>
             <li><a href="ui-elements.html"><i class="fa fa-desktop"></i> UI Elements</a></li>
             <li><a href="chart.html"><i class="fa fa-bar-chart-o"></i> Charts</a></li>
             <li><a href="tab-panel.html"><i class="fa fa-qrcode"></i> Tabs & Panels</a></li>

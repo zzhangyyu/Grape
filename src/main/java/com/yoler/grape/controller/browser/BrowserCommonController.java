@@ -52,5 +52,8 @@ public class BrowserCommonController {
         }
     }
 
-
+    @RequestMapping(value = "overViewPage", method = RequestMethod.GET)
+    public String overView(Model model, HttpServletRequest request) {
+        return overviewPage;
+    }
 }
