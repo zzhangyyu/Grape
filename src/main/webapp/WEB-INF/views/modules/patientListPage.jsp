@@ -39,7 +39,17 @@
 <%@include file="/WEB-INF/views/include/left.jsp" %>
 
 <div id="page-wrapper">
-    <%@include file="/WEB-INF/views/include/header.jsp" %>
+    <div class="header">
+        <h1 class="page-header">
+            病人管理
+            <small>欢迎Admin</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">病人管理</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">

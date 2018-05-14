@@ -10,7 +10,6 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand"><strong>Grape</strong></a>
-        <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
     </div>
 
     <ul class="nav navbar-top-links navbar-right">
