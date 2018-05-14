@@ -19,12 +19,12 @@
     <%--第三方插件--%>
     <link rel="stylesheet" href="<%=path%>/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=path%>/static/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=path%>/static/dataTables/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="<%=path%>/static/dataTables/css/dataTables.bootstrap.css">
     <%--自定义--%>
     <link rel="stylesheet" href="<%=path%>/static/custom/css/common-styles.css">
 
     <%--=========================================JS=========================================--%>
-    <%--第三方插件--%>
+    <%--开源库插件--%>
     <script src="<%=path%>/static/jquery/jquery-3.3.1.min.js"></script>
     <script src="<%=path%>/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="<%=path%>/static/dataTables/js/jquery.dataTables.min.js"></script>
@@ -59,128 +59,254 @@
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-patient">
                                 <thead>
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th>病人姓名</th>
+                                    <th>性别</th>
+                                    <th>年龄</th>
+                                    <th>就诊次数</th>
+                                    <th>上次就诊时间</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 4.0</td>
-                                    <td>Win 95+</td>
+                                    <td>男</td>
+                                    <td>23</td>
                                     <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td class="center">2018-05-01</td>
                                 </tr>
-                                <tr class="even gradeC">
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 5.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5</td>
-                                    <td class="center">C</td>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
-                                <tr class="odd gradeA">
+                                <tr class="odd gradeX">
                                     <td>Trident</td>
-                                    <td>Internet Explorer 5.5</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5.5</td>
-                                    <td class="center">A</td>
+                                    <td>男</td>
+                                    <td>23</td>
+                                    <td class="center">4</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Trident</td>
+                                    <td>男</td>
+                                    <td>23</td>
+                                    <td class="center">4</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Trident</td>
+                                    <td>男</td>
+                                    <td>23</td>
+                                    <td class="center">4</td>
+                                    <td class="center">2018-05-01</td>
+                                </tr>
+                                <tr class="odd gradeX">
+                                    <td>Lucy</td>
+                                    <td>女</td>
+                                    <td>15</td>
+                                    <td class="center">2</td>
+                                    <td class="center">2017-09-08</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -195,8 +321,12 @@
 <script>
     $(function () {
         changeActiveMenu("patient");
-        $('#dataTables-example').dataTable(
+        $('#dataTables-patient').dataTable(
             {
+                searching: false,
+                ordering: false,
+                lengthChange: false,
+                pagingType: "full_numbers",
                 language: {
                     "sProcessing": "处理中...",
                     "sLengthMenu": "显示 _MENU_ 项结果",
