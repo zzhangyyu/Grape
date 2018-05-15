@@ -38,6 +38,9 @@
 <%@include file="/WEB-INF/views/include/top.jsp" %>
 <%@include file="/WEB-INF/views/include/left.jsp" %>
 
+<input type="hidden" name="browserPatientBriefInfoList" id="browserPatientBriefInfoList"
+       value="${browserPatientBriefInfoList}"/>
+
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
@@ -52,6 +55,15 @@
     </div>
     <div id="page-inner">
         <div class="row">
+            <form id="import-patient_from" action="<%=path%>/console/importPatientInfo" method="post"
+                  enctype="multipart/form-data">
+                <div class="col-md-offset-9 panel-heading">
+                    <input id="show-patient-info-file-name" class="input-large" type="text" style="height:25px;">
+                    <label for="patient-info-file" class="btn btn-info">导入</label>
+                    <input id="patient-info-file" name="patientInfoFile" type="file" style="display:none"/>
+                    <button id="saveBtn" class="btn btn-info">保存</button>
+                </div>
+            </form>
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -84,230 +96,15 @@
                                     <td class="center">2</td>
                                     <td class="center">2017-09-08</td>
                                 </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
+                                <c:forEach var="browserPatientBriefInfo" items="${browserPatientBriefInfoList}">
+                                    <tr class="odd gradeX">
+                                        <td>${browserPatientBriefInfo.patientName}</td>
+                                        <td>${browserPatientBriefInfo.patientSex}</td>
+                                        <td>${browserPatientBriefInfo.patientAge}</td>
+                                        <td>000</td>
+                                        <td>000</td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -321,6 +118,14 @@
 <script>
     $(function () {
         changeActiveMenu("patient");
+
+        $('#patient-info-file').change(function () {
+            $('#show-patient-info-file-name').val($(this).val());
+        });
+
+        $('#saveBtn').click(function () {
+
+        });
         $('#dataTables-patient').dataTable(
             {
                 searching: false,
@@ -354,6 +159,7 @@
             }
         );
     });
+
 </script>
 
 </body>
