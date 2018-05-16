@@ -107,4 +107,29 @@
         FROM Patient_Condition t, Prescription s, Patient_Info l
         WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id AND l.id = t.patient_info_id
     </select>
+
+
+    <!--浏览器端查询-->
+    <resultMap id="BrowserPatientBriefInfoResult" type="com.yoler.grape.vo.browser.BrowserPatientBriefInfoVo">
+        <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>
+        <result column="patient_age" jdbcType="VARCHAR" property="patientAge"/>
+        <result column="last_visiting_date" jdbcType="VARCHAR" property="lastVisitingDate"/>
+        <result column="consilia_cnt" jdbcType="VARCHAR" property="consiliaCnt"/>
+    </resultMap>
+
+    <select id="getBrowserPatientBriefInfo" parameterType="java.util.Map" resultMap="BrowserPatientBriefInfoResult">
+        SELECT
+          t.patient_info_id,
+          s.name               patient_name,
+          s.sex                patient_sex,
+          s.age                patient_age,
+          max(t.visiting_date) last_visiting_date,
+          count(t.id)          consilia_cnt
+        FROM Patient_Info s, Patient_Condition t
+        WHERE s.id = t.patient_info_id
+        GROUP BY t.patient_info_id, s.name, s.sex, s.age
+    </select>
+
 </mapper>

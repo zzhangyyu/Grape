@@ -39,7 +39,7 @@
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            总览
+            <%--总览--%>
             <small>欢迎Admin</small>
         </h1>
         <ol class="breadcrumb">

@@ -1,5 +1,6 @@
 package com.yoler.grape.dao.mapper;
 
+import com.yoler.grape.vo.browser.BrowserPatientBriefInfoVo;
 import com.yoler.grape.vo.mobile.ConsiliaDateDirVo;
 import com.yoler.grape.vo.mobile.ConsiliaDetailVo;
 import com.yoler.grape.vo.mobile.ConsiliaPatientDirVo;
@@ -16,4 +17,6 @@ public interface PatientConditionMapper {
     List<ConsiliaPatientDirVo> getConsiliaPatientDir(Map<String, Object> queryMap);
 
     ConsiliaDetailVo getConsiliaDetail(Map queryMap);
+
+    List<BrowserPatientBriefInfoVo> getBrowserPatientBriefInfo(Map<String, Object> queryMap);
 }

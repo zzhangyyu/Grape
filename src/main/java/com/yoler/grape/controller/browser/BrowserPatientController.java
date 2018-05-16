@@ -1,8 +1,7 @@
 package com.yoler.grape.controller.browser;
 
-import com.yoler.grape.request.browser.BrowserPatientBriefInfo;
 import com.yoler.grape.service.browser.patient.BrowserPatientService;
-import com.yoler.grape.util.GsonUtil;
+import com.yoler.grape.vo.browser.BrowserPatientBriefInfoVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class BrowserPatientController {
      */
     @RequestMapping(value = "patientListPage", method = RequestMethod.GET)
     public String patientListPage(Model model) {
-        List<BrowserPatientBriefInfo> browserPatientBriefInfoList = browserPatientService.getBrowserPatientBriefInfo();
+        List<BrowserPatientBriefInfoVo> browserPatientBriefInfoList = browserPatientService.getBrowserPatientBriefInfo();
         model.addAttribute("browserPatientBriefInfoList", browserPatientBriefInfoList);
         return patientListPage;
     }

@@ -44,7 +44,7 @@
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
-            病人管理
+            <%--病人管理--%>
             <small>欢迎Admin</small>
         </h1>
         <ol class="breadcrumb">
@@ -66,9 +66,9 @@
             </form>
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Advanced Tables
-                    </div>
+                    <%--<div class="panel-heading">--%>
+                        <%--Advanced Tables--%>
+                    <%--</div>--%>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover" id="dataTables-patient">
@@ -82,27 +82,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="odd gradeX">
-                                    <td>Trident</td>
-                                    <td>男</td>
-                                    <td>23</td>
-                                    <td class="center">4</td>
-                                    <td class="center">2018-05-01</td>
-                                </tr>
-                                <tr class="odd gradeX">
-                                    <td>Lucy</td>
-                                    <td>女</td>
-                                    <td>15</td>
-                                    <td class="center">2</td>
-                                    <td class="center">2017-09-08</td>
-                                </tr>
                                 <c:forEach var="browserPatientBriefInfo" items="${browserPatientBriefInfoList}">
                                     <tr class="odd gradeX">
                                         <td>${browserPatientBriefInfo.patientName}</td>
                                         <td>${browserPatientBriefInfo.patientSex}</td>
                                         <td>${browserPatientBriefInfo.patientAge}</td>
-                                        <td>000</td>
-                                        <td>000</td>
+                                        <td>${browserPatientBriefInfo.consiliaCnt}</td>
+                                        <td>${browserPatientBriefInfo.lastVisitingDate}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
