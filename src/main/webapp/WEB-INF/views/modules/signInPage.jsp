@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" onsubmit="return checkSignIn()" action="overViewPage" method="post"
+                        <form role="form" onsubmit="return checkSignIn()" action="welcomePage" method="post"
                               class="login-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-username">Username</label>

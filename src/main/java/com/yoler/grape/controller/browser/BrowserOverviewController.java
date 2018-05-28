@@ -21,6 +21,7 @@ import java.util.Map;
 public class BrowserOverviewController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     private String signInPage = "modules/signInPage.jsp";
+    private String welcomePage = "modules/welcome.jsp";
     private String overviewPage = "modules/overviewPage.jsp";
 
     @Autowired
@@ -35,7 +36,7 @@ public class BrowserOverviewController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "overViewPage", method = RequestMethod.POST)
+    @RequestMapping(value = "welcomePage", method = RequestMethod.POST)
     public String overView(@RequestParam String userName, @RequestParam String password, Model model, HttpServletRequest request) {
         Map<String, Object> signInResult = browserUserService.signIn(userName, password);
         String status = (String) signInResult.get("status");
@@ -43,7 +44,7 @@ public class BrowserOverviewController {
         if ("200".equals(status)) {
             request.getSession().setAttribute("userName", userName);
             request.getSession().setAttribute("password", password);
-            return overviewPage;
+            return welcomePage;
         } else if ("500".equals(status)) {
             model.addAttribute("errorMsg", msg);
             return signInPage;

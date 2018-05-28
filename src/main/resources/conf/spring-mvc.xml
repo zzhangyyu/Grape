@@ -56,7 +56,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/console/**"/>
             <mvc:exclude-mapping path="/console/signInPage"/>
-            <mvc:exclude-mapping path="/console/overViewPage"/>
+            <mvc:exclude-mapping path="/console/welcomePage"/>
             <bean class="com.yoler.grape.interceptor.SessionTimeoutInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
