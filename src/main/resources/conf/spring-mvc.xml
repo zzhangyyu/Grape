@@ -52,4 +52,13 @@
         <property name="maxInMemorySize" value="40960"/>
     </bean>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/console/**"/>
+            <mvc:exclude-mapping path="/console/signInPage"/>
+            <mvc:exclude-mapping path="/console/overViewPage"/>
+            <bean class="com.yoler.grape.interceptor.SessionTimeoutInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 </beans>

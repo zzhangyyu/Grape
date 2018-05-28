@@ -59,6 +59,8 @@
             </div>
         </div>
     </div>
+
+    <input type="hidden" id="errorMsg" value="${errorMsg}"/>
 </div>
 
 <script>

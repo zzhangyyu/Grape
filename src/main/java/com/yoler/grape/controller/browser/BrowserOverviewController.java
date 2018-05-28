@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/console/")
-public class BrowserCommonController {
+public class BrowserOverviewController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     private String signInPage = "modules/signInPage.jsp";
     private String overviewPage = "modules/overviewPage.jsp";
@@ -41,7 +41,8 @@ public class BrowserCommonController {
         String status = (String) signInResult.get("status");
         String msg = (String) signInResult.get("msg");
         if ("200".equals(status)) {
-//            request.getSession().setAttribute("resoList", "");
+            request.getSession().setAttribute("userName", userName);
+            request.getSession().setAttribute("password", password);
             return overviewPage;
         } else if ("500".equals(status)) {
             model.addAttribute("errorMsg", msg);
