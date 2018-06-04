@@ -9,5 +9,5 @@ public interface BrowserPatientService {
 
     void importPatientInfo();
 
-    List<BrowserPatientBriefInfoVo> getBrowserPatientBriefInfo();
+    List<BrowserPatientBriefInfoVo> getBrowserPatientBriefInfo(int pageIdx,int recordPerPage);
 }

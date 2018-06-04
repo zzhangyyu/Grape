@@ -18,11 +18,12 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/console/")
-public class BrowserUserController {
+public class BrowserSignInController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     BrowserUserService browserUserService;
     private String signInPage = "modules/signInPage.jsp";
+    private String welcomePage = "modules/welcome.jsp";
 
     /**
      * 用户登录页
@@ -35,5 +36,21 @@ public class BrowserUserController {
         return signInPage;
     }
 
-
+    @RequestMapping(value = "welcomePage", method = RequestMethod.POST)
+    public String welcome(@RequestParam String userName, @RequestParam String password, Model model, HttpServletRequest request) {
+        Map<String, Object> signInResult = browserUserService.signIn(userName, password);
+        String status = (String) signInResult.get("status");
+        String msg = (String) signInResult.get("msg");
+        if ("200".equals(status)) {
+            request.getSession().setAttribute("userName", userName);
+            request.getSession().setAttribute("password", password);
+            return welcomePage;
+        } else if ("500".equals(status)) {
+            model.addAttribute("errorMsg", msg);
+            return signInPage;
+        } else {
+            model.addAttribute("errorMsg", "服务器错误");
+            return signInPage;
+        }
+    }
 }

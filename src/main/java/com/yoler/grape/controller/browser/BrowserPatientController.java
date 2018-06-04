@@ -36,7 +36,7 @@ public class BrowserPatientController {
      */
     @RequestMapping(value = "patientListPage", method = RequestMethod.GET)
     public String patientListPage(Model model) {
-        List<BrowserPatientBriefInfoVo> browserPatientBriefInfoList = browserPatientService.getBrowserPatientBriefInfo();
+        List<BrowserPatientBriefInfoVo> browserPatientBriefInfoList = browserPatientService.getBrowserPatientBriefInfo(1, 20);
         model.addAttribute("browserPatientBriefInfoList", browserPatientBriefInfoList);
         return patientListPage;
     }

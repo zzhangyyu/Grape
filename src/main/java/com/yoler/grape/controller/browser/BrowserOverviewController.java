@@ -20,8 +20,6 @@ import java.util.Map;
 @RequestMapping(value = "/console/")
 public class BrowserOverviewController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
-    private String signInPage = "modules/signInPage.jsp";
-    private String welcomePage = "modules/welcome.jsp";
     private String overviewPage = "modules/overviewPage.jsp";
 
     @Autowired
@@ -30,30 +28,10 @@ public class BrowserOverviewController {
     /**
      * 总览页
      *
-     * @param userName
-     * @param password
      * @param model
      * @param request
      * @return
      */
-    @RequestMapping(value = "welcomePage", method = RequestMethod.POST)
-    public String overView(@RequestParam String userName, @RequestParam String password, Model model, HttpServletRequest request) {
-        Map<String, Object> signInResult = browserUserService.signIn(userName, password);
-        String status = (String) signInResult.get("status");
-        String msg = (String) signInResult.get("msg");
-        if ("200".equals(status)) {
-            request.getSession().setAttribute("userName", userName);
-            request.getSession().setAttribute("password", password);
-            return welcomePage;
-        } else if ("500".equals(status)) {
-            model.addAttribute("errorMsg", msg);
-            return signInPage;
-        } else {
-            model.addAttribute("errorMsg", "服务器错误");
-            return signInPage;
-        }
-    }
-
     @RequestMapping(value = "overViewPage", method = RequestMethod.GET)
     public String overView(Model model, HttpServletRequest request) {
         return overviewPage;
