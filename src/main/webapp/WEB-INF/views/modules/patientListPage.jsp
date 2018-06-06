@@ -67,28 +67,33 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <%--<div class="panel-heading">--%>
-                        <%--Advanced Tables--%>
+                    <%--Advanced Tables--%>
                     <%--</div>--%>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered table-hover" id="dataTables-patient">
                                 <thead>
                                 <tr>
+                                    <th>序号</th>
                                     <th>病人姓名</th>
                                     <th>性别</th>
                                     <th>年龄</th>
                                     <th>就诊次数</th>
                                     <th>上次就诊时间</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="browserPatientBriefInfo" items="${browserPatientBriefInfoList}">
+                                <c:forEach var="browserPatientBriefInfo" items="${browserPatientBriefInfoList}"
+                                           varStatus="status">
                                     <tr class="odd gradeX">
+                                        <td id="${browserPatientBriefInfo.patientInfoId}">${status.index+1}</td>
                                         <td>${browserPatientBriefInfo.patientName}</td>
                                         <td>${browserPatientBriefInfo.patientSex}</td>
                                         <td>${browserPatientBriefInfo.patientAge}</td>
                                         <td>${browserPatientBriefInfo.consiliaCnt}</td>
                                         <td>${browserPatientBriefInfo.lastVisitingDate}</td>
+                                        <td><a href="#">新增</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -117,6 +122,7 @@
                 searching: false,
                 ordering: false,
                 lengthChange: false,
+                bAutoWidth: false,
                 pagingType: "full_numbers",
                 language: {
                     "sProcessing": "处理中...",

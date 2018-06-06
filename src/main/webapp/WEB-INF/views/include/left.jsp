@@ -6,6 +6,7 @@
         <ul class="nav" id="main-menu">
             <li><a id="overview" href="/grape/console/overViewPage"><i class="fa fa-dashboard"></i>总览</a></li>
             <li><a id="patient" href="/grape/console/patientListPage"><i class="fa fa-table"></i> 病人管理</a></li>
+            <li><a id="test" href="/grape/console/addPatientPage"><i class="fa fa-table"></i> test</a></li>
         </ul>
     </div>
 </nav>

@@ -27,6 +27,7 @@ public class BrowserPatientController {
     BrowserPatientService browserPatientService;
 
     private String patientListPage = "modules/patientListPage.jsp";
+    private String patientAddPage = "modules/patientAddPage.jsp";
 
     /**
      * 病人列表页
@@ -41,10 +42,15 @@ public class BrowserPatientController {
         return patientListPage;
     }
 
-    @RequestMapping(value = "importPatientInfo", method = RequestMethod.POST)
-    public String importPatientInfo(Model model, @RequestParam("patientInfoFile") MultipartFile patientInfoFile) {
+    @RequestMapping(value = "importPatient", method = RequestMethod.POST)
+    public String importPatient(Model model, @RequestParam("patientInfoFile") MultipartFile patientInfoFile) {
         CommonsMultipartFile file = (CommonsMultipartFile) patientInfoFile;
         return patientListPage;
+    }
+
+    @RequestMapping(value = "addPatientPage", method = RequestMethod.GET)
+    public String addPatient(Model model) {
+        return patientAddPage;
     }
 
 }
