@@ -119,6 +119,11 @@
         <result column="consilia_cnt" jdbcType="VARCHAR" property="consiliaCnt"/>
     </resultMap>
 
+    <resultMap id="BrowserMounthDatasResult" type="com.yoler.grape.vo.browser.BrowserMounthDatasVo">
+        <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
+        <result column="patient_cnt" jdbcType="VARCHAR" property="patientCnt"/>
+    </resultMap>
+
     <select id="getBrowserPatientBriefInfo" parameterType="java.util.Map" resultMap="BrowserPatientBriefInfoResult">
         SELECT
           t.patient_info_id,
@@ -131,6 +136,17 @@
         WHERE s.id = t.patient_info_id
         GROUP BY t.patient_info_id, s.name, s.sex, s.age
         LIMIT #{offset},#{recordPerPage}
+    </select>
+
+    <select id="getBrowserMounthDatas" parameterType="java.util.Map" resultMap="BrowserMounthDatasResult">
+        select
+          temp.visiting_date,
+          count(visiting_date) patient_cnt
+        from (
+               select DATE_FORMAT(t.visiting_date, '%Y-%m-%d') visiting_date
+               from Patient_Condition t
+             ) temp
+        group by temp.visiting_date
     </select>
 
 </mapper>

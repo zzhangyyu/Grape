@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-xs-6 col-md-4">
                 <div class="panel panel-default">
-                    <div id="chartExample" class="panel-body easypiechart-panel" style="height:400px;">
+                    <div id="mounthDatasChart" class="panel-body easypiechart-panel" style="height:400px;">
 
                     </div>
                 </div>
@@ -65,7 +65,8 @@
 
 <script>
     $(function () {
-        showMounthDatas();
+        var mounthDatasUrl = '<%=path %>/console/getMounthDatas';
+        showMounthDatas(mounthDatasUrl);
         changeActiveMenu("overview");
     });
 </script>

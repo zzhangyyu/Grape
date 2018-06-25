@@ -2,6 +2,7 @@ package com.yoler.grape.service.browser.patient.impl;
 
 import com.yoler.grape.dao.mapper.PatientConditionMapper;
 import com.yoler.grape.service.browser.patient.BrowserPatientService;
+import com.yoler.grape.vo.browser.BrowserMounthDatasVo;
 import com.yoler.grape.vo.browser.BrowserPatientBriefInfoVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,16 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
+        return result;
+    }
+
+    @Override
+    public Map<String, Object> getBrowserMounthDatas() {
+        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> queryMap = new HashMap<>();
+        List<BrowserMounthDatasVo> browserMounthDatas = patientConditionMapper.getBrowserMounthDatas(queryMap);
+        result.put("content", browserMounthDatas);
+        result.put("status", "200");
         return result;
     }
 }
