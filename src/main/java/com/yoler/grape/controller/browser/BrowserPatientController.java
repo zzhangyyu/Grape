@@ -48,8 +48,12 @@ public class BrowserPatientController {
         return patientListPage;
     }
 
-    @RequestMapping(value = "addPatientPage", method = RequestMethod.GET)
-    public String addPatient(Model model) {
+    @RequestMapping(value = "addPatientPage", method = RequestMethod.POST)
+    public String addPatient(Model model, @RequestParam("patientInfoId") String patientInfoId, @RequestParam("patientName") String patientName, @RequestParam("patientSex") String patientSex, @RequestParam("patientAge") String patientAge) {
+        model.addAttribute("patientInfoId", patientInfoId);
+        model.addAttribute("patientName", patientName);
+        model.addAttribute("patientSex", patientSex);
+        model.addAttribute("patientAge", patientAge);
         return patientAddPage;
     }
 

@@ -19,7 +19,6 @@
     <%--第三方插件--%>
     <link rel="stylesheet" href="<%=path%>/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=path%>/static/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=path%>/static/dataTables/css/dataTables.bootstrap.css">
     <%--自定义--%>
     <link rel="stylesheet" href="<%=path%>/static/custom/css/common-styles.css">
 
@@ -27,8 +26,6 @@
     <%--开源库插件--%>
     <script src="<%=path%>/static/jquery/jquery-3.3.1.min.js"></script>
     <script src="<%=path%>/static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<%=path%>/static/dataTables/js/jquery.dataTables.min.js"></script>
-    <script src="<%=path%>/static/dataTables/js/dataTables.bootstrap.min.js"></script>
     <script src="<%=path%>/static/metisMenu/js/metisMenu.min.js"></script>
     <%--自定义--%>
     <script src="<%=path%>/static/custom/js/change-style.js"></script>
@@ -56,7 +53,7 @@
                 <div class="form-group">
                     <label class="col-md-1 control-label">*病人姓名：</label>
                     <div class="col-md-2">
-                        <input name="patientName" id="patientName" type="text" class="form-control">
+                        <input name="patientName" id="patientName" value="${patientName}" type="text" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -71,7 +68,7 @@
                 <div class="form-group">
                     <label class="col-md-1 control-label">*病人年龄：</label>
                     <div class="col-md-2">
-                        <input name="patientAge" id="patientAge" type="text" class="form-control" value="25" disabled>
+                        <input name="patientAge" id="patientAge" type="text" class="form-control" value="${patientAge}" disabled>
                     </div>
                 </div>
 

@@ -41,6 +41,13 @@
 <input type="hidden" name="browserPatientBriefInfoList" id="browserPatientBriefInfoList"
        value="${browserPatientBriefInfoList}"/>
 
+<form id="addPatientForm" action="<%=path%>/console/addPatientPage" method="post">
+    <input type="hidden" name="patientInfoId" id="patientInfoId"/>
+    <input type="hidden" name="patientName" id="patientName"/>
+    <input type="hidden" name="patientSex" id="patientSex"/>
+    <input type="hidden" name="patientAge" id="patientAge"/>
+</form>
+
 <div id="page-wrapper">
     <div class="header">
         <h1 class="page-header">
@@ -93,7 +100,9 @@
                                         <td>${browserPatientBriefInfo.patientAge}</td>
                                         <td>${browserPatientBriefInfo.consiliaCnt}</td>
                                         <td>${browserPatientBriefInfo.lastVisitingDate}</td>
-                                        <td><a href="#">新增</a></td>
+                                        <td><a href="#"
+                                               onclick="javaScript:addPatient('${browserPatientBriefInfo.patientInfoId}','${browserPatientBriefInfo.patientName}','${browserPatientBriefInfo.patientSex}','${browserPatientBriefInfo.patientAge}')">新增</a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -151,6 +160,14 @@
             }
         );
     });
+
+    function addPatient(patientInfoId, patientName, patientSex, patientAge) {
+        $('#patientInfoId').val(patientInfoId);
+        $('#patientName').val(patientName);
+        $('#patientSex').val(patientSex);
+        $('#patientAge').val(patientAge);
+        $('#addPatientForm').submit();
+    }
 
 </script>
 
