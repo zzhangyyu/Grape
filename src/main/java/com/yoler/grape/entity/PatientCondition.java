@@ -9,12 +9,7 @@ public class PatientCondition {
     private int id;
     private int patientInfoId;
     private Date visitingDate;
-    private String leftPulseCun;
-    private String leftPulseGuan;
-    private String leftPulseChi;
-    private String rightPulseCun;
-    private String rightPulseGuan;
-    private String rightPulseChi;
+    private String pulse;
     private String tongue;
     private String addCondition;
     private String analysis;
@@ -43,52 +38,12 @@ public class PatientCondition {
         this.visitingDate = visitingDate;
     }
 
-    public String getLeftPulseCun() {
-        return leftPulseCun;
+    public String getPulse() {
+        return pulse;
     }
 
-    public void setLeftPulseCun(String leftPulseCun) {
-        this.leftPulseCun = leftPulseCun;
-    }
-
-    public String getLeftPulseGuan() {
-        return leftPulseGuan;
-    }
-
-    public void setLeftPulseGuan(String leftPulseGuan) {
-        this.leftPulseGuan = leftPulseGuan;
-    }
-
-    public String getLeftPulseChi() {
-        return leftPulseChi;
-    }
-
-    public void setLeftPulseChi(String leftPulseChi) {
-        this.leftPulseChi = leftPulseChi;
-    }
-
-    public String getRightPulseCun() {
-        return rightPulseCun;
-    }
-
-    public void setRightPulseCun(String rightPulseCun) {
-        this.rightPulseCun = rightPulseCun;
-    }
-
-    public String getRightPulseGuan() {
-        return rightPulseGuan;
-    }
-
-    public void setRightPulseGuan(String rightPulseGuan) {
-        this.rightPulseGuan = rightPulseGuan;
-    }
-
-    public String getRightPulseChi() {
-        return rightPulseChi;
-    }
-
-    public void setRightPulseChi(String rightPulseChi) {
-        this.rightPulseChi = rightPulseChi;
+    public void setPulse(String pulse) {
+        this.pulse = pulse;
     }
 
     public String getTongue() {
