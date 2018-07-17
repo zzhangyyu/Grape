@@ -3,8 +3,7 @@ package com.yoler.grape.request.mobile;
 public class ConsiliaDateIntroReqContent {
     private String pageIdx;
     private String recordPerPage;
-    private String queryStartDate;
-    private String queryEndDate;
+    private String queryDate;
 
     public String getPageIdx() {
         return pageIdx;
@@ -22,19 +21,11 @@ public class ConsiliaDateIntroReqContent {
         this.recordPerPage = recordPerPage;
     }
 
-    public String getQueryStartDate() {
-        return queryStartDate;
+    public String getQueryDate() {
+        return queryDate;
     }
 
-    public void setQueryStartDate(String queryStartDate) {
-        this.queryStartDate = queryStartDate;
-    }
-
-    public String getQueryEndDate() {
-        return queryEndDate;
-    }
-
-    public void setQueryEndDate(String queryEndDate) {
-        this.queryEndDate = queryEndDate;
+    public void setQueryDate(String queryDate) {
+        this.queryDate = queryDate;
     }
 }

@@ -3,8 +3,6 @@ package com.yoler.grape.service.mobile.patient.impl;
 import com.yoler.grape.dao.mapper.PatientConditionMapper;
 import com.yoler.grape.dao.mapper.PatientInfoMapper;
 import com.yoler.grape.request.mobile.*;
-import com.yoler.grape.response.mobile.ConsiliaDateIntroPI;
-import com.yoler.grape.response.mobile.ConsiliaDateIntroResp;
 import com.yoler.grape.service.mobile.patient.PatientService;
 import com.yoler.grape.vo.mobile.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,56 +32,31 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public Map<String, Object> getConsiliaDateIntro(ConsiliaDateIntroReq req) {
         Map<String, Object> result = new HashMap<>();
-        List<ConsiliaDateIntroResp> content = new ArrayList<>();
-        Map<String, List<ConsiliaDateIntroPI>> groupMap = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
-        queryMap.put("queryStartDate", req.getContent().getQueryStartDate());
-        queryMap.put("queryEndDate", req.getContent().getQueryEndDate());
+        queryMap.put("queryDate", req.getContent().getQueryDate());
         List<ConsiliaDateIntroVo> consiliaDateIntroVos = patientInfoMapper.getConsiliaDateIntro(queryMap);
-        for (ConsiliaDateIntroVo consiliaDateIntroVo : consiliaDateIntroVos) {
-            String key = consiliaDateIntroVo.getVisitingDate();
-            List<ConsiliaDateIntroPI> ConsiliaDateIntroPIs = groupMap.get(key);
-            if (ConsiliaDateIntroPIs == null) {
-                ConsiliaDateIntroPIs = new ArrayList<>();
-                groupMap.put(key, ConsiliaDateIntroPIs);
-            }
-            ConsiliaDateIntroPI consiliaDateIntroPI = new ConsiliaDateIntroPI();
-            consiliaDateIntroPI.setPatientInfoId(consiliaDateIntroVo.getPatientInfoId());
-            consiliaDateIntroPI.setPatientConditionId(consiliaDateIntroVo.getPatientConditionId());
-            consiliaDateIntroPI.setPatientName(consiliaDateIntroVo.getPatientName());
-            consiliaDateIntroPI.setPatientSex(consiliaDateIntroVo.getPatientSex());
-            ConsiliaDateIntroPIs.add(consiliaDateIntroPI);
-        }
-
-        Set<String> keys = groupMap.keySet();
-        for (String key : keys) {
-            ConsiliaDateIntroResp consiliaDateIntroResp = new ConsiliaDateIntroResp();
-            consiliaDateIntroResp.setVisitingDate(key);
-            consiliaDateIntroResp.setPatientInfos(groupMap.get(key));
-            content.add(consiliaDateIntroResp);
-        }
-        result.put("content", content);
+        result.put("content", consiliaDateIntroVos);
         result.put("status", "200");
         return result;
     }
 
     @Override
-    public Map<String, Object> getConsiliaPatientDir(ConsiliaPatientDirReq req) {
+    public Map<String, Object> getConsiliaNameDir(ConsiliaNameDirReq req) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
-        List<ConsiliaPatientDirVo> consiliaPatientDirVos = patientConditionMapper.getConsiliaPatientDir(queryMap);
-        result.put("content", consiliaPatientDirVos);
+        List<ConsiliaNameDirVo> consiliaNameDirVos = patientConditionMapper.getConsiliaNameDir(queryMap);
+        result.put("content", consiliaNameDirVos);
         result.put("status", "200");
         return result;
     }
 
     @Override
-    public Map<String, Object> getConsiliaPatientIntro(ConsiliaPatientIntroReq req) {
+    public Map<String, Object> getConsiliaNameIntro(ConsiliaNameIntroReq req) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
         queryMap.put("patientInfoId", req.getContent().getPatientInfoId());
-        List<ConsiliaPatientIntroVo> consiliaPatientIntroVos = patientInfoMapper.getConsiliaPatientIntro(queryMap);
-        result.put("content", consiliaPatientIntroVos);
+        List<ConsiliaNameIntroVo> consiliaNameIntroVos = patientInfoMapper.getConsiliaNameIntro(queryMap);
+        result.put("content", consiliaNameIntroVos);
         result.put("status", "200");
         return result;
     }

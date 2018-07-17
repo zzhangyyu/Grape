@@ -22,7 +22,7 @@
         <result column="sex" jdbcType="VARCHAR" property="patientSex"/>
     </resultMap>
 
-    <resultMap id="ConsiliaPatientIntroResult" type="com.yoler.grape.vo.mobile.ConsiliaPatientIntroVo">
+    <resultMap id="ConsiliaNameIntroResult" type="com.yoler.grape.vo.mobile.ConsiliaNameIntroVo">
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
         <result column="patient_info_id" jdbcType="VARCHAR" property="patientInfoId"/>
         <result column="patient_condition_id" jdbcType="VARCHAR" property="patientConditionId"/>
@@ -37,16 +37,10 @@
         t.sex
         FROM Patient_Info t, Patient_Condition s
         WHERE t.id = s.patient_info_id
-        <if test="queryStartDate != null">
-            and s.visiting_date &gt;= #{queryStartDate}
-        </if>
-        <if test="queryEndDate != null">
-            and s.visiting_date &lt;= #{queryEndDate}
-        </if>
-        ORDER BY s.visiting_date DESC;
+          and s.visiting_date = #{queryDate}
     </select>
 
-    <select id="getConsiliaPatientIntro" parameterType="java.lang.String" resultMap="ConsiliaPatientIntroResult">
+    <select id="getConsiliaNameIntro" parameterType="java.lang.String" resultMap="ConsiliaNameIntroResult">
         SELECT
           s.visiting_date,
           s.patient_info_id,

@@ -1,6 +1,6 @@
 package com.yoler.grape.vo.mobile;
 
-public class ConsiliaPatientDirVo {
+public class ConsiliaNameDirVo {
     private String patientInfoId;
     private String patientName;
     private String patientSex;

@@ -1,6 +1,6 @@
 package com.yoler.grape.request.mobile;
 
-public class ConsiliaPatientIntroReqContent {
+public class ConsiliaNameIntroReqContent {
     private String patientInfoId;
 
     public String getPatientInfoId() {

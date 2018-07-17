@@ -1,6 +1,6 @@
 package com.yoler.grape.request.mobile;
 
-public class ConsiliaPatientDirReqContent {
+public class ConsiliaNameDirReqContent {
     private String pageIdx;
     private String recordPerPage;
 

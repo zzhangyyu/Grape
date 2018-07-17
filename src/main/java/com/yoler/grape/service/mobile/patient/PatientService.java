@@ -9,9 +9,9 @@ public interface PatientService {
 
     Map<String, Object> getConsiliaDateIntro(ConsiliaDateIntroReq req);
 
-    Map<String, Object> getConsiliaPatientDir(ConsiliaPatientDirReq req);
+    Map<String, Object> getConsiliaNameDir(ConsiliaNameDirReq req);
 
-    Map<String, Object> getConsiliaPatientIntro(ConsiliaPatientIntroReq req);
+    Map<String, Object> getConsiliaNameIntro(ConsiliaNameIntroReq req);
 
     Map<String, Object> getConsiliaDetail(ConsiliaDetailReq req);
 }

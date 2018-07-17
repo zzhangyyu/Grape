@@ -1,7 +1,7 @@
 package com.yoler.grape.dao.mapper;
 
 import com.yoler.grape.vo.mobile.ConsiliaDateIntroVo;
-import com.yoler.grape.vo.mobile.ConsiliaPatientIntroVo;
+import com.yoler.grape.vo.mobile.ConsiliaNameIntroVo;
 
 import java.util.List;
 import java.util.Map;
@@ -12,5 +12,5 @@ import java.util.Map;
 public interface PatientInfoMapper {
     List<ConsiliaDateIntroVo> getConsiliaDateIntro(Map queryMap);
 
-    List<ConsiliaPatientIntroVo> getConsiliaPatientIntro(Map queryMap);
+    List<ConsiliaNameIntroVo> getConsiliaNameIntro(Map queryMap);
 }

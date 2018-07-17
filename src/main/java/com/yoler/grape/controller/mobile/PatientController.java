@@ -37,7 +37,7 @@ public class PatientController {
 
     @RequestMapping(value = "getConsiliaDateIntro", method = RequestMethod.POST)
     public @ResponseBody
-    String getPatientByDate(@RequestBody String reqJson) {
+    String getConsiliaDateIntro(@RequestBody String reqJson) {
         logger.debug("getConsiliaDateIntro req is :" + reqJson);
         ConsiliaDateIntroReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDateIntroReq.class);
         Map<String, Object> resultMap = patientService.getConsiliaDateIntro(req);
@@ -46,31 +46,31 @@ public class PatientController {
         return result;
     }
 
-    @RequestMapping(value = "getConsiliaPatientDir", method = RequestMethod.POST)
+    @RequestMapping(value = "getConsiliaNameDir", method = RequestMethod.POST)
     public @ResponseBody
-    String getConsiliaPatientDir(@RequestBody String reqJson) {
-        logger.debug("getConsiliaPatientDir req is :" + reqJson);
-        ConsiliaPatientDirReq req = GsonUtil.jsonToObject(reqJson, ConsiliaPatientDirReq.class);
-        Map<String, Object> resultMap = patientService.getConsiliaPatientDir(req);
+    String getConsiliaNameDir(@RequestBody String reqJson) {
+        logger.debug("getConsiliaNameDir req is :" + reqJson);
+        ConsiliaNameDirReq req = GsonUtil.jsonToObject(reqJson, ConsiliaNameDirReq.class);
+        Map<String, Object> resultMap = patientService.getConsiliaNameDir(req);
         String result = GsonUtil.objectToJson(resultMap);
-        logger.debug("getConsiliaPatientDir resp is :" + result);
+        logger.debug("getConsiliaNameDir resp is :" + result);
         return result;
     }
 
-    @RequestMapping(value = "getConsiliaPatientIntro", method = RequestMethod.POST)
+    @RequestMapping(value = "getConsiliaNameIntro", method = RequestMethod.POST)
     public @ResponseBody
-    String getPatientByName(@RequestBody String reqJson) {
-        logger.debug("getConsiliaPatientIntro req is :" + reqJson);
-        ConsiliaPatientIntroReq req = GsonUtil.jsonToObject(reqJson, ConsiliaPatientIntroReq.class);
-        Map<String, Object> resultMap = patientService.getConsiliaPatientIntro(req);
+    String getConsiliaNameIntro(@RequestBody String reqJson) {
+        logger.debug("getConsiliaNameIntro req is :" + reqJson);
+        ConsiliaNameIntroReq req = GsonUtil.jsonToObject(reqJson, ConsiliaNameIntroReq.class);
+        Map<String, Object> resultMap = patientService.getConsiliaNameIntro(req);
         String result = GsonUtil.objectToJson(resultMap);
-        logger.debug("getConsiliaPatientIntro resp is :" + result);
+        logger.debug("getConsiliaNameIntro resp is :" + result);
         return result;
     }
 
     @RequestMapping(value = "getConsiliaDetail", method = RequestMethod.POST)
     public @ResponseBody
-    String getPatientCondition(@RequestBody String reqJson) {
+    String getConsiliaDetail(@RequestBody String reqJson) {
         logger.debug("getConsiliaDetail req is :" + reqJson);
         ConsiliaDetailReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDetailReq.class);
         Map<String, Object> resultMap = patientService.getConsiliaDetail(req);
