@@ -44,6 +44,9 @@ public class PatientServiceImpl implements PatientService {
     public Map<String, Object> getConsiliaNameDir(ConsiliaNameDirReq req) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("pageIdx", req.getContent().getPageIdx());
+        queryMap.put("recordPerPage", req.getContent().getRecordPerPage());
+        queryMap.put("patientNameLike", req.getContent().getPatientNameLike());
         List<ConsiliaNameDirVo> consiliaNameDirVos = patientConditionMapper.getConsiliaNameDir(queryMap);
         result.put("content", consiliaNameDirVos);
         result.put("status", "200");

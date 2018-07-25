@@ -68,6 +68,9 @@
           count(t.id) consilia_cnt
         FROM Patient_Info s, Patient_Condition t
         WHERE s.id = t.patient_info_id
+        <if test="patientNameLike != null">
+          AND s.name like CONCAT('%',#{patientNameLike},'%')
+        </if>
         GROUP BY t.patient_info_id, s.name, s.sex
     </select>
 
