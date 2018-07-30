@@ -11,8 +11,20 @@
         <result column="analysis" jdbcType="VARCHAR" property="analysis"/>
     </resultMap>
     <sql id="Base_Column_List">
-
+        ID,patient_info_id,visiting_date,pulse,tongue,add_condition,analysis
     </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yoler.grape.entity.PatientCondition">
+		insert into Patient_Condition
+		  (patient_info_id, visiting_date, pulse,tongue, add_condition,analysis)
+		values (#{patientInfoId,jdbcType=INTEGER},
+		         #{visitingDate,jdbcType=DATE},
+		         #{pulse,jdbcType=VARCHAR},
+		         #{tongue,jdbcType=VARCHAR},
+		         #{addCondition,jdbcType=VARCHAR},
+		         #{analysis,jdbcType=VARCHAR})
+	</insert>
 
     <resultMap id="ConsiliaDetailResult" type="com.yoler.grape.vo.mobile.ConsiliaDetailVo">
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -46,14 +58,14 @@
 
     <select id="getConsiliaDateDir" parameterType="java.util.Map" resultMap="ConsiliaDateDirResult">
         SELECT
-          t.visiting_date,
-          count(t.visiting_date) patient_cnt
+        t.visiting_date,
+        count(t.visiting_date) patient_cnt
         FROM Patient_Condition t
         WHERE 1=1
-        <if test="queryStartDate != null">
+        <if test="queryStartDate != null and queryStartDate != ''">
             and t.visiting_date &gt;= #{queryStartDate}
         </if>
-        <if test="queryEndDate != null">
+        <if test="queryEndDate != null and queryEndDate != ''">
             and t.visiting_date &lt;= #{queryEndDate}
         </if>
         GROUP BY t.visiting_date
@@ -62,14 +74,14 @@
 
     <select id="getConsiliaNameDir" parameterType="java.util.Map" resultMap="ConsiliaNameDirResult">
         SELECT
-          t.patient_info_id,
-          s.name patient_name,
-          s.sex patient_sex,
-          count(t.id) consilia_cnt
+        t.patient_info_id,
+        s.name patient_name,
+        s.sex patient_sex,
+        count(t.id) consilia_cnt
         FROM Patient_Info s, Patient_Condition t
         WHERE s.id = t.patient_info_id
-        <if test="patientNameLike != null">
-          AND s.name like CONCAT('%',#{patientNameLike},'%')
+        <if test="patientNameLike != null and patientNameLike != ''">
+            AND s.name like CONCAT('%',#{patientNameLike},'%')
         </if>
         GROUP BY t.patient_info_id, s.name, s.sex
     </select>

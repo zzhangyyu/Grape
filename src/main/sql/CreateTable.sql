@@ -14,6 +14,7 @@ create table Patient_Info
    primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 alter table Patient_Info comment '病人基本信息表';
+alter table Patient_Info modify id int auto_increment;
 
 /*==============================================================*/
 /* Table: Patient_Condition                                               */
@@ -31,6 +32,7 @@ create table Patient_Condition
    CONSTRAINT `FK_PATIENT_ID` FOREIGN KEY (`patient_info_id`) REFERENCES `Patient_Info` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 alter table Patient_Condition comment '病历表';
+alter table Patient_Condition modify id int auto_increment;
 
 /*==============================================================*/
 /* Table: Prescription                                          */
@@ -49,6 +51,7 @@ alter table Patient_Condition comment '病历表';
    UNIQUE KEY `UK_PATIENT_CONDITION_ID` (`patient_condition_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 alter table Prescription comment '药方表';
+alter table Prescription modify id int auto_increment;
 
 /*==============================================================*/
 /* Table: User                                                  */

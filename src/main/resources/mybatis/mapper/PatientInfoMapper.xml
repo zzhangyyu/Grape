@@ -11,8 +11,19 @@
         <result column="INTRODUCER" jdbcType="VARCHAR" property="introducer"/>
     </resultMap>
     <sql id="Base_Column_List">
-        NAME, SEX, AGE, BIRTHDAY, ZODIAC,INTRODUCER
+        ID,NAME, SEX, AGE, BIRTHDAY, ZODIAC,INTRODUCER
     </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.yoler.grape.entity.PatientInfo">
+		insert into Patient_Info
+		  (NAME, SEX, AGE,BIRTHDAY, ZODIAC,INTRODUCER)
+		values (#{name,jdbcType=VARCHAR},
+		         #{sex,jdbcType=VARCHAR},
+		         #{age,jdbcType=INTEGER},
+		         #{birthday,jdbcType=DATE},
+		         #{zodiac,jdbcType=VARCHAR},
+		         #{introducer,jdbcType=VARCHAR})
+	</insert>
 
     <resultMap id="ConsiliaDateIntroResult" type="com.yoler.grape.vo.mobile.ConsiliaDateIntroVo">
         <result column="visiting_date" jdbcType="VARCHAR" property="visitingDate"/>
@@ -48,5 +59,12 @@
         FROM  Patient_Condition s
         WHERE s.patient_info_id = #{patientInfoId}
         ORDER BY s.visiting_date DESC;
+    </select>
+
+    <select id="getPatientInfoByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM Patient_Info t
+        WHERE t.name = #{patientName}
     </select>
 </mapper>

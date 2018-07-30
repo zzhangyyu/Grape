@@ -62,7 +62,7 @@
     </div>
     <div id="page-inner">
         <div class="row">
-            <form id="import-patient_from" action="<%=path%>/console/importPatientInfo" method="post"
+            <form id="import-patient_from" action="<%=path%>/console/importPatient" method="post"
                   enctype="multipart/form-data">
                 <div class="col-md-offset-9 panel-heading">
                     <input id="show-patient-info-file-name" class="input-large" type="text" style="height:25px;">
@@ -124,8 +124,9 @@
         });
 
         $('#saveBtn').click(function () {
-
+            $('#import-patient_from').submit();
         });
+
         $('#dataTables-patient').dataTable(
             {
                 searching: false,

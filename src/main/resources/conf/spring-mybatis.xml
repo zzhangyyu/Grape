@@ -57,12 +57,8 @@
 
     <tx:advice id="tx_advice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="add*" propagation="REQUIRED"/>
             <tx:method name="save*" propagation="REQUIRED"/>
-            <tx:method name="update*" propagation="REQUIRED"/>
-            <tx:method name="delete*" propagation="REQUIRED"/>
-            <tx:method name="bet" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
-            <tx:method name="lotteryRefresh" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
 

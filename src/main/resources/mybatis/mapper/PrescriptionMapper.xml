@@ -12,7 +12,19 @@
         <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
     </resultMap>
     <sql id="Base_Column_List">
-        patient_condition_id,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration
+        ID,patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration
     </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.yoler.grape.entity.Prescription">
+		insert into Prescription
+		  (patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration)
+		values (#{patientConditionId,jdbcType=INTEGER},
+		         #{doctorId,jdbcType=INTEGER},
+		         #{prescriptionName,jdbcType=VARCHAR},
+		         #{prescriptionDetail,jdbcType=VARCHAR},
+		         #{prescriptionMethod,jdbcType=VARCHAR},
+		         #{prescriptionCount,jdbcType=INTEGER},
+		         #{prescriptionDuration,jdbcType=VARCHAR})
+	</insert>
 
 </mapper>
