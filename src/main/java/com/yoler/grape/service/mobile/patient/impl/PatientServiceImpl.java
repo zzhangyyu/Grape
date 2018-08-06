@@ -23,6 +23,11 @@ public class PatientServiceImpl implements PatientService {
         Map<String, Object> queryMap = new HashMap<>();
         queryMap.put("queryStartDate", req.getContent().getQueryStartDate());
         queryMap.put("queryEndDate", req.getContent().getQueryEndDate());
+        int pageIdx = Integer.parseInt(req.getContent().getPageIdx());
+        int recordPerPage = Integer.parseInt(req.getContent().getRecordPerPage());
+        int beginRowNum = (pageIdx - 1) * recordPerPage;
+        queryMap.put("beginRowNum", beginRowNum);
+        queryMap.put("recordPerPage", recordPerPage);
         List<ConsiliaDateDirVo> consiliaDateDirVos = patientConditionMapper.getConsiliaDateDir(queryMap);
         result.put("content", consiliaDateDirVos);
         result.put("status", "200");
@@ -44,9 +49,12 @@ public class PatientServiceImpl implements PatientService {
     public Map<String, Object> getConsiliaNameDir(ConsiliaNameDirReq req) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
-        queryMap.put("pageIdx", req.getContent().getPageIdx());
-        queryMap.put("recordPerPage", req.getContent().getRecordPerPage());
         queryMap.put("patientNameLike", req.getContent().getPatientNameLike());
+        int pageIdx = Integer.parseInt(req.getContent().getPageIdx());
+        int recordPerPage = Integer.parseInt(req.getContent().getRecordPerPage());
+        int beginRowNum = (pageIdx - 1) * recordPerPage;
+        queryMap.put("beginRowNum", beginRowNum);
+        queryMap.put("recordPerPage", recordPerPage);
         List<ConsiliaNameDirVo> consiliaNameDirVos = patientConditionMapper.getConsiliaNameDir(queryMap);
         result.put("content", consiliaNameDirVos);
         result.put("status", "200");

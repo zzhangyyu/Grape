@@ -70,6 +70,7 @@
         </if>
         GROUP BY t.visiting_date
         ORDER BY t.visiting_date DESC
+        limit #{beginRowNum},#{recordPerPage}
     </select>
 
     <select id="getConsiliaNameDir" parameterType="java.util.Map" resultMap="ConsiliaNameDirResult">
@@ -84,6 +85,7 @@
             AND s.name like CONCAT('%',#{patientNameLike},'%')
         </if>
         GROUP BY t.patient_info_id, s.name, s.sex
+        limit #{beginRowNum},#{recordPerPage}
     </select>
 
     <select id="getConsiliaDetail" parameterType="java.util.Map" resultMap="ConsiliaDetailResult">
