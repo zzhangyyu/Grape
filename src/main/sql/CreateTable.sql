@@ -26,7 +26,7 @@ create table Patient_Condition
    visiting_date                  DATE comment '就诊时间',
    pulse                          varchar(150) comment '左寸脉象',
    tongue                         varchar(30) comment '舌象',
-   add_condition                  varchar(150) comment '其它病情描述',
+   add_condition                  varchar(500) comment '病情描述',
    analysis                       varchar(200) comment '病情分析',
    primary key (id),
    CONSTRAINT `FK_PATIENT_ID` FOREIGN KEY (`patient_info_id`) REFERENCES `Patient_Info` (`id`)
