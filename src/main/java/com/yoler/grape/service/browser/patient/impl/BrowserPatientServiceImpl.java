@@ -46,16 +46,16 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
                 String patientIntroducer = rowDatas.get(5);
                 String visitingDate = rowDatas.get(6);
                 String addCondition = rowDatas.get(7);
-                String analysis = null;
                 String pulse = rowDatas.get(8);
                 String tongue = rowDatas.get(9);
                 String prescriptionDetail = rowDatas.get(10);
-                String prescriptionCount = rowDatas.get(11);
-                String zhaoSirSay = rowDatas.get(12);
-
+                String prescriptionMethod = rowDatas.get(11);
+                String prescriptionDuration = rowDatas.get(12);
+                String advice = rowDatas.get(13);
+                String zhaoSirSay = rowDatas.get(14);
                 int patientInfoId = insertPatientInfo(patientName, patientSex, patientAge, patientBirthday, patientZodiac, patientIntroducer);
-                int patientConditionId = insertPatientCondition(patientInfoId, visitingDate, pulse, tongue, addCondition, analysis);
-                insertPrescription(patientConditionId, null, prescriptionDetail, null, prescriptionCount, null);
+                int patientConditionId = insertPatientCondition(patientInfoId, visitingDate, pulse, tongue, addCondition, "");
+                insertPrescription(patientConditionId, null, prescriptionDetail, prescriptionMethod, prescriptionDuration,advice,zhaoSirSay);
             }
         }
 
@@ -135,15 +135,16 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
         return patientCondition.getId();
     }
 
-    private void insertPrescription(int patientConditionId, String prescriptionName, String prescriptionDetail, String prescriptionMethod, String prescriptionCount, String prescriptionDuration) {
+    private void insertPrescription(int patientConditionId, String prescriptionName, String prescriptionDetail, String prescriptionMethod, String prescriptionDuration,String advice,String zhaoSirSay) {
         Prescription prescription = new Prescription();
         prescription.setDoctorId(0);
         prescription.setPatientConditionId(patientConditionId);
         prescription.setPrescriptionName(prescriptionName);
         prescription.setPrescriptionDetail(prescriptionDetail);
         prescription.setPrescriptionMethod(prescriptionMethod);
-        prescription.setPrescriptionCount(0);
         prescription.setPrescriptionDuration(prescriptionDuration);
+        prescription.setAdvice(advice);
+        prescription.setZhaoSirSay(zhaoSirSay);
         prescriptionMapper.insert(prescription);
     }
 }

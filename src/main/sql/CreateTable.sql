@@ -45,8 +45,9 @@ alter table Patient_Condition modify id int auto_increment;
    prescription_name                 varchar(20) comment '药方名称',
    prescription_detail               varchar(500) comment '药方内容',
    prescription_method               varchar(20) comment '煎服方法',
-   prescription_count                int comment '几服药',
-   prescription_duration             varchar(10) comment '喝多久',
+   prescription_duration             varchar(10) comment '剂量',
+   advice                            varchar(50) comment '医嘱',
+   zhao_sir_say                      varchar(100) comment '师曰',
    primary key (id),
    UNIQUE KEY `UK_PATIENT_CONDITION_ID` (`patient_condition_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

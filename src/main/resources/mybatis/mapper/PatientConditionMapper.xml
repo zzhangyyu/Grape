@@ -40,8 +40,9 @@
         <result column="prescription_name" jdbcType="VARCHAR" property="prescriptionName"/>
         <result column="prescription_detail" jdbcType="VARCHAR" property="prescriptionDetail"/>
         <result column="prescription_method" jdbcType="VARCHAR" property="prescriptionMethod"/>
-        <result column="prescription_count" jdbcType="VARCHAR" property="prescriptionCount"/>
         <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
+        <result column="advice" jdbcType="VARCHAR" property="advice"/>
+        <result column="zhao_sir_say" jdbcType="VARCHAR" property="zhaoSirSay"/>
     </resultMap>
 
     <resultMap id="ConsiliaDateDirResult" type="com.yoler.grape.vo.mobile.ConsiliaDateDirVo">
@@ -103,8 +104,9 @@
         s.prescription_name,
         s.prescription_detail,
         s.prescription_method,
-        s.prescription_count,
-        s.prescription_duration
+        s.prescription_duration,
+        s.advice,
+        s.zhao_sir_say
         FROM Patient_Condition t, Prescription s, Patient_Info l
         WHERE t.id = #{patientConditionId} AND t.id = s.patient_condition_id AND l.id = t.patient_info_id
     </select>

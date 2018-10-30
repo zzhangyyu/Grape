@@ -10,8 +10,9 @@ public class Prescription {
     private String prescriptionName;
     private String prescriptionDetail;
     private String prescriptionMethod;
-    private int prescriptionCount;
     private String prescriptionDuration;
+    private String advice;
+    private String zhaoSirSay;
 
     public int getId() {
         return id;
@@ -61,19 +62,27 @@ public class Prescription {
         this.prescriptionMethod = prescriptionMethod;
     }
 
-    public int getPrescriptionCount() {
-        return prescriptionCount;
-    }
-
-    public void setPrescriptionCount(int prescriptionCount) {
-        this.prescriptionCount = prescriptionCount;
-    }
-
     public String getPrescriptionDuration() {
         return prescriptionDuration;
     }
 
     public void setPrescriptionDuration(String prescriptionDuration) {
         this.prescriptionDuration = prescriptionDuration;
+    }
+
+    public String getAdvice() {
+        return advice;
+    }
+
+    public void setAdvice(String advice) {
+        this.advice = advice;
+    }
+
+    public String getZhaoSirSay() {
+        return zhaoSirSay;
+    }
+
+    public void setZhaoSirSay(String zhaoSirSay) {
+        this.zhaoSirSay = zhaoSirSay;
     }
 }

@@ -8,23 +8,25 @@
         <result column="prescription_name" jdbcType="VARCHAR" property="prescriptionName"/>
         <result column="prescription_detail" jdbcType="VARCHAR" property="prescriptionDetail"/>
         <result column="prescription_method" jdbcType="VARCHAR" property="prescriptionMethod"/>
-        <result column="prescription_count" jdbcType="INTEGER" property="prescriptionCount"/>
         <result column="prescription_duration" jdbcType="VARCHAR" property="prescriptionDuration"/>
+        <result column="advice" jdbcType="VARCHAR" property="advice"/>
+        <result column="zhao_sir_say" jdbcType="VARCHAR" property="zhaoSirSay"/>
     </resultMap>
     <sql id="Base_Column_List">
-        ID,patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration
+        ID,patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_duration,advice,zhao_sir_say
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.yoler.grape.entity.Prescription">
 		insert into Prescription
-		  (patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_count,prescription_duration)
+		  (patient_condition_id,doctor_id,prescription_name,prescription_detail,prescription_method,prescription_duration,advice,zhao_sir_say)
 		values (#{patientConditionId,jdbcType=INTEGER},
 		         #{doctorId,jdbcType=INTEGER},
 		         #{prescriptionName,jdbcType=VARCHAR},
 		         #{prescriptionDetail,jdbcType=VARCHAR},
 		         #{prescriptionMethod,jdbcType=VARCHAR},
-		         #{prescriptionCount,jdbcType=INTEGER},
-		         #{prescriptionDuration,jdbcType=VARCHAR})
+		         #{prescriptionDuration,jdbcType=VARCHAR}),
+		         #{advice,jdbcType=VARCHAR}),
+		         #{zhaoSirSay,jdbcType=VARCHAR})
 	</insert>
 
 </mapper>

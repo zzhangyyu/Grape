@@ -14,8 +14,9 @@ public class ConsiliaDetailVo {
     private String prescriptionName;
     private String prescriptionDetail;
     private String prescriptionMethod;
-    private String prescriptionCount;
     private String prescriptionDuration;
+    private String advice;
+    private String zhaoSirSay;
 
     public String getName() {
         return name;
@@ -121,19 +122,27 @@ public class ConsiliaDetailVo {
         this.prescriptionMethod = prescriptionMethod;
     }
 
-    public String getPrescriptionCount() {
-        return prescriptionCount;
-    }
-
-    public void setPrescriptionCount(String prescriptionCount) {
-        this.prescriptionCount = prescriptionCount;
-    }
-
     public String getPrescriptionDuration() {
         return prescriptionDuration;
     }
 
     public void setPrescriptionDuration(String prescriptionDuration) {
         this.prescriptionDuration = prescriptionDuration;
+    }
+
+    public String getAdvice() {
+        return advice;
+    }
+
+    public void setAdvice(String advice) {
+        this.advice = advice;
+    }
+
+    public String getZhaoSirSay() {
+        return zhaoSirSay;
+    }
+
+    public void setZhaoSirSay(String zhaoSirSay) {
+        this.zhaoSirSay = zhaoSirSay;
     }
 }
