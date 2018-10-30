@@ -37,7 +37,8 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
     public void saveToImportConsilia(List<List<String>> toImportDatas) {
         for (int i = 1; i < toImportDatas.size(); i++) {
             List<String> rowDatas = toImportDatas.get(i);
-            if (rowDatas.size() == 13) {
+            logger.debug(rowDatas.size()+"");
+            if (rowDatas.size() == 15) {
                 String patientName = rowDatas.get(0);
                 String patientSex = rowDatas.get(1);
                 String patientAge = rowDatas.get(2);

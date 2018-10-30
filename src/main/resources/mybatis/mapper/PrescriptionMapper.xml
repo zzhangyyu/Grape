@@ -24,8 +24,8 @@
 		         #{prescriptionName,jdbcType=VARCHAR},
 		         #{prescriptionDetail,jdbcType=VARCHAR},
 		         #{prescriptionMethod,jdbcType=VARCHAR},
-		         #{prescriptionDuration,jdbcType=VARCHAR}),
-		         #{advice,jdbcType=VARCHAR}),
+		         #{prescriptionDuration,jdbcType=VARCHAR},
+		         #{advice,jdbcType=VARCHAR},
 		         #{zhaoSirSay,jdbcType=VARCHAR})
 	</insert>
 

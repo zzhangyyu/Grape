@@ -1,6 +1,7 @@
 package com.yoler.grape.controller.browser;
 
 import com.yoler.grape.service.browser.patient.BrowserPatientService;
+import com.yoler.grape.util.GsonUtil;
 import com.yoler.grape.util.ImportExcelUtil;
 import com.yoler.grape.vo.browser.BrowserPatientBriefInfoVo;
 import org.slf4j.Logger;
@@ -46,8 +47,7 @@ public class BrowserPatientController {
     }
 
     @RequestMapping(value = "importPatient", method = RequestMethod.POST)
-    public @ResponseBody
-    String importPatient(Model model, @RequestParam("patientInfoFile") MultipartFile patientInfoFile) {
+    public String importPatient(Model model, @RequestParam("patientInfoFile") MultipartFile patientInfoFile) {
         CommonsMultipartFile file = (CommonsMultipartFile) patientInfoFile;
         String fileName = file.getFileItem().getName();
         String fileType = null;
@@ -60,6 +60,7 @@ public class BrowserPatientController {
         }
         try {
             List<List<String>> toImportDatas = ImportExcelUtil.importExcel(file.getInputStream(), fileType);
+            logger.debug(GsonUtil.objectToJson(toImportDatas));
             browserPatientService.saveToImportConsilia(toImportDatas);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
