@@ -6,7 +6,7 @@
         <result column="NAME" jdbcType="VARCHAR" property="name"/>
         <result column="SEX" jdbcType="VARCHAR" property="sex"/>
         <result column="AGE" jdbcType="INTEGER" property="age"/>
-        <result column="BIRTHDAY" jdbcType="DATE" property="birthday"/>
+        <result column="BIRTHDAY" jdbcType="VARCHAR" property="birthday"/>
         <result column="ZODIAC" jdbcType="VARCHAR" property="zodiac"/>
         <result column="INTRODUCER" jdbcType="VARCHAR" property="introducer"/>
     </resultMap>
@@ -20,7 +20,7 @@
 		values (#{name,jdbcType=VARCHAR},
 		         #{sex,jdbcType=VARCHAR},
 		         #{age,jdbcType=INTEGER},
-		         #{birthday,jdbcType=DATE},
+		         #{birthday,jdbcType=VARCHAR},
 		         #{zodiac,jdbcType=VARCHAR},
 		         #{introducer,jdbcType=VARCHAR})
 	</insert>

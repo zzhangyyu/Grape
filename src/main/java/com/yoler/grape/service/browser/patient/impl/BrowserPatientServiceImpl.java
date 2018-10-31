@@ -106,7 +106,7 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
             patientInfo.setSex(patientSex);
             patientInfo.setAge(StringUtil.isEmpty(patientAge) ? 0 : Integer.parseInt(patientAge));
             try {
-                patientInfo.setBirthday(StringUtil.isEmpty(patientBirthday) ? null : DateFormatUtil.parseDateTime(patientBirthday));
+                patientInfo.setBirthday(patientBirthday);
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
             }

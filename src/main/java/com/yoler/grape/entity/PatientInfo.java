@@ -10,7 +10,7 @@ public class PatientInfo {
     private String name;
     private String sex;
     private int age;
-    private Date birthday;
+    private String birthday;
     private String zodiac;
     private String introducer;
 
@@ -46,11 +46,11 @@ public class PatientInfo {
         this.age = age;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
