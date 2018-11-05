@@ -37,7 +37,7 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
     public void saveToImportConsilia(List<List<String>> toImportDatas) {
         for (int i = 1; i < toImportDatas.size(); i++) {
             List<String> rowDatas = toImportDatas.get(i);
-            logger.debug(rowDatas.size()+"");
+            logger.debug(rowDatas.size() + "");
             if (rowDatas.size() == 15) {
                 String patientName = rowDatas.get(0);
                 String patientSex = rowDatas.get(1);
@@ -56,7 +56,7 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
                 String zhaoSirSay = rowDatas.get(14);
                 int patientInfoId = insertPatientInfo(patientName, patientSex, patientAge, patientBirthday, patientZodiac, patientIntroducer);
                 int patientConditionId = insertPatientCondition(patientInfoId, visitingDate, pulse, tongue, addCondition, "");
-                insertPrescription(patientConditionId, null, prescriptionDetail, prescriptionMethod, prescriptionDuration,advice,zhaoSirSay);
+                insertPrescription(patientConditionId, null, prescriptionDetail, prescriptionMethod, prescriptionDuration, advice, zhaoSirSay);
             }
         }
 
@@ -104,12 +104,8 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
             patientInfo = new PatientInfo();
             patientInfo.setName(patientName);
             patientInfo.setSex(patientSex);
-            patientInfo.setAge(StringUtil.isEmpty(patientAge) ? 0 : Integer.parseInt(patientAge));
-            try {
-                patientInfo.setBirthday(patientBirthday);
-            } catch (Exception e) {
-                logger.error(e.getMessage(), e);
-            }
+            patientInfo.setAge(StringUtil.isEmpty(patientAge) ? null : Integer.parseInt(patientAge));
+            patientInfo.setBirthday(patientBirthday);
             patientInfo.setZodiac(patientZodiac);
             patientInfo.setIntroducer(patientIntroducer);
             patientInfoMapper.insert(patientInfo);
@@ -136,7 +132,7 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
         return patientCondition.getId();
     }
 
-    private void insertPrescription(int patientConditionId, String prescriptionName, String prescriptionDetail, String prescriptionMethod, String prescriptionDuration,String advice,String zhaoSirSay) {
+    private void insertPrescription(int patientConditionId, String prescriptionName, String prescriptionDetail, String prescriptionMethod, String prescriptionDuration, String advice, String zhaoSirSay) {
         Prescription prescription = new Prescription();
         prescription.setDoctorId(0);
         prescription.setPatientConditionId(patientConditionId);
