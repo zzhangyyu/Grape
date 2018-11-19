@@ -2,13 +2,11 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
-		http://www.springframework.org/schema/beans
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx
-		http://www.springframework.org/schema/tx/spring-tx.xsd
-		">
+		http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 基本属性 url、user、password -->
@@ -61,5 +59,10 @@
             <tx:method name="insert*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
+
+    <aop:config >
+        <aop:pointcut expression="execution(* com.yoler.grape.service.*.*.impl.*.*(..))" id="tranPointcut"/>
+        <aop:advisor pointcut-ref="tranPointcut" advice-ref="tx_advice"/>
+    </aop:config>
 
 </beans>
