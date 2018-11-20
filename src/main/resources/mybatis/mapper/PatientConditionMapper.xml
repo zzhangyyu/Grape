@@ -86,6 +86,7 @@
             AND s.name like CONCAT('%',#{patientNameLike},'%')
         </if>
         GROUP BY t.patient_info_id, s.name, s.sex
+        ORDER BY  convert(s.name using gbk)
         limit #{beginRowNum},#{recordPerPage}
     </select>
 

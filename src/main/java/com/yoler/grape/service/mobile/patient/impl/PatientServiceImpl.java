@@ -4,6 +4,7 @@ import com.yoler.grape.dao.mapper.PatientConditionMapper;
 import com.yoler.grape.dao.mapper.PatientInfoMapper;
 import com.yoler.grape.request.mobile.*;
 import com.yoler.grape.service.mobile.patient.PatientService;
+import com.yoler.grape.util.StringUtil;
 import com.yoler.grape.vo.mobile.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,10 +22,12 @@ public class PatientServiceImpl implements PatientService {
     public Map<String, Object> getConsiliaDateDir(ConsiliaDateDirReq req) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
+        String pageIdxStr = req.getContent().getPageIdx();
+        String recordPerPageStr = req.getContent().getRecordPerPage();
         queryMap.put("queryStartDate", req.getContent().getQueryStartDate());
         queryMap.put("queryEndDate", req.getContent().getQueryEndDate());
-        int pageIdx = Integer.parseInt(req.getContent().getPageIdx());
-        int recordPerPage = Integer.parseInt(req.getContent().getRecordPerPage());
+        int pageIdx = StringUtil.isEmpty(pageIdxStr) ? 1 : Integer.parseInt(req.getContent().getPageIdx());
+        int recordPerPage = StringUtil.isEmpty(recordPerPageStr) ? 20 : Integer.parseInt(req.getContent().getRecordPerPage());
         int beginRowNum = (pageIdx - 1) * recordPerPage;
         queryMap.put("beginRowNum", beginRowNum);
         queryMap.put("recordPerPage", recordPerPage);
@@ -49,12 +52,23 @@ public class PatientServiceImpl implements PatientService {
     public Map<String, Object> getConsiliaNameDir(ConsiliaNameDirReq req) {
         Map<String, Object> result = new HashMap<>();
         Map<String, Object> queryMap = new HashMap<>();
-        queryMap.put("patientNameLike", req.getContent().getPatientNameLike());
-        int pageIdx = Integer.parseInt(req.getContent().getPageIdx());
-        int recordPerPage = Integer.parseInt(req.getContent().getRecordPerPage());
-        int beginRowNum = (pageIdx - 1) * recordPerPage;
-        queryMap.put("beginRowNum", beginRowNum);
-        queryMap.put("recordPerPage", recordPerPage);
+        String patientNameLike = req.getContent().getPatientNameLike();
+        String pageIdxStr = req.getContent().getPageIdx();
+        String recordPerPageStr = req.getContent().getRecordPerPage();
+        if (StringUtil.isEmpty(patientNameLike)) {
+            int pageIdx = StringUtil.isEmpty(pageIdxStr) ? 1 : Integer.parseInt(req.getContent().getPageIdx());
+            int recordPerPage = StringUtil.isEmpty(recordPerPageStr) ? 20 : Integer.parseInt(req.getContent().getRecordPerPage());
+            int beginRowNum = (pageIdx - 1) * recordPerPage;
+            queryMap.put("beginRowNum", beginRowNum);
+            queryMap.put("recordPerPage", recordPerPage);
+        } else {
+            int pageIdx = 1;
+            int recordPerPage = Integer.MAX_VALUE;
+            int beginRowNum = (pageIdx - 1) * recordPerPage;
+            queryMap.put("beginRowNum", beginRowNum);
+            queryMap.put("recordPerPage", recordPerPage);
+            queryMap.put("patientNameLike", patientNameLike);
+        }
         List<ConsiliaNameDirVo> consiliaNameDirVos = patientConditionMapper.getConsiliaNameDir(queryMap);
         result.put("content", consiliaNameDirVos);
         result.put("status", "200");
