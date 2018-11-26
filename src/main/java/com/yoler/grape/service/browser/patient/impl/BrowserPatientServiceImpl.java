@@ -53,9 +53,10 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
                 String prescriptionMethod = rowDatas.get(11);
                 String prescriptionDuration = rowDatas.get(12);
                 String advice = rowDatas.get(13);
-                String zhaoSirSay = rowDatas.get(14);
+                String analysis = rowDatas.get(14);
+                String zhaoSirSay = rowDatas.get(15);
                 int patientInfoId = insertPatientInfo(patientName, patientSex, patientAge, patientBirthday, patientZodiac, patientIntroducer);
-                int patientConditionId = insertPatientCondition(patientInfoId, visitingDate, pulse, tongue, addCondition, "");
+                int patientConditionId = insertPatientCondition(patientInfoId, visitingDate, pulse, tongue, addCondition, analysis);
                 insertPrescription(patientConditionId, null, prescriptionDetail, prescriptionMethod, prescriptionDuration, advice, zhaoSirSay);
             }
         }

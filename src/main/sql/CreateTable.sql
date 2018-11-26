@@ -5,12 +5,12 @@ use grape;
 create table Patient_Info
 (
    id                   int not null,
-   name                 varchar(20) comment '姓名',
+   name                 varchar(10) comment '姓名',
    sex                  varchar(5) comment '性别',
    age                  int comment '年龄',
    birthday             varchar(20) comment '生日',
    zodiac               varchar(5) comment '属相',
-   introducer           varchar(20) comment '介绍人',
+   introducer           varchar(10) comment '介绍人',
    primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 alter table Patient_Info comment '病人基本信息表';
@@ -43,11 +43,11 @@ alter table Patient_Condition modify id int auto_increment;
    patient_condition_id              int not null comment '病历ID',
    doctor_id                         int comment '医生ID',
    prescription_name                 varchar(20) comment '药方名称',
-   prescription_detail               varchar(500) comment '药方内容',
+   prescription_detail               varchar(1000) comment '药方内容',
    prescription_method               varchar(100) comment '煎服方法',
    prescription_duration             varchar(100) comment '剂量',
    advice                            varchar(500) comment '医嘱',
-   zhao_sir_say                      varchar(500) comment '师曰',
+   zhao_sir_say                      varchar(1000) comment '师曰',
    primary key (id),
    UNIQUE KEY `UK_PATIENT_CONDITION_ID` (`patient_condition_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
