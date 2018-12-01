@@ -38,7 +38,7 @@ public class BrowserPatientServiceImpl implements BrowserPatientService {
         for (int i = 1; i < toImportDatas.size(); i++) {
             List<String> rowDatas = toImportDatas.get(i);
             logger.debug(rowDatas.size() + "");
-            if (rowDatas.size() == 15) {
+            if (rowDatas.size() == 16) {
                 String patientName = rowDatas.get(0);
                 String patientSex = rowDatas.get(1);
                 String patientAge = rowDatas.get(2);
