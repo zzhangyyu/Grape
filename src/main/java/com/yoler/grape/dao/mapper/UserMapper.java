@@ -11,4 +11,8 @@ public interface UserMapper extends BaseMapper<User, Integer> {
 
     User getUserByName(Map queryMap);
 
+    User getUserByOpenid(String openid);
+
+    void updateUserByOpenid(User user);
+
 }

@@ -3,20 +3,20 @@
 <mapper namespace="com.yoler.grape.dao.mapper.UserMapper">
     <resultMap id="BaseResultMap" type="com.yoler.grape.entity.User">
         <id column="ID" jdbcType="INTEGER" property="id"/>
-        <result column="phone" jdbcType="VARCHAR" property="userName"/>
+        <result column="wx_openid" jdbcType="VARCHAR" property="wxOpenid"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="avatar" jdbcType="BLOB" property="avatar"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
         <result column="create_time" jdbcType="DATE" property="createTime"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        PHONE, USER_NAME, PASSWORD, AVATAR, CREATE_TIME
+        WX_OPENID, USER_NAME, PASSWORD, AVATAR, CREATE_TIME
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.yoler.grape.entity.User">
-        insert into User(phone,user_name,password,avatar,create_time)
-        values(#{phone},#{userName},#{password},#{avatar},#{createTime})
+        insert into User(wx_openid,user_name,password,avatar,create_time)
+        values(#{wxOpenid},#{userName},#{password},#{avatar},#{createTime})
     </insert>
 
     <select id="getUserByName" parameterType="java.util.Map" resultMap="BaseResultMap">
@@ -24,5 +24,18 @@
           <include refid="Base_Column_List" />
         FROM User s WHERE s.user_name = #{userName}
     </select>
+
+    <select id="getUserByOpenid" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM User s WHERE s.wx_openid = #{openid}
+    </select>
+
+    <update id="updateUserByOpenid" parameterType="com.yoler.grape.entity.User">
+        update User
+        set USER_NAME = #{userName,jdbcType=VARCHAR},
+            AVATAR = #{avatar,jdbcType=DECIMAL}
+        where WX_OPENID = #{wxOpenid,jdbcType=VARCHAR}
+    </update>
 
 </mapper>

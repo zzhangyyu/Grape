@@ -7,10 +7,10 @@ import java.util.Date;
  */
 public class User {
     private int id;
-    private String phone;
+    private String wxOpenid;
     private String userName;
     private String password;
-    private byte[] avatar;
+    private String avatar;
     private Date createTime;
 
     public int getId() {
@@ -21,12 +21,12 @@ public class User {
         this.id = id;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getWxOpenid() {
+        return wxOpenid;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setWxOpenid(String wxOpenid) {
+        this.wxOpenid = wxOpenid;
     }
 
     public String getUserName() {
@@ -45,11 +45,11 @@ public class User {
         this.password = password;
     }
 
-    public byte[] getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(byte[] avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 

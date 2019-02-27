@@ -60,14 +60,15 @@ alter table Prescription modify id int auto_increment;
 create table User
 (
    id                   int,
-   phone                varchar(20) comment '手机号',
+   wx_openid            varchar(100) comment '微信openid',
    user_name            varchar(20) comment '用户名',
    password             varchar(20) comment '密码',
-   avatar               blob comment '头像',
+   avatar               varchar(1000) comment '头像',
    create_time          datetime comment '创建时间',
    primary key (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 alter table User comment '用户表';
+alter table User modify id int auto_increment;
 
 /*==============================================================*/
 /* Table: User_Favourite                                        */
