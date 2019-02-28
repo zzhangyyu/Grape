@@ -8,6 +8,7 @@ import com.yoler.grape.request.mobile.SignUpReq;
 import com.yoler.grape.request.mobile.UserFavouritePatientReq;
 import com.yoler.grape.service.mobile.user.MobileUserService;
 import com.yoler.grape.util.RegexUtils;
+import com.yoler.grape.util.StringUtil;
 import com.yoler.grape.vo.mobile.UserFavouritePatientVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,11 @@ public class MobileUserServiceImpl implements MobileUserService {
         String avatarUrl = req.getContent().getAvatarUrl();
         String wxOpenid = req.getContent().getWxOpenId();
         String nickName = req.getContent().getNickName();
+        if (StringUtil.isEmpty(wxOpenid)) {
+            result.put("status", "501");
+            result.put("msg", "微信openid为空");
+            return result;
+        }
         User user = new User();
         user.setAvatar(avatarUrl);
         user.setWxOpenid(wxOpenid);
