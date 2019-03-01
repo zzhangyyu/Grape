@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.grape.dao.mapper.ArticleMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.grape.entity.Article">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="writing_time" jdbcType="VARCHAR" property="writingTime"/>
+        <result column="title1" jdbcType="VARCHAR" property="title1"/>
+        <result column="title2" jdbcType="VARCHAR" property="title2"/>
+        <result column="para1" jdbcType="VARCHAR" property="para1"/>
+        <result column="para2" jdbcType="VARCHAR" property="para2"/>
+        <result column="para3" jdbcType="VARCHAR" property="para3"/>
+        <result column="para4" jdbcType="VARCHAR" property="para4"/>
+        <result column="para5" jdbcType="VARCHAR" property="para5"/>
+        <result column="para6" jdbcType="VARCHAR" property="para6"/>
+        <result column="para7" jdbcType="VARCHAR" property="para7"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, author, writing_time, title1, title2, para1, para2, para3, para4, para5, para6, para7
+    </sql>
+
+    <select id="get" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from Article
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <resultMap id="ArticleListResult" type="com.yoler.grape.vo.mobile.ArticleListVo">
+        <result column="id" jdbcType="VARCHAR" property="articleId"/>
+        <result column="title1" jdbcType="VARCHAR" property="title1"/>
+        <result column="title2" jdbcType="VARCHAR" property="title2"/>
+    </resultMap>
+
+    <select id="getArticleList" parameterType="java.util.Map" resultMap="ArticleListResult">
+        select t.id, t.title1, t.title2
+        from Article t
+        ORDER BY t.id
+        limit #{beginRowNum},#{recordPerPage}
+    </select>
+
+</mapper>

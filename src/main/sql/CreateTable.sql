@@ -83,3 +83,27 @@ create table User_Favourite
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
 alter table User_Favourite comment '用户收藏表';
 
+/*==============================================================*/
+/* Table: Article                                        */
+/*==============================================================*/
+CREATE TABLE `Article` (
+`id` int(11) NOT NULL,
+`author` varchar(20) NULL COMMENT '作者',
+`writing_time` varchar(20) NULL COMMENT '撰写时间',
+`title1` varchar (100) NULL COMMENT '标题1',
+`title2` varchar (100) NULL COMMENT '标题1',
+`para1` text (5000) NULL COMMENT '段落1',
+`para2` text (5000) NULL COMMENT '段落2',
+`para3` text (5000) NULL COMMENT '段落3',
+`para4` text (5000) NULL COMMENT '段落4',
+`para5` text (5000) NULL COMMENT '段落5',
+`para6` text (5000) NULL COMMENT '段落6',
+`para7` text (5000) NULL COMMENT '段落7',
+PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+alter table Article comment '文章表';
+alter table Article modify id int auto_increment;
+
+
+
+

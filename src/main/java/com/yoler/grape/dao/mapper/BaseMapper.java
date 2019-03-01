@@ -10,12 +10,12 @@ import java.io.Serializable;
  */
 public interface BaseMapper<E, PK extends Serializable> {
 
-    public int insert(E entity);
+    int insert(E entity);
 
-    public int update(E entity);
+    int update(E entity);
 
-    public int delete(PK pk);
+    int delete(PK pk);
 
-    public E get(PK pk);
+    E get(PK pk);
 
 }
