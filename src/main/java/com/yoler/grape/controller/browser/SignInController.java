@@ -1,6 +1,6 @@
 package com.yoler.grape.controller.browser;
 
-import com.yoler.grape.service.browser.user.BrowserUserService;
+import com.yoler.grape.service.browser.user.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,41 +16,38 @@ import java.util.Map;
 /**
  * 管理端用户controller
  */
-@Controller
+@Controller("browserSignInController")
 @RequestMapping(value = "/console/")
-public class BrowserSignInController {
+public class SignInController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
-    BrowserUserService browserUserService;
-    private String signInPage = "modules/signInPage.jsp";
-    private String welcomePage = "modules/welcome.jsp";
+    UserService userService;
 
     /**
      * 用户登录页
      *
-     * @param model
      * @return
      */
     @RequestMapping(value = "signInPage", method = RequestMethod.GET)
-    public String signInPage(Model model) {
-        return signInPage;
+    public String signInPage() {
+        return "signIn";
     }
 
     @RequestMapping(value = "welcomePage", method = RequestMethod.POST)
     public String welcome(@RequestParam String userName, @RequestParam String password, Model model, HttpServletRequest request) {
-        Map<String, Object> signInResult = browserUserService.signIn(userName, password);
+        Map<String, Object> signInResult = userService.signIn(userName, password);
         String status = (String) signInResult.get("status");
         String msg = (String) signInResult.get("msg");
         if ("200".equals(status)) {
             request.getSession().setAttribute("userName", userName);
             request.getSession().setAttribute("password", password);
-            return welcomePage;
+            return "welcome";
         } else if ("500".equals(status)) {
             model.addAttribute("errorMsg", msg);
-            return signInPage;
+            return "signIn";
         } else {
             model.addAttribute("errorMsg", "服务器错误");
-            return signInPage;
+            return "signIn";
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.yoler.grape.controller.browser;
 
-import com.yoler.grape.service.browser.patient.BrowserPatientService;
+import com.yoler.grape.service.browser.patient.PatientService;
 import com.yoler.grape.util.GsonUtil;
 import com.yoler.grape.util.ImportExcelUtil;
 import com.yoler.grape.vo.browser.BrowserPatientBriefInfoVo;
@@ -12,9 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -22,16 +20,13 @@ import java.util.List;
 /**
  * 管理端病人controller
  */
-@Controller
+@Controller("browserPatientController")
 @RequestMapping(value = "/console/")
-public class BrowserPatientController {
+public class PatientController {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    BrowserPatientService browserPatientService;
-
-    private String patientListPage = "modules/patientListPage.jsp";
-    private String patientAddPage = "modules/patientAddPage.jsp";
+    PatientService patientService;
 
     /**
      * 病人列表页
@@ -41,15 +36,14 @@ public class BrowserPatientController {
      */
     @RequestMapping(value = "patientListPage", method = RequestMethod.GET)
     public String patientListPage(Model model) {
-        List<BrowserPatientBriefInfoVo> browserPatientBriefInfoList = browserPatientService.getBrowserPatientBriefInfo(1, 20);
+        List<BrowserPatientBriefInfoVo> browserPatientBriefInfoList = patientService.getBrowserPatientBriefInfo(1, 20);
         model.addAttribute("browserPatientBriefInfoList", browserPatientBriefInfoList);
-        return patientListPage;
+        return "patientList";
     }
 
     @RequestMapping(value = "importPatient", method = RequestMethod.POST)
-    public String importPatient(Model model, @RequestParam("patientInfoFile") MultipartFile patientInfoFile) {
-        CommonsMultipartFile file = (CommonsMultipartFile) patientInfoFile;
-        String fileName = file.getFileItem().getName();
+    public String importPatient(@RequestParam("patientInfoFile") MultipartFile file) {
+        String fileName = file.getOriginalFilename();
         String fileType = null;
         int fileTypeIndex = fileName.lastIndexOf(".");
         if (fileTypeIndex > 0) {
@@ -61,20 +55,11 @@ public class BrowserPatientController {
         try {
             List<List<String>> toImportDatas = ImportExcelUtil.importExcel(file.getInputStream(), fileType);
             logger.debug(GsonUtil.objectToJson(toImportDatas));
-            browserPatientService.saveToImportConsilia(toImportDatas);
+            patientService.saveToImportConsilia(toImportDatas);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
         }
-        return patientListPage;
-    }
-
-    @RequestMapping(value = "addPatientPage", method = RequestMethod.POST)
-    public String addPatient(Model model, @RequestParam("patientInfoId") String patientInfoId, @RequestParam("patientName") String patientName, @RequestParam("patientSex") String patientSex, @RequestParam("patientAge") String patientAge) {
-        model.addAttribute("patientInfoId", patientInfoId);
-        model.addAttribute("patientName", patientName);
-        model.addAttribute("patientSex", patientSex);
-        model.addAttribute("patientAge", patientAge);
-        return patientAddPage;
+        return "patientList";
     }
 
 }

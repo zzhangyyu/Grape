@@ -7,18 +7,17 @@ import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
 /**
  * 文章controller
  */
-@Controller
+@RestController
 @RequestMapping(value = "/article/")
 public class ArticleController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -27,8 +26,7 @@ public class ArticleController {
     ArticleService articleService;
 
     @RequestMapping(value = "getArticleList", method = RequestMethod.POST)
-    public @ResponseBody
-    String getArticleList(@RequestBody String reqJson) {
+    public String getArticleList(@RequestBody String reqJson) {
         logger.debug("getArticleList req is :" + reqJson);
         ArticleListReq req = GsonUtil.jsonToObject(reqJson, ArticleListReq.class);
         Map<String, Object> resultMap = articleService.getArticleList(req);
@@ -38,8 +36,7 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "getArticle", method = RequestMethod.POST)
-    public @ResponseBody
-    String getArticle(@RequestBody String reqJson) {
+    public String getArticle(@RequestBody String reqJson) {
         logger.debug("getArticle req is :" + reqJson);
         ArticleReq req = GsonUtil.jsonToObject(reqJson, ArticleReq.class);
         Map<String, Object> resultMap = articleService.getArticle(req);

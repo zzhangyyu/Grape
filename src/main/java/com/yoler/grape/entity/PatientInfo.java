@@ -1,7 +1,5 @@
 package com.yoler.grape.entity;
 
-import java.util.Date;
-
 /**
  * 数据库映射-病人基本信息
  */

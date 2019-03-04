@@ -6,6 +6,7 @@ import com.yoler.grape.vo.browser.BrowserPatientBriefInfoVo;
 import com.yoler.grape.vo.mobile.ConsiliaDateDirVo;
 import com.yoler.grape.vo.mobile.ConsiliaDetailVo;
 import com.yoler.grape.vo.mobile.ConsiliaNameDirVo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
 /**
  * mybatis-病历Mapper
  */
+@Mapper
 public interface PatientConditionMapper extends BaseMapper<PatientCondition, Integer> {
     List<ConsiliaDateDirVo> getConsiliaDateDir(Map<String, Object> queryMap);
 

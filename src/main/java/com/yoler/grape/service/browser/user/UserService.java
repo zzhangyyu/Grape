@@ -2,7 +2,7 @@ package com.yoler.grape.service.browser.user;
 
 import java.util.Map;
 
-public interface BrowserUserService {
+public interface UserService {
 
     /**
      * Browser用户登录

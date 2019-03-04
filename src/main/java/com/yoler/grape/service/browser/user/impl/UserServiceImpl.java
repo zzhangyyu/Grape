@@ -1,13 +1,13 @@
 package com.yoler.grape.service.browser.user.impl;
 
-import com.yoler.grape.service.browser.user.BrowserUserService;
+import com.yoler.grape.service.browser.user.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service("browserUserServiceImpl")
-public class BrowserUserServiceImpl implements BrowserUserService {
+public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, Object> signIn(String userName, String password) {

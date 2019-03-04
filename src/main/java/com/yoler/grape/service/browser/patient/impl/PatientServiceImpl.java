@@ -6,7 +6,7 @@ import com.yoler.grape.dao.mapper.PrescriptionMapper;
 import com.yoler.grape.entity.PatientCondition;
 import com.yoler.grape.entity.PatientInfo;
 import com.yoler.grape.entity.Prescription;
-import com.yoler.grape.service.browser.patient.BrowserPatientService;
+import com.yoler.grape.service.browser.patient.PatientService;
 import com.yoler.grape.util.DateFormatUtil;
 import com.yoler.grape.util.StringUtil;
 import com.yoler.grape.vo.browser.BrowserMounthDatasVo;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("browserPatientServiceImpl")
-public class BrowserPatientServiceImpl implements BrowserPatientService {
+public class PatientServiceImpl implements PatientService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     PatientConditionMapper patientConditionMapper;
