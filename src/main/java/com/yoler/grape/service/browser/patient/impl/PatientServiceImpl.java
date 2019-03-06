@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +35,8 @@ public class PatientServiceImpl implements PatientService {
     PrescriptionMapper prescriptionMapper;
 
     @Override
-    public void saveToImportConsilia(List<List<String>> toImportDatas) {
+    @Transactional(rollbackFor = Exception.class)
+    public void saveToImportConsilia(List<List<String>> toImportDatas) throws Exception {
         for (int i = 1; i < toImportDatas.size(); i++) {
             List<String> rowDatas = toImportDatas.get(i);
             logger.debug(rowDatas.size() + "");
@@ -60,6 +62,7 @@ public class PatientServiceImpl implements PatientService {
                 insertPrescription(patientConditionId, null, prescriptionDetail, prescriptionMethod, prescriptionDuration, advice, zhaoSirSay);
             }
         }
+
 
     }
 
@@ -105,7 +108,7 @@ public class PatientServiceImpl implements PatientService {
             patientInfo = new PatientInfo();
             patientInfo.setName(patientName);
             patientInfo.setSex(patientSex);
-            patientInfo.setAge(StringUtil.isEmpty(patientAge.trim()) ? 0 : Integer.parseInt(patientAge));
+            patientInfo.setAge(StringUtil.isEmpty(patientAge.trim()) ? 0 : (int) Double.parseDouble(patientAge));
             patientInfo.setBirthday(patientBirthday);
             patientInfo.setZodiac(patientZodiac);
             patientInfo.setIntroducer(patientIntroducer);
@@ -117,13 +120,13 @@ public class PatientServiceImpl implements PatientService {
         return patientInfoId;
     }
 
-    private int insertPatientCondition(int patientInfoId, String visitingDate, String pulse, String tongue, String addCondition, String analysis) {
+    private int insertPatientCondition(int patientInfoId, String visitingDate, String pulse, String tongue, String addCondition, String analysis) throws Exception {
         PatientCondition patientCondition = new PatientCondition();
         patientCondition.setPatientInfoId(patientInfoId);
-        try {
-            patientCondition.setVisitingDate(StringUtil.isEmpty(visitingDate) ? null : DateFormatUtil.parseDateTime(visitingDate));
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+        if (StringUtil.isEmpty(visitingDate)) {
+            throw new Exception("就诊日期为空");
+        } else {
+            patientCondition.setVisitingDate(DateFormatUtil.parseDateTime(visitingDate));
         }
         patientCondition.setPulse(pulse);
         patientCondition.setTongue(tongue);

@@ -48,7 +48,7 @@ public class ImportExcelUtil {
                         short maxColumnNum = row.getLastCellNum();//从该列结束读取数据，到length
                         List<String> rowContent = new ArrayList<>();
                         for (short i = minColumnNum; i < maxColumnNum; i++) {
-                            rowContent.add(formatCell(row.getCell(i)));
+                            rowContent.add(formatCell(row.getCell(i)).trim());
                         }
                         result.add(rowContent);
                     }

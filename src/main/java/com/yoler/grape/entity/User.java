@@ -3,7 +3,7 @@ package com.yoler.grape.entity;
 import java.util.Date;
 
 /**
- * 数据库映射-用户
+ * 数据库表映射-用户
  */
 public class User {
     private int id;

@@ -3,7 +3,7 @@ package com.yoler.grape.entity;
 import java.util.Date;
 
 /**
- * 数据库映射-病历
+ * 数据库表映射-病历
  */
 public class PatientCondition {
     private int id;

@@ -8,10 +8,7 @@ import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -25,7 +22,7 @@ public class UserController {
     @Autowired
     MobileUserService mobileUserService;
 
-    @RequestMapping(value = "signIn", method = RequestMethod.POST)
+    @PostMapping(value = "signIn")
     public String signIn(@RequestBody String reqJson) {
         logger.debug("signIn req is :" + reqJson);
         SignInReq req = GsonUtil.jsonToObject(reqJson, SignInReq.class);
@@ -35,7 +32,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value = "signUp", method = RequestMethod.POST)
+    @PostMapping(value = "signUp")
     public String signUp(@RequestBody String reqJson) {
         logger.debug("signUp req is :" + reqJson);
         SignUpReq req = GsonUtil.jsonToObject(reqJson, SignUpReq.class);
@@ -45,7 +42,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value = "getUserFavouritePatient", method = RequestMethod.POST)
+    @PostMapping(value = "getUserFavouritePatient")
     public String getUserFavouritePatient(@RequestBody String reqJson) {
         logger.debug("getUserFavouritePatient req is :" + reqJson);
         UserFavouritePatientReq req = GsonUtil.jsonToObject(reqJson, UserFavouritePatientReq.class);

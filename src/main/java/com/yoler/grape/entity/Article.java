@@ -1,7 +1,7 @@
 package com.yoler.grape.entity;
 
 /**
- * 数据库映射-病人基本信息
+ * 数据库表映射-文章
  */
 public class Article {
     private int id;

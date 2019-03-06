@@ -1,7 +1,7 @@
 package com.yoler.grape.entity;
 
 /**
- * 数据库映射-药方
+ * 数据库表映射-药方
  */
 public class Prescription {
     private int id;

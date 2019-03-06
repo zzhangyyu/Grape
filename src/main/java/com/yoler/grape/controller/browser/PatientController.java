@@ -56,7 +56,7 @@ public class PatientController {
             List<List<String>> toImportDatas = ImportExcelUtil.importExcel(file.getInputStream(), fileType);
             logger.debug(GsonUtil.objectToJson(toImportDatas));
             patientService.saveToImportConsilia(toImportDatas);
-        } catch (IOException e) {
+        } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
         return "patientList";

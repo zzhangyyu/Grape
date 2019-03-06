@@ -6,10 +6,7 @@ import com.yoler.grape.util.GsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -23,7 +20,7 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @RequestMapping(value = "getConsiliaDateDir", method = RequestMethod.POST)
+    @PostMapping(value = "getConsiliaDateDir")
     public String getConsiliaDateDir(@RequestBody String reqJson) {
         logger.debug("getConsiliaDateDir req is :" + reqJson);
         ConsiliaDateDirReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDateDirReq.class);
@@ -33,7 +30,7 @@ public class PatientController {
         return result;
     }
 
-    @RequestMapping(value = "getConsiliaDateIntro", method = RequestMethod.POST)
+    @PostMapping(value = "getConsiliaDateIntro")
     public String getConsiliaDateIntro(@RequestBody String reqJson) {
         logger.debug("getConsiliaDateIntro req is :" + reqJson);
         ConsiliaDateIntroReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDateIntroReq.class);
@@ -43,7 +40,7 @@ public class PatientController {
         return result;
     }
 
-    @RequestMapping(value = "getConsiliaNameDir", method = RequestMethod.POST)
+    @PostMapping(value = "getConsiliaNameDir")
     public String getConsiliaNameDir(@RequestBody String reqJson) {
         logger.debug("getConsiliaNameDir req is :" + reqJson);
         ConsiliaNameDirReq req = GsonUtil.jsonToObject(reqJson, ConsiliaNameDirReq.class);
@@ -53,7 +50,7 @@ public class PatientController {
         return result;
     }
 
-    @RequestMapping(value = "getConsiliaNameIntro", method = RequestMethod.POST)
+    @PostMapping(value = "getConsiliaNameIntro")
     public String getConsiliaNameIntro(@RequestBody String reqJson) {
         logger.debug("getConsiliaNameIntro req is :" + reqJson);
         ConsiliaNameIntroReq req = GsonUtil.jsonToObject(reqJson, ConsiliaNameIntroReq.class);
@@ -63,7 +60,7 @@ public class PatientController {
         return result;
     }
 
-    @RequestMapping(value = "getConsiliaDetail", method = RequestMethod.POST)
+    @PostMapping(value = "getConsiliaDetail")
     public String getConsiliaDetail(@RequestBody String reqJson) {
         logger.debug("getConsiliaDetail req is :" + reqJson);
         ConsiliaDetailReq req = GsonUtil.jsonToObject(reqJson, ConsiliaDetailReq.class);

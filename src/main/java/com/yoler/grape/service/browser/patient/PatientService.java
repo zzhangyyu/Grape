@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface PatientService {
 
-    void saveToImportConsilia(List<List<String>> toImportDatas);
+    void saveToImportConsilia(List<List<String>> toImportDatas) throws Exception;
 
     List<BrowserPatientBriefInfoVo> getBrowserPatientBriefInfo(int pageIdx, int recordPerPage);
 

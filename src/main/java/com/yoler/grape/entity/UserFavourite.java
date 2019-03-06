@@ -3,7 +3,7 @@ package com.yoler.grape.entity;
 import java.util.Date;
 
 /**
- * 数据库映射-用户收藏
+ * 数据库表映射-用户收藏
  */
 public class UserFavourite {
     private int userId;
