@@ -4,9 +4,7 @@ import com.yoler.grape.request.mobile.ArticleListReq;
 import com.yoler.grape.request.mobile.ArticleReq;
 import com.yoler.grape.service.mobile.user.ArticleService;
 import com.yoler.grape.util.GsonUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +20,16 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping(value = "/article/")
-@Api(value = "文章", description = "文章接口")
+@Api(tags = "Article", description = "文章相关接口")
 public class ArticleController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     ArticleService articleService;
 
-    @PostMapping(value = "getArticleList")
     @ApiOperation(value = "获取文章列表", notes = "获取文章列表")
     @ApiImplicitParam(name = "reqJson", value = "请求json", dataType = "String", required = true)
+    @PostMapping(value = "getArticleList")
     public String getArticleList(@RequestBody String reqJson) {
         logger.debug("getArticleList req is :" + reqJson);
         ArticleListReq req = GsonUtil.jsonToObject(reqJson, ArticleListReq.class);
@@ -41,6 +39,8 @@ public class ArticleController {
         return result;
     }
 
+    @ApiOperation(value = "获取文章内容", notes = "获取文章内容")
+    @ApiImplicitParam(name = "reqJson", value = "请求json", dataType = "String", required = true)
     @PostMapping(value = "getArticle")
     public String getArticle(@RequestBody String reqJson) {
         logger.debug("getArticle req is :" + reqJson);
