@@ -139,6 +139,7 @@
         FROM Patient_Info s, Patient_Condition t
         WHERE s.id = t.patient_info_id
         GROUP BY t.patient_info_id, s.name, s.sex, s.age
+        ORDER BY  convert(s.name using gbk)
         LIMIT #{offset},#{recordPerPage}
     </select>
 
