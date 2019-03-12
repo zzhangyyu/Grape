@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no">
+    <title>健康预约</title>
+    <link rel="stylesheet" href="https://i.gtimg.cn/vipstyle/frozenui/2.0.0/css/frozen.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<section class="ui-panel ui-panel-center-multi ui-border-tb">
+    <h2><span>健康预约</span></h2>
+</section>
+
+
+<div class="ui-form ui-border-t">
+    <form action="/grape/console/registerResult" method="post">
+        <div>
+            <div class="ui-form-item ui-border-b">
+                <label>就诊日期：</label>
+                <label class="ui-radio">
+                    <input type="radio" name="visitDate" value="${thisWeekTuesdayDate}"
+                           th:text="${thisWeekTuesdayDate}">
+                </label>
+                <label class="ui-radio">
+                    <input type="radio" name="visitDate" value="${thisWeekThursdayDate}"
+                           th:text="${thisWeekThursdayDate}">
+                </label>
+                <label class="ui-radio">
+                    <input type="radio" name="visitDate" value="${thisWeekSundayDate}" th:text="${thisWeekSundayDate}">
+                </label>
+            </div>
+        </div>
+
+        <div class="ui-form-item ui-border-b">
+            <label>姓名：</label>
+            <input type="text" name="patientName" placeholder="请填写2~20个字" required>
+        </div>
+
+        <div>
+            <div class="ui-form-item ui-border-b">
+                <label>性别：</label>
+                <label class="ui-radio">
+                    <input type="radio" checked="" name="patientSex" value="男">男
+                </label>
+                <label class="ui-radio">
+                    <input type="radio" name="patientSex" value="女">女
+                </label>
+            </div>
+        </div>
+
+        <div class="ui-form-item ui-border-b">
+            <label>年龄：</label>
+            <input type="text" name="patientAge" placeholder="请输入您的年龄" required>
+        </div>
+
+        <div class="ui-form-item ui-border-b">
+            <label>手机号：</label>
+            <input type="text" name="patientPhone" placeholder="请输入11位手机号" required>
+        </div>
+
+        <div class="ui-form-item ui-border-b">
+            <label>介绍人：</label>
+            <input type="text" name="patientWeiXin" placeholder="请输入哪位介绍的" required>
+        </div>
+
+        <div>
+            <div class="ui-form-item ui-border-b">
+                <label class="ui-radio">
+                    <input type="radio" checked="" name="isFirst" value="初诊">初诊
+                </label>
+                <label class="ui-radio">
+                    <input type="radio" name="isFirst" value="复诊">复诊
+                </label>
+            </div>
+        </div>
+
+        <div class="ui-btn-wrap">
+            <button class="ui-btn-lg ui-btn-primary" type="submit">确认挂号</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

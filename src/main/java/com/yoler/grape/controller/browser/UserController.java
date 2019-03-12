@@ -23,13 +23,14 @@ public class UserController {
         String patientSex = request.getParameter("patientSex");
         String patientAge = request.getParameter("patientAge");
         String patientPhone = request.getParameter("patientPhone");
-        String patientWeiXin = request.getParameter("patientWeiXin");
+        String patientIntro = request.getParameter("patientIntro");
         String isFirst = request.getParameter("isFirst");
+        System.out.println("----------------" + visitDate);
         System.out.println("----------------" + patientName);
         System.out.println("----------------" + patientSex);
         System.out.println("----------------" + patientAge);
         System.out.println("----------------" + patientPhone);
-        System.out.println("----------------" + patientWeiXin);
+        System.out.println("----------------" + patientIntro);
         System.out.println("----------------" + isFirst);
         return "registerSuccess";
     }
