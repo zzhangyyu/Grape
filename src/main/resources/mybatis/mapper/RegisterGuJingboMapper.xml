@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoler.grape.dao.mapper.RegisterGuJingboMapper">
+    <resultMap id="BaseResultMap" type="com.yoler.grape.entity.RegisterGuJingbo">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="intention_date" jdbcType="DATE" property="intentionDate"/>
+        <result column="intention_week" jdbcType="VARCHAR" property="intentionWeek"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="patient_sex" jdbcType="VARCHAR" property="patientSex"/>
+        <result column="patient_age" jdbcType="VARCHAR" property="patientAge"/>
+        <result column="patient_phone" jdbcType="VARCHAR" property="patientPhone"/>
+        <result column="patient_intro" jdbcType="VARCHAR" property="patientIntro"/>
+        <result column="first_flag" jdbcType="VARCHAR" property="firstFlag"/>
+        <result column="create_date" jdbcType="DATE" property="createDate"/>
+        <result column="update_date" jdbcType="DATE" property="updateDate"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID, intention_date, intention_week,patient_name, patient_sex, patient_age,patient_phone,patient_intro,first_flag,create_date,update_date
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yoler.grape.entity.RegisterGuJingbo">
+        insert into Register_Gu_Jingbo(intention_date, intention_week,patient_name, patient_sex, patient_age,patient_phone,patient_intro,first_flag,create_date,update_date)
+        values(#{intentionDate},#{intentionWeek},#{patientName},#{patientSex},#{patientAge},#{patientPhone},#{patientIntro},#{firstFlag},#{createDate},#{updateDate})
+    </insert>
+
+    <resultMap id="IntentionDateAndWeekResult" type="com.yoler.grape.vo.browser.BrowserIntentionDateAndWeekVo">
+        <result column="intention_date" jdbcType="DATE" property="intentionDate"/>
+        <result column="intention_week" jdbcType="VARCHAR" property="intentionWeek"/>
+    </resultMap>
+
+    <select id="getIntentionDateAndWeek" resultMap="IntentionDateAndWeekResult">
+        select t.intention_date,t.intention_week
+        from Register_Gu_Jingbo t
+        group by t.intention_date, t.intention_week
+        order by t.intention_date desc
+        limit 0,9;
+    </select>
+
+    <select id="getRegisterDetail" parameterType="java.util.Date" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from Register_Gu_Jingbo t
+        where t.intention_date=#{intentionDate}
+    </select>
+
+</mapper>

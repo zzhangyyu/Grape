@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1 user-scalable=no">
+    <title>健康预约</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/mzui/css/mzui.min.css}"/>
+    <script type="text/javascript" th:src="@{/jquery/jquery-3.3.1.min.js}"></script>
+</head>
+<body>
+<div class="cell box">
+    <div class="tile flex-center flex flex-column">
+        <form action="/grape/console/registerList" method="post" onsubmit="return checkSignIn()">
+            <div class="control box danger form-message hide-empty" style="display: none;"></div>
+            <div class="control has-label-left fluid">
+                <input autofocus="" id="account" name="account" type="text" class="input" placeholder="请输入用户名...">
+                <label for="account" title="用户名"><i class="icon icon-user"></i></label>
+            </div>
+            <div class="control has-label-left fluid">
+                <input id="password" name="password" type="password" class="input" placeholder="请输入用户名...">
+                <label for="password" title="密码"><i class="icon icon-lock"></i></label>
+            </div>
+            <div class="control">
+                <button type="submit" class="btn primary fluid">登录</button>
+            </div>
+        </form>
+    </div>
+    <input type="hidden" id="errorMsg" th:value="${errorMsg}"/>
+</div>
+
+<script>
+    $(function () {
+        alertErrorMsg();
+    });
+
+    function checkSignIn() {
+        var account = $('#account').val();
+        var password = $('#password').val();
+        if (account == "") {
+            alert("请输入用户名！");
+            return false;
+        } else if (password == "") {
+            alert("请输入密码！");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function alertErrorMsg() {
+        var errorMsg = $('#errorMsg').val();
+        if (errorMsg != null && errorMsg != '') {
+            alert(errorMsg);
+            $('#errorMsg').val("");
+        }
+    }
+</script>
+
+</body>
+</html>
