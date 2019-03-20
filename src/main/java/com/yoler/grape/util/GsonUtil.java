@@ -1,9 +1,6 @@
 package com.yoler.grape.util;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -18,7 +15,8 @@ import java.util.Map;
  */
 public class GsonUtil {
 
-    private static final Gson gson = new Gson();
+//    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().serializeNulls().create();
 
     /**
      * 转成Json字符串

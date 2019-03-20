@@ -3,6 +3,8 @@ package com.yoler.grape.vo.mobile;
 public class ArticleListVo {
 
     private String articleId;
+    private String author;
+    private String writingTime;
     private String title1;
     private String title2;
 
@@ -12,6 +14,22 @@ public class ArticleListVo {
 
     public void setArticleId(String articleId) {
         this.articleId = articleId;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getWritingTime() {
+        return writingTime;
+    }
+
+    public void setWritingTime(String writingTime) {
+        this.writingTime = writingTime;
     }
 
     public String getTitle1() {

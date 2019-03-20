@@ -7,17 +7,11 @@
         <result column="writing_time" jdbcType="VARCHAR" property="writingTime"/>
         <result column="title1" jdbcType="VARCHAR" property="title1"/>
         <result column="title2" jdbcType="VARCHAR" property="title2"/>
-        <result column="para1" jdbcType="VARCHAR" property="para1"/>
-        <result column="para2" jdbcType="VARCHAR" property="para2"/>
-        <result column="para3" jdbcType="VARCHAR" property="para3"/>
-        <result column="para4" jdbcType="VARCHAR" property="para4"/>
-        <result column="para5" jdbcType="VARCHAR" property="para5"/>
-        <result column="para6" jdbcType="VARCHAR" property="para6"/>
-        <result column="para7" jdbcType="VARCHAR" property="para7"/>
+        <result column="para" jdbcType="VARCHAR" property="para"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, author, writing_time, title1, title2, para1, para2, para3, para4, para5, para6, para7
+        id, author, writing_time, title1, title2, para
     </sql>
 
     <select id="get" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -28,14 +22,16 @@
 
     <resultMap id="ArticleListResult" type="com.yoler.grape.vo.mobile.ArticleListVo">
         <result column="id" jdbcType="VARCHAR" property="articleId"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="writing_time" jdbcType="VARCHAR" property="writingTime"/>
         <result column="title1" jdbcType="VARCHAR" property="title1"/>
         <result column="title2" jdbcType="VARCHAR" property="title2"/>
     </resultMap>
 
     <select id="getArticleList" parameterType="java.util.Map" resultMap="ArticleListResult">
-        select t.id, t.title1, t.title2
+        select t.id, t.author, t.writing_time, t.title1, t.title2
         from Article t
-        ORDER BY t.id
+        ORDER BY t.writing_time DESC
         limit #{beginRowNum},#{recordPerPage}
     </select>
 
