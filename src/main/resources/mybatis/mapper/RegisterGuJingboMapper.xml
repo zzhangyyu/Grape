@@ -45,4 +45,19 @@
         where t.intention_date=#{intentionDate}
     </select>
 
+    <select id="getRegisterCntByNameAndDate" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(t.patient_name)
+        from Register_Gu_Jingbo t
+        where t.intention_date = #{intentionDate}
+          and t.intention_week = #{intentionWeek}
+          and t.patient_name = #{patientName}
+    </select>
+
+    <select id="getRegisterCntByDate" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count(t.patient_name)
+        from Register_Gu_Jingbo t
+        where t.intention_date = #{intentionDate}
+          and t.intention_week = #{intentionWeek}
+    </select>
+
 </mapper>

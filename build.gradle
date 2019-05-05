@@ -27,6 +27,7 @@ repositories {
 dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+    implementation('org.springframework.boot:spring-boot-starter-aop')
     implementation('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2')
     runtimeOnly('mysql:mysql-connector-java')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
@@ -39,6 +40,7 @@ dependencies {
             ["cn.hutool:hutool-all:4.4.5"],
             ["io.springfox:springfox-swagger2:2.7.0"],
             ["io.springfox:springfox-swagger-ui:2.7.0"]
+
     )
 }
 

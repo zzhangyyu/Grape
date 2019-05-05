@@ -49,7 +49,7 @@ public class RegisterGuJingboController {
      * @return
      */
     @RequestMapping(value = "registerResult", method = RequestMethod.POST)
-    public String registerResult(HttpServletRequest request) {
+    public String registerResult(Model model,HttpServletRequest request) {
         String intentionDate = request.getParameter("intentionDate");
         String patientName = request.getParameter("patientName");
         String patientSex = request.getParameter("patientSex");
@@ -62,10 +62,12 @@ public class RegisterGuJingboController {
             if ("200".equals(result.get("status"))) {
                 return "registerSuccess";
             } else {
+                model.addAttribute("errorMsg", result.get("errorMsg"));
                 return "registerError";
             }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
+            model.addAttribute("errorMsg", "挂号失败，请重试！");
             return "registerError";
         }
     }

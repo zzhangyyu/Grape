@@ -29,7 +29,7 @@
             <table class="table striped" id="table-register-detail">
                 <thead>
                 <tr class="text-primary">
-                    <th>就诊日期</th>
+<!--                    <th>就诊日期</th>-->
                     <th>姓名</th>
                     <th>性别</th>
                     <th>年龄</th>
@@ -109,7 +109,7 @@
         var registerList = data.content;
         for (var i = 0; i < registerList.length; i++) {
             var datatableRowData = new Array();
-            datatableRowData.push(registerList[i].intentionDate);
+            // datatableRowData.push(registerList[i].intentionDate);
             datatableRowData.push(registerList[i].patientName);
             datatableRowData.push(registerList[i].patientSex);
             datatableRowData.push(registerList[i].patientAge);

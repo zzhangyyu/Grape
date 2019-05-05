@@ -34,27 +34,37 @@ public class RegisterGuJingboServiceImpl implements RegisterGuJingboService {
         String validateResult = validateParameter(intentionDateAndWeek, patientName, patientSex, patientAge, patientPhone, patientIntro, firstFlag);
         if (!StringUtil.isEmpty(validateResult)) {
             result.put("status", "501");
-            result.put("msg", validateResult);
+            result.put("errorMsg", validateResult);
             return result;
         }
-        RegisterGuJingbo registerGuJingbo = new RegisterGuJingbo();
-        registerGuJingbo.setIntentionDate(DateFormatUtil.parseDateTime(formatIntentionDateAndWeek(intentionDateAndWeek).get(0)));
-        registerGuJingbo.setIntentionWeek(formatIntentionDateAndWeek(intentionDateAndWeek).get(1));
-        registerGuJingbo.setPatientName(patientName);
-        registerGuJingbo.setPatientSex(patientSex);
-        registerGuJingbo.setPatientAge(patientAge);
-        registerGuJingbo.setPatientPhone(patientPhone);
-        registerGuJingbo.setPatientIntro(patientIntro);
-        registerGuJingbo.setFirstFlag(firstFlag);
-        registerGuJingbo.setCreateDate(new Date());
-        registerGuJingbo.setUpdateDate(new Date());
         try {
+            List<String> intentionDateAndWeekList = formatIntentionDateAndWeek(intentionDateAndWeek);
+            if (isRepeatRegister(intentionDateAndWeekList.get(0), intentionDateAndWeekList.get(1), patientName)) {
+                result.put("status", "200");
+                return result;
+            }
+            if (isOverLimitCount(intentionDateAndWeekList.get(0), intentionDateAndWeekList.get(1))) {
+                result.put("status", "502");
+                result.put("errorMsg", "本" + intentionDateAndWeekList.get(1) + "已预约满号，请选择其它日期或与医生联系");
+                return result;
+            }
+            RegisterGuJingbo registerGuJingbo = new RegisterGuJingbo();
+            registerGuJingbo.setIntentionDate(DateFormatUtil.parseDateTime(intentionDateAndWeekList.get(0)));
+            registerGuJingbo.setIntentionWeek(intentionDateAndWeekList.get(1));
+            registerGuJingbo.setPatientName(patientName);
+            registerGuJingbo.setPatientSex(patientSex);
+            registerGuJingbo.setPatientAge(patientAge);
+            registerGuJingbo.setPatientPhone(patientPhone);
+            registerGuJingbo.setPatientIntro(patientIntro);
+            registerGuJingbo.setFirstFlag(firstFlag);
+            registerGuJingbo.setCreateDate(new Date());
+            registerGuJingbo.setUpdateDate(new Date());
             registerGuJingboMapper.insert(registerGuJingbo);
             result.put("status", "200");
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             result.put("status", "500");
-            result.put("msg", "发生未知异常，挂号失败");
+            result.put("errorMsg", "发生未知异常，挂号失败");
             return result;
         }
         return result;
@@ -129,6 +139,12 @@ public class RegisterGuJingboServiceImpl implements RegisterGuJingboService {
         return null;
     }
 
+    /**
+     * 格式化意向就诊日期和周
+     *
+     * @param intentionDateAndWeek
+     * @return
+     */
     private List<String> formatIntentionDateAndWeek(String intentionDateAndWeek) {
         List<String> result = new ArrayList<>();
         int leftParenthesesIndex = intentionDateAndWeek.indexOf(leftParentheses);
@@ -138,6 +154,43 @@ public class RegisterGuJingboServiceImpl implements RegisterGuJingboService {
         result.add(intentionDate);
         result.add(intentionWeek);
         return result;
+    }
+
+    private boolean isRepeatRegister(String intentionDate, String intentionWeek, String patientName) {
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("intentionDate", intentionDate);
+        queryMap.put("intentionWeek", intentionWeek);
+        queryMap.put("patientName", patientName);
+        int registerCnt = registerGuJingboMapper.getRegisterCntByNameAndDate(queryMap);
+        if (registerCnt > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isOverLimitCount(String intentionDate, String intentionWeek) {
+        final int thursdayLimit = 15;
+        final int sundayLimit = 25;
+        Map<String, Object> queryMap = new HashMap<>();
+        queryMap.put("intentionDate", intentionDate);
+        queryMap.put("intentionWeek", intentionWeek);
+        int registeredCount = registerGuJingboMapper.getRegisterCntByDate(queryMap);
+        if ("周四".equals(intentionWeek)) {
+            if (registeredCount >= thursdayLimit) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if ("周日".equals(intentionWeek)) {
+            if (registeredCount >= sundayLimit) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
 }

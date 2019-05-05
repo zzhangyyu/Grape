@@ -12,12 +12,12 @@
 <div class="container display fade in">
     <form action="/grape/console/registerResult" method="post">
         <div class="control">
-            <label>就诊日期(必填)*</label>
+            <label>就诊日期(必选)*</label>
             <div class="control flex">
-                <div class="radio input">
-                    <input type="radio" checked="" name="intentionDate" th:value="${thisWeekTuesdayDate}">
-                    <label th:text="${thisWeekTuesdayDate}"></label>
-                </div>
+<!--                <div class="radio input">-->
+<!--                    <input type="radio" checked="" name="intentionDate" th:value="${thisWeekTuesdayDate}">-->
+<!--                    <label th:text="${thisWeekTuesdayDate}"></label>-->
+<!--                </div>-->
                 <div class="radio input">
                     <input type="radio" name="intentionDate" th:value="${thisWeekThursdayDate}">
                     <label th:text="${thisWeekThursdayDate}"></label>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="control">
-            <label>性别(必填)*</label>
+            <label>性别(必选)*</label>
             <div class="control flex">
                 <div class="radio input">
                     <input type="radio" checked="" name="patientSex" value="1">
@@ -50,7 +50,7 @@
 
         <div class="control">
             <label>年龄(必填)</label>
-            <input name="patientAge" type="text" class="input" placeholder="请输入您的年龄">
+            <input name="patientAge" type="text" class="input" placeholder="请输入您的年龄" required>
         </div>
 
         <div class="control">

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * mybatis-谷大夫挂号Mapper
@@ -16,5 +17,10 @@ public interface RegisterGuJingboMapper extends BaseMapper<RegisterGuJingbo, Int
     List<BrowserIntentionDateAndWeekVo> getIntentionDateAndWeek();
 
     List<RegisterGuJingbo> getRegisterDetail(Date date);
+
+    int getRegisterCntByNameAndDate(Map<String,Object> queryMap);
+
+    int getRegisterCntByDate(Map<String, Object> queryMap);
+
 
 }
